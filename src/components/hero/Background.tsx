@@ -25,9 +25,9 @@ export const Background: React.FC<Props> = () => {
           y2="874"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#CDDCDA" stopOpacity="0.4" />
+          <stop stopColor="#67B5B1" stopOpacity="0.9" />
           <stop offset="0.786458" stopColor="#66D6D1" stopOpacity="0.39" />
-          <stop offset="1" stopColor="#67B5B1" stopOpacity="0.77" />
+          <stop offset="1" stopColor="#67B5B1" stopOpacity="0.17" />
         </linearGradient>
       </defs>
     </svg>
