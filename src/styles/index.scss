@@ -19,14 +19,12 @@ html {
 }
 
 body {
-  margin: 0 auto;
-  max-width: 1400px;
   font-family: 'Messina', 'Montserrat', Arial, sans-serif;
-  border: 1px solid var(--black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
 }
 
 #root {
-  padding: 2em;
 }

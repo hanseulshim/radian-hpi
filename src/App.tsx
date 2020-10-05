@@ -1,11 +1,12 @@
 import React from 'react'
+import { Hero } from './components/hero'
 
 interface Props {}
 
 export const App: React.FC<Props> = () => {
   return (
     <div>
-      <h1>Radian HPI!</h1>
+      <Hero />
     </div>
   )
 }
