@@ -1,0 +1,30 @@
+:root {
+  --black: #002b49;
+  --white: #ffffff;
+  --teal: #00bab3;
+  --light-blue: #f2fbfb;
+}
+
+html {
+  box-sizing: border-box;
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--black);
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: 'Messina', 'Montserrat', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+}
