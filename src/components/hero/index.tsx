@@ -1,14 +1,14 @@
 import React from 'react'
-import { Background } from './Background'
 import { Header } from './Header'
 import heroImages from 'assets/heroImages.png'
+import housingWireLogo from 'assets/housingWireLogo.png'
+import businessWireLogo from 'assets/businessWireLogo.png'
 
 interface Props {}
 
 export const Hero: React.FC<Props> = () => {
   return (
     <section className="hero">
-      <Background />
       <Header />
       <div className="hero-content">
         <div className="hero-description">
@@ -34,7 +34,10 @@ export const Hero: React.FC<Props> = () => {
           <img src={heroImages} alt="radian hpi" />
           <div className="featured-on">
             <p>As featured on</p>
-            <div className="logos">Add logos here</div>
+            <div className="logos">
+              <img src={housingWireLogo} alt="housing wire logo" />
+              <img src={businessWireLogo} alt="business wire logo" />
+            </div>
           </div>
         </div>
       </div>
