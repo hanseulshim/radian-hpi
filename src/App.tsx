@@ -1,5 +1,6 @@
 import React from 'react'
-import { Hero } from './components/hero'
+import './styles/index.scss'
+// import { Hero } from './components/hero'
 
 interface Props {}
 
@@ -8,7 +9,7 @@ export const App: React.FC<Props> = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col">
-          <div className="jumbotron">
+          <div className="jumbotron jumbotron-fluid">
             <h1>Container size jumboton</h1>
             <p>Think BIG with a Bootstrap Jumbotron!</p>
           </div>
