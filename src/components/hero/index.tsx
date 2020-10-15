@@ -1,8 +1,5 @@
 import React from 'react'
 import { Header } from './Header'
-import heroImages from 'assets/heroImages.png'
-import housingWireLogo from 'assets/housingWireLogo.png'
-import businessWireLogo from 'assets/businessWireLogo.png'
 
 interface Props {}
 
@@ -31,12 +28,18 @@ export const Hero: React.FC<Props> = () => {
           </div>
         </div>
         <div className="hero-images">
-          <img src={heroImages} alt="radian hpi" />
+          <img src={'/assets/heroImages.png'} alt="radian hpi" />
           <div className="featured-on">
             <p>As featured on</p>
             <div className="logos">
-              <img src={housingWireLogo} alt="housing wire logo" />
-              <img src={businessWireLogo} alt="business wire logo" />
+              <img
+                src={'/assets/housingWireLogo.png'}
+                alt="housing wire logo"
+              />
+              <img
+                src={'/assets/businessWireLogo.png'}
+                alt="business wire logo"
+              />
             </div>
           </div>
         </div>

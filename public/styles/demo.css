@@ -1,0 +1,181 @@
+/*
+Design Prototype Styles
+ */
+/*
+
+github.com style (c) Vasily Polovnyov <vast@whiteants.net>
+
+*/
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #998;
+  font-style: italic;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #333;
+  font-weight: bold;
+}
+
+.hljs-number,
+.hljs-literal,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag .hljs-attr {
+  color: #008080;
+}
+
+.hljs-string,
+.hljs-doctag {
+  color: #d14;
+}
+
+.hljs-title,
+.hljs-section,
+.hljs-selector-id {
+  color: #900;
+  font-weight: bold;
+}
+
+.hljs-subst {
+  font-weight: normal;
+}
+
+.hljs-type,
+.hljs-class .hljs-title {
+  color: #458;
+  font-weight: bold;
+}
+
+.hljs-tag,
+.hljs-name,
+.hljs-attribute {
+  color: #000080;
+  font-weight: normal;
+}
+
+.hljs-regexp,
+.hljs-link {
+  color: #009926;
+}
+
+.hljs-symbol,
+.hljs-bullet {
+  color: #990073;
+}
+
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #0086b3;
+}
+
+.hljs-meta {
+  color: #999;
+  font-weight: bold;
+}
+
+.hljs-deletion {
+  background: #fdd;
+}
+
+.hljs-addition {
+  background: #dfd;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.source-panel__card .card-header [data-toggle="collapse"]:after {
+  content: "\25BC";
+}
+
+.source-panel__card .card-header [data-toggle="collapse"][aria-expanded="true"]:after {
+  content: "\25B2";
+}
+
+.source-panel__container {
+  background-color: white;
+  color: black;
+  position: relative;
+}
+
+.source-panel__container pre {
+  color: black;
+}
+
+.source-panel__container .copy-to-clipboard {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+}
+
+.source-panel__card .card-header .btn {
+  padding: 0.375rem 0.75rem;
+}
+
+.grid-demo {
+  margin: 2rem auto;
+}
+
+.demo-image-wide .image {
+  min-height: 16rem;
+}
+
+.demo-image-normal .image {
+  max-height: 24rem;
+}
+
+svg.main-logo {
+  height: 2.0rem;
+  width: 2.0rem;
+}
+
+img.logo {
+  width: 300px;
+  height: 150px;
+}
+
+.navbar-nav .dropdown-menu {
+  border-radius: 0;
+  min-height: 10rem;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+main {
+  min-height: 65vh;
+}
+
+.ix-source.btn {
+  padding-left: .75rem;
+  padding-right: .75rem;
+}
+
+#css-search-button {
+  padding: 0 0.3rem;
+}
+
+hr.guide {
+  margin: 0;
+  border-color: var(--pink);
+  border-width: 0;
+  border-style: dashed;
+  border-bottom-width: 1px;
+}
+
+/*# sourceMappingURL=demo.css.map */
