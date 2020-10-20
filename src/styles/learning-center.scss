@@ -1,0 +1,23 @@
+.learning-center-container {
+  padding: 0 15%;
+
+  .description {
+    padding-bottom: 2.5%;
+    border-bottom: 1px solid var(--teal);
+  }
+
+  .learning-center-icon {
+    width: 10em;
+    transition: all 0.8s;
+    transform-origin: 50% 50%;
+  }
+
+  .learning-center-icon:hover {
+    transform: scale(1.1);
+  }
+}
+
+.icon-description {
+  width: 50%;
+  margin-left: 20px;
+}

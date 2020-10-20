@@ -1,0 +1,32 @@
+.header {
+  width: 100%;
+}
+
+.hero-container {
+  background-image: url('/assets/hpiBg.svg');
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: cover;
+  color: var(--blue);
+  padding: 5%;
+}
+
+.description {
+  margin: 5% 0;
+}
+
+.hero-content {
+  padding: 5% 5% 0 5%;
+}
+
+.featured-on {
+  text-align: center;
+
+  .logos {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+    img:nth-child(2) {
+      height: 150px;
+    }
+  }
+}
