@@ -8,6 +8,12 @@
 
   .learning-center-icon {
     width: 10em;
+    transition: all 0.8s;
+    transform-origin: 50% 50%;
+  }
+
+  .learning-center-icon:hover {
+    transform: scale(1.1);
   }
 }
 
