@@ -16,6 +16,7 @@ export interface DataInterface {
     description: string | null
     icons: Array<{
       icon: string | null
+      title: string | null
       description: string | null
     }> | null
   } | null

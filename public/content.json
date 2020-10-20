@@ -12,18 +12,22 @@
     "icons": [
       {
         "icon": "money-technology-on-light.svg",
+        "title": "Speed to Market",
         "description": "Offers results weeks earlier than other indices - days after month's end."
       },
       {
         "icon": "house-on-light.svg",
+        "title": "Complete View",
         "description": "Provides valuations data on the U.s. housing stock as opposed to sales pairs or sampled populations."
       },
       {
-        "icon": "money-technology-on-light.svg",
+        "icon": "dots-on-light.svg",
+        "title": "Custom Indices",
         "description": "Offers results weeks earlier than other indices - days after month's end."
       },
       {
         "icon": "chip-on-light.svg",
+        "title": "Advanced Methods",
         "description": "Driven by artificial intelligence and machine learning to empower the best results."
       }
     ]

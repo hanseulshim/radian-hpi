@@ -28,5 +28,6 @@ export const App: React.FC = () => {
         <LearningCenter/>
       </main>
     </ContentContext.Provider>
+    
   )
 }
