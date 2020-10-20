@@ -7,24 +7,17 @@ interface Props {}
 export const Hero: React.FC<Props> = () => {
   const {hero} = useContext(ContentContext)
   return (
-    <section
-      className="container-fluid"
-      style={{ color: 'var(--blue)', padding: '5%' }}
-    >
+    <section className="container-fluid hero-container">
       <div className="row hero-content">
         <div className="col">
           <h1 className="display-3">{hero?.title}</h1>
-          <h1>The Next Generation of Home Price Analysis</h1>
-          <p>
-            Leveraging a wealth of housing data and machine learning, Radian
-            Home Price Index contains the most accurate housing valuations
-            across nearly all of the U.S. housing stock. Radian valuations are
-            based on "current" condition and are updated monthly. Give it a try
-            below.
+          <h1>{hero?.subtitle}</h1>
+          <p className="description">
+            {hero?.description}
           </p>
-          <button className="btn btn-primary">Learn More</button>
+          <button className="btn btn-primary">{hero?.cta}</button>
         </div>
-        <div className="col">
+        <div className="col d-flex flex-column justify-content-center align-items-center">
           <img src={'/assets/heroImages.png'} alt="radian hpi" />
           <div className="featured-on">
             <p>As featured on</p>

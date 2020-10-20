@@ -1,5 +1,31 @@
 {
   "hero": {
-    "title": "Radian HPI"
+    "title": "Radian HPI",
+    "subtitle": "The Next Generation of Home Price Analysis",
+    "description": "Leveraging a wealth of housing data and machine learning, Radian Home Price Index contains the most accurate housing valuations across nearly all of the U.S. housing stock. Radian valuations are based on 'current' condition and are updated monthly. Give it a try below.",
+    "cta": "Learn More"
+  },
+  "learningCenter":{
+    "title": "Learning Center",
+    "subtitle": "The next generation of home price analysis",
+    "description": "99% of homes in the U.S. aren’t transacted each month, so why rely on an index that measures only those that do? Red Bell’s Radian Home Price Index leverages a wealth of data and properly valuation expertise to value nearly all of the U.S. housingstock– offering a truly unique view on patterns and trends in the U.S. housing markets and the ability to create discrete indices on a wide range of variables and dimensions.",
+    "icons": [
+      {
+        "icon": "money-technology-on-light.svg",
+        "description": "Offers results weeks earlier than other indices - days after month's end."
+      },
+      {
+        "icon": "house-on-light.svg",
+        "description": "Provides valuations data on the U.s. housing stock as opposed to sales pairs or sampled populations."
+      },
+      {
+        "icon": "money-technology-on-light.svg",
+        "description": "Offers results weeks earlier than other indices - days after month's end."
+      },
+      {
+        "icon": "chip-on-light.svg",
+        "description": "Driven by artificial intelligence and machine learning to empower the best results."
+      }
+    ]
   }
 }
