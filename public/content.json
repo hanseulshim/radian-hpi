@@ -37,5 +37,13 @@
     "downloadImage":"impacts_of_ai.png", 
     "downloadTitle": "The Impacts of AI on Modern Home Price Indices",
     "downloadLink": null
+  },
+  "compare": {
+    "titleIcon": "bag-with-tag-on-light.svg",
+    "title": "Compare the Radian Home Price Index to the Competition",
+    "subtitle": "There are a number of similar tools out there, but Radian HPI stands above the rest.", 
+    "instructions":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae gravida aliquam quisque enim convallis et pulvinar vitae. Nunc commodo lacus, orci arcu dictum dui.",
+    "competitors": ["House Canary", "Collateral Analytics", "Zillow", "Redfin","Trulia"],
+    "backgroundImage": "hpi_on_tablet.png"
   }
 }

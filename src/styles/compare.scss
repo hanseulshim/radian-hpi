@@ -1,0 +1,29 @@
+.compare-container {
+  .compare-title {
+    padding-left: 5%;
+    margin-bottom: 2.5em;
+  }
+
+  .compare-select {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-left: 10%;
+    // background-image: url('/assets/hpi_on_tablet.png');
+    // background-repeat: no-repeat;
+    // background-position: bottom;
+    // background-size: cover;
+    h4 {
+      margin-bottom: 1em;
+    }
+    p {
+      margin-bottom: 2em;
+    }
+  }
+
+  .hpi-tool-select {
+    border: 1px solid var(--yellow);
+    border-radius: 10px;
+    padding: 1.5em;
+  }
+}

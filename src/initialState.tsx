@@ -28,4 +28,12 @@ export interface DataInterface {
     downloadTitle: string | null
     downloadLink: string | null
   } | null
+  compare:{
+    titleIcon: string | null
+    title: string | null
+    subtitle: string | null
+    instructions: string | null
+    competitors: Array<string> | null
+    backgroundImage: string | null
+  } | null
 }

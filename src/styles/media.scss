@@ -1,5 +1,6 @@
 .media-container {
   padding-left: 0;
+  margin-bottom: 5em;
 
   .video-players {
     img {
@@ -8,7 +9,7 @@
   }
 
   .media-download {
-    width: 60%;
+    width: 65%;
     .title {
       padding-bottom: 20px;
       border-bottom: 1px solid var(--secondary);
@@ -17,6 +18,9 @@
 
     .download-description {
       padding-left: 20px;
+      h5 {
+        width: 55%;
+      }
     }
   }
 }

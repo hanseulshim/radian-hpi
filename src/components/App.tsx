@@ -5,6 +5,7 @@ import { DataInterface, initialState } from 'initialState'
 import { LearningCenter } from './learning-center'
 import { Media } from './media'
 import { Blog } from './blog'
+import { Compare } from './compare'
 
 export const ContentContext = React.createContext<DataInterface>(initialState)
 
@@ -30,6 +31,7 @@ export const App: React.FC = () => {
         <LearningCenter/>
         <Media />
         <Blog/>
+        <Compare/>
       </main>
     </ContentContext.Provider>
     
