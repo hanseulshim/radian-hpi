@@ -21,11 +21,11 @@ export const Media: React.FC<Props> = () => {
             </div>
             <div className='col'>
               <div className="media-download">
-                <h5 className='title'>Download the Whitepaper</h5>
+                <h5 className='title'>{media.downloadTitle}</h5>
                 <div className="d-flex">
-                  <img src={'/assets/impacts_of_ai.png'} alt="Impacts of AI PDF" />
+                  <img src={`/assets/${media.downloadImage}`} alt="Impacts of AI PDF" />
                   <div className="d-flex flex-column justify-content-between download-description">
-                    <h5>The impacts of AI on Modern Home Price Indices</h5>
+                    <h5>{media.downloadTitle}</h5>
                     <button className="btn btn-primary">Download</button>
                   </div>
                 </div>

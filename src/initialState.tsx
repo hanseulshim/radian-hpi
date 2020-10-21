@@ -1,7 +1,8 @@
 export const initialState = {
   hero: null,
   learningCenter:null,
-  media:null
+  media:null,
+  compare:null,
 }
 
 export interface DataInterface {
