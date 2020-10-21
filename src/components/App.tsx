@@ -4,6 +4,7 @@ import { Hero } from './hero'
 import { DataInterface, initialState } from 'initialState'
 import { LearningCenter } from './learning-center'
 import { Media } from './media'
+import { Blog } from './blog'
 
 export const ContentContext = React.createContext<DataInterface>(initialState)
 
@@ -28,6 +29,7 @@ export const App: React.FC = () => {
         <Hero />
         <LearningCenter/>
         <Media />
+        <Blog/>
       </main>
     </ContentContext.Provider>
     

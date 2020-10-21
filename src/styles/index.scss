@@ -4,9 +4,11 @@
 @import 'hero.scss';
 @import 'learning-center.scss';
 @import 'media.scss';
+@import 'blog.scss';
 
 section {
   margin-bottom: 5em;
+  color: var(--blue);
 }
 
 .hpi-section-title {

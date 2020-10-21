@@ -15,7 +15,6 @@ export const LearningCenter: React.FC<Props> = () => {
     return (
       <section
         className="container-fluid learning-center-container"
-        style={{ color: 'var(--blue)' }}
       >
         <div className="row hpi-section-title">
           <div className="col d-flex flex-column justify-content-center align-items-center">

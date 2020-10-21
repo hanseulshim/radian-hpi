@@ -13,7 +13,6 @@ export const Media: React.FC<Props> = () => {
       return (
         <section
           className="container-fluid media-container"
-          style={{ color: 'var(--blue)' }}
         >
           <div className="row">
             <div className="col video-players">
