@@ -3,6 +3,7 @@ import 'styles/index.scss'
 import { Hero } from './hero'
 import { DataInterface, initialState } from 'initialState'
 import { LearningCenter } from './learning-center'
+import { Media } from './media'
 
 export const ContentContext = React.createContext<DataInterface>(initialState)
 
@@ -26,6 +27,7 @@ export const App: React.FC = () => {
       <main>
         <Hero />
         <LearningCenter/>
+        <Media />
       </main>
     </ContentContext.Provider>
     

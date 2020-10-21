@@ -3,6 +3,11 @@
 // For example @import 'app.scss';
 @import 'hero.scss';
 @import 'learning-center.scss';
+@import 'media.scss';
+
+section {
+  margin-bottom: 5em;
+}
 
 .hpi-section-title {
   margin-bottom: 5%;

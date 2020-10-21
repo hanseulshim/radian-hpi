@@ -1,0 +1,22 @@
+.media-container {
+  padding-left: 0;
+
+  .video-players {
+    img {
+      margin-bottom: 0;
+    }
+  }
+
+  .media-download {
+    width: 60%;
+    .title {
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--secondary);
+      margin-bottom: 20px;
+    }
+
+    .download-description {
+      padding-left: 20px;
+    }
+  }
+}

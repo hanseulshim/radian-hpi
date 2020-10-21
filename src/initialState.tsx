@@ -1,6 +1,7 @@
 export const initialState = {
   hero: null,
-  learningCenter:null
+  learningCenter:null,
+  media:null
 }
 
 export interface DataInterface {
@@ -19,5 +20,11 @@ export interface DataInterface {
       title: string | null
       description: string | null
     }> | null
+  } | null
+  media: {
+    downloadSectionTitle: string | null
+    downloadImage: string | null
+    downloadTitle: string | null
+    downloadLink: string | null
   } | null
 }
