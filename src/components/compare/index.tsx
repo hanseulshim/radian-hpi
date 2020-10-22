@@ -72,7 +72,14 @@ export const Compare: React.FC<Props> = () => {
                 <tr>
                   <th></th>
                   {competitor && <th>{competitor.name}</th>}
-                  <th>{radianHpi?.name}</th>
+                  <th>
+                    <img
+                      src={`assets/${compare.hpiRateFinderImage}`}
+                      alt="HPI Rate Finder"
+                      className="hpi-rate-finder"
+                    />
+                    {radianHpi?.name}{' '}
+                  </th>
                 </tr>
               </thead>
               <tbody>

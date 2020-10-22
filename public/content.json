@@ -143,6 +143,7 @@
       "propertyType": ["Single Family", "Condo", "Townhome"],
       "statesInNationalIndex": "50"
     },
-    "backgroundImage": "hpi_on_tablet.png"
+    "backgroundImage": "hpi_on_tablet.png",
+    "hpiRateFinderImage": "hpi_rate_finder.png"
   }
 }

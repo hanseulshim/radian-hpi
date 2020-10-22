@@ -28,6 +28,11 @@
   }
 
   .compare-table {
+    .hpi-rate-finder {
+      display: block;
+      position: relative;
+      right: 20px;
+    }
     th {
       max-width: 200px;
     }

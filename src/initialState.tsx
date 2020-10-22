@@ -60,5 +60,6 @@ export interface DataInterface {
       statesInNationalIndex: string | null
     } | null
     backgroundImage: string | null
+    hpiRateFinderImage: string | null
   } | null
 }
