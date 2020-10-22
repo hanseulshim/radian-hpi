@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import 'styles/index.scss'
 import { Hero } from './hero'
 import { DataInterface, initialState } from 'initialState'
@@ -24,16 +24,19 @@ export const App: React.FC = () => {
   return (
     <ContentContext.Provider value={content}>
       <header>
-        <img src={'/assets/header.png'} alt="dummy-header" className='header' />
+        <img
+          src={'./assets/header.png'}
+          alt="dummy-header"
+          className="header"
+        />
       </header>
       <main>
         <Hero />
-        <LearningCenter/>
+        <LearningCenter />
         <Media />
-        <Blog/>
-        <Compare/>
+        <Blog />
+        <Compare />
       </main>
     </ContentContext.Provider>
-    
   )
 }
