@@ -71,42 +71,33 @@ export const Compare: React.FC<Props> = () => {
               <thead>
                 <tr>
                   <th></th>
-                  <th>{radianHpi?.name}</th>
                   {competitor && <th>{competitor.name}</th>}
+                  <th>{radianHpi?.name}</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <th>Index Type</th>
-                  <td>{radianHpi?.indexType}</td>
                   {competitor && <td>{competitor.indexType}</td>}
+                  <td>{radianHpi?.indexType}</td>
                 </tr>
                 <tr>
                   <th>Observations</th>
-                  <td>{radianHpi?.observations}</td>
                   {competitor && <td>{competitor.observations}</td>}
+                  <td>{radianHpi?.observations}</td>
                 </tr>
                 <tr>
                   <th>Data Frequency</th>
-                  <td>{radianHpi?.dataFrequency}</td>
                   {competitor && <td>{competitor.dataFrequency}</td>}
+                  <td>{radianHpi?.dataFrequency}</td>
                 </tr>
                 <tr>
                   <th>Monthly Observations</th>
-                  <td>{radianHpi?.monthlyObservations}</td>
                   {competitor && <td>{competitor.monthlyObservations}</td>}
+                  <td>{radianHpi?.monthlyObservations}</td>
                 </tr>
                 <tr>
                   <th>Property and Transaction Exclusions</th>
-                  <td>
-                    {radianHpi?.propertyTransactionExclusions
-                      ? radianHpi?.propertyTransactionExclusions.map(
-                          (excl, idx) => {
-                            return <li key={'excl' + idx}>{excl}</li>
-                          }
-                        )
-                      : 'None'}
-                  </td>
                   {competitor && (
                     <td>
                       {competitor.propertyTransactionExclusions
@@ -118,31 +109,33 @@ export const Compare: React.FC<Props> = () => {
                         : 'None'}
                     </td>
                   )}
+                  <td>
+                    {radianHpi?.propertyTransactionExclusions
+                      ? radianHpi?.propertyTransactionExclusions.map(
+                          (excl, idx) => {
+                            return <li key={'excl' + idx}>{excl}</li>
+                          }
+                        )
+                      : 'None'}
+                  </td>
                 </tr>
                 <tr>
                   <th>Index Delivery Delay</th>
-                  <td>{radianHpi?.indexDeliveryDelay}</td>
                   {competitor && <td>{competitor.indexDeliveryDelay}</td>}
+                  <td>{radianHpi?.indexDeliveryDelay}</td>
                 </tr>
                 <tr>
                   <th>Property Condition</th>
-                  <td>{radianHpi?.propertyCondition}</td>
                   {competitor && <td>{competitor.propertyCondition}</td>}
+                  <td>{radianHpi?.propertyCondition}</td>
                 </tr>
                 <tr>
                   <th>Imposed Model Adjustments</th>
-                  <td>{radianHpi?.imposedModelAdjustments}</td>
                   {competitor && <td>{competitor.imposedModelAdjustments}</td>}
+                  <td>{radianHpi?.imposedModelAdjustments}</td>
                 </tr>
                 <tr>
                   <th>Property Type</th>
-                  <td>
-                    {radianHpi?.propertyType
-                      ? radianHpi?.propertyType.map((type, idx) => {
-                          return <li key={'type' + idx}>{type}</li>
-                        })
-                      : 'None'}
-                  </td>
                   {competitor && (
                     <td>
                       {competitor.propertyType
@@ -152,11 +145,18 @@ export const Compare: React.FC<Props> = () => {
                         : 'None'}
                     </td>
                   )}
+                  <td>
+                    {radianHpi?.propertyType
+                      ? radianHpi?.propertyType.map((type, idx) => {
+                          return <li key={'type' + idx}>{type}</li>
+                        })
+                      : 'None'}
+                  </td>
                 </tr>
                 <tr>
                   <th>States in National Index</th>
-                  <td>{radianHpi?.statesInNationalIndex}</td>
                   {competitor && <td>{competitor.statesInNationalIndex}</td>}
+                  <td>{radianHpi?.statesInNationalIndex}</td>
                 </tr>
               </tbody>
             </table>

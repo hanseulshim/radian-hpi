@@ -27,6 +27,9 @@
   }
 
   .compare-table {
+    th {
+      max-width: 200px;
+    }
     th,
     td {
       padding: 1em;
@@ -34,6 +37,8 @@
     tr:nth-child(odd) {
       td {
         background-color: var(--yellow);
+        border-top: 1px solid var(--gray);
+        border-bottom: 1px solid var(--gray);
       }
     }
   }
