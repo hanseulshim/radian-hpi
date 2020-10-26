@@ -6,6 +6,7 @@ import { LearningCenter } from './learning-center'
 import { Media } from './media'
 import { Blog } from './blog'
 import { Compare } from './compare'
+import { HpiInAction } from './hpi-in-action'
 
 export const ContentContext = React.createContext<DataInterface>(initialState)
 
@@ -36,6 +37,7 @@ export const App: React.FC = () => {
         <Media />
         <Blog />
         <Compare />
+        <HpiInAction />
       </main>
     </ContentContext.Provider>
   )

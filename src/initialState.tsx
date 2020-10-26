@@ -2,7 +2,8 @@ export const initialState = {
   hero: null,
   learningCenter: null,
   media: null,
-  compare: null
+  compare: null,
+  hpiInAction: null
 }
 
 export interface DataInterface {
@@ -13,6 +14,7 @@ export interface DataInterface {
     cta: string | null
   } | null
   learningCenter: {
+    titleIcon: string | null
     title: string | null
     subtitle: string | null
     description: string | null
@@ -61,5 +63,21 @@ export interface DataInterface {
     } | null
     backgroundImage: string | null
     hpiRateFinderImage: string | null
+  } | null
+  hpiInAction: {
+    titleIcon: string | null
+    title: string | null
+    subtitle: string | null
+    cards: Array<{
+      cardImage: string | null
+      cardTitle: string | null
+      cardSummary: string | null
+      cardTitleFull: string | null
+      cardBio: string | null
+      cardFeatures: Array<{
+        featureTitle: string | null
+        featureDescription: string | null
+      }>
+    }> | null
   } | null
 }
