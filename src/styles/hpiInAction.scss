@@ -12,6 +12,9 @@
   }
 
   .hpi-cards-container {
+    .col {
+      padding: 0;
+    }
     .hpi-card {
       display: flex;
       flex-direction: column;
@@ -19,8 +22,8 @@
       align-items: center;
       position: relative;
       border-radius: 7px;
-      min-width: 230px;
-      max-width: 300px;
+      min-width: 250px;
+      width: 250px;
       height: 450px;
       padding: 0 1em;
       z-index: 1;
@@ -50,7 +53,63 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 5em;
+        height: 6.5em;
+      }
+    }
+  }
+
+  .hpi-card-full {
+    display: flex;
+    border-radius: 7px;
+    border: 1px solid black;
+    padding: 0;
+    position: relative;
+
+    .hpi-card-full-exit {
+      position: absolute;
+      width: 1.25em;
+      right: 0;
+      top: -25px;
+      cursor: pointer;
+    }
+
+    .hpi-card-full-name {
+      background-color: var(--blue);
+      color: var(--white);
+      padding: 2em;
+      min-width: 225px;
+
+      img {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 8em;
+        margin-bottom: 1em;
+      }
+
+      h5 {
+        margin-bottom: 0px;
+      }
+    }
+
+    .hpi-card-full-content {
+      padding: 2em;
+      font-size: 1.2em;
+
+      .hpi-card-full-content-bio {
+        margin-bottom: 75px;
+      }
+
+      h4 {
+        margin-bottom: 40px;
+      }
+
+      .hpi-card-full-content-features {
+        display: flex;
+      }
+
+      .hpi-card-full-content-feature {
+        padding-right: 2em;
       }
     }
   }

@@ -30,7 +30,7 @@ export const HpiInAction: React.FC<Props> = () => {
     }
 
     const onExitCard = () => {
-      console.log('cleared!')
+      setSelectedCard(null)
     }
 
     return (
@@ -66,26 +66,37 @@ export const HpiInAction: React.FC<Props> = () => {
             })}
           {selectedCard && (
             <div className="col hpi-card-full">
-              <div className="card-name">
+              <img
+                src={'./assets/icon_X.png'}
+                className="hpi-card-full-exit"
+                alt="exit-card"
+                onClick={onExitCard}
+              />
+              <div className="hpi-card-full-name">
                 <img
                   src={`./assets/${selectedCard.cardImage}`}
                   alt={selectedCard.cardTitle || 'role image'}
                 />
-                <h3>{selectedCard.cardTitleFull}</h3>
+                <h5>The</h5>
+                <h2>{selectedCard.cardTitleFull}</h2>
               </div>
-              <div className="card-content">
-                <p>{selectedCard.cardBio}</p>
-                <h2>Most valuable features</h2>
-                {selectedCard.cardFeatures &&
-                  selectedCard.cardFeatures.map((feature, index) => {
-                    console.log(feature)
-                    return (
-                      <div className="feature">
-                        <h5>{feature.featureTitle}</h5>
-                        <p>{feature.featureDescription}</p>
-                      </div>
-                    )
-                  })}
+              <div className="hpi-card-full-content">
+                <p className="hpi-card-full-content-bio">
+                  {selectedCard.cardBio}
+                </p>
+                <h4>Most valuable features</h4>
+                {selectedCard.cardFeatures && (
+                  <div className="hpi-card-full-content-features">
+                    {selectedCard.cardFeatures.map((feature, index) => {
+                      return (
+                        <div className="hpi-card-full-content-feature">
+                          <h5>{feature.featureTitle}</h5>
+                          <p>{feature.featureDescription}</p>
+                        </div>
+                      )
+                    })}
+                  </div>
+                )}
               </div>
             </div>
           )}
