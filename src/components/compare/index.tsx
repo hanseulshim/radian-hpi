@@ -37,12 +37,18 @@ export const Compare: React.FC<Props> = () => {
     return (
       <section className="container-fluid compare-container">
         <div className="row">
-          <div className="compare-title d-flex align-items-center justify-content-center">
-            <img
-              src={`static/images/indicators/${compare.titleIcon}`}
-              alt="Price index icon"
-            />
-            <h2>{compare.title}</h2>
+          <div className="col">
+            <div className="compare-title d-flex align-items-center justify-content-center">
+              <img
+                src={`static/images/indicators/${compare.titleIcon}`}
+                alt="Price index icon"
+              />
+              {!competitor ? (
+                <h2>{compare.title}</h2>
+              ) : (
+                <h2>How this type of competitor compares to Radian HPI</h2>
+              )}
+            </div>
           </div>
         </div>
         <div className="row compare-content">
@@ -168,6 +174,7 @@ export const Compare: React.FC<Props> = () => {
               </tbody>
             </table>
           </div>
+          <div className="hpi-compare-mask" />
         </div>
       </section>
     )

@@ -1,23 +1,35 @@
 .compare-container {
+  position: relative;
+  margin-bottom: 0;
+
   .compare-title {
     padding-left: 5%;
-    margin-bottom: 1%;
+    margin-bottom: 5%;
+    width: 50%;
   }
 
   .compare-select {
     display: flex;
     flex-direction: column;
     padding-left: 10%;
+    padding-bottom: 400px;
     background-image: url('/assets/hpi_on_tablet.png');
     background-repeat: no-repeat;
     background-position: bottom left;
-    background-size: 80%;
+    background-size: 500px;
+    max-width: 700px;
 
     h4 {
       margin-bottom: 1em;
     }
     p {
       margin-bottom: 2em;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    .compare-select {
+      background-image: none;
     }
   }
 
@@ -28,10 +40,12 @@
   }
 
   .compare-table {
+    min-width: 500px;
     .hpi-rate-finder {
-      display: block;
-      position: relative;
-      right: 20px;
+      // display: block;
+      position: absolute;
+
+      top: -250px;
     }
     th {
       max-width: 200px;
