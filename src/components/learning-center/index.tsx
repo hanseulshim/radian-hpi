@@ -13,7 +13,7 @@ export const LearningCenter: React.FC<Props> = () => {
         <div className="row hpi-section-title">
           <div className="col d-flex flex-column justify-content-center align-items-center">
             <img
-              src={`/static/images/indicators/${learningCenter.titleIcon}`}
+              src={`./static/images/indicators/${learningCenter.titleIcon}`}
               alt="light-bulb-on"
               className="learning-center-icon"
             />
@@ -28,7 +28,7 @@ export const LearningCenter: React.FC<Props> = () => {
           <div className="col d-flex flex-column">
             <div className="d-flex align-items-center">
               <img
-                src={`/static/images/indicators/${icons![0].icon}`}
+                src={`./static/images/indicators/${icons![0].icon}`}
                 alt="radian icon"
                 className="learning-center-icon"
               />
@@ -39,7 +39,7 @@ export const LearningCenter: React.FC<Props> = () => {
             </div>
             <div className="d-flex align-items-center">
               <img
-                src={`/static/images/indicators/${icons![1].icon}`}
+                src={`./static/images/indicators/${icons![1].icon}`}
                 alt="radian icon"
                 className="learning-center-icon"
               />
@@ -52,7 +52,7 @@ export const LearningCenter: React.FC<Props> = () => {
           <div className="col d-flex flex-column">
             <div className="d-flex align-items-center">
               <img
-                src={`/static/images/indicators/${icons![2].icon}`}
+                src={`./static/images/indicators/${icons![2].icon}`}
                 alt="light-bulb-on"
                 className="learning-center-icon"
               />
@@ -63,7 +63,7 @@ export const LearningCenter: React.FC<Props> = () => {
             </div>
             <div className="d-flex align-items-center">
               <img
-                src={`/static/images/indicators/${icons![3].icon}`}
+                src={`./static/images/indicators/${icons![3].icon}`}
                 alt="light-bulb-on"
                 className="learning-center-icon"
               />

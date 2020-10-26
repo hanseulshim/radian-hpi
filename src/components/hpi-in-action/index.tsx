@@ -38,7 +38,7 @@ export const HpiInAction: React.FC<Props> = () => {
         <div className="row">
           <div className="col d-flex flex-column justify-content-center align-items-center">
             <img
-              src={`/static/images/indicators/${hpiInAction.titleIcon}`}
+              src={`./static/images/indicators/${hpiInAction.titleIcon}`}
               alt="Hpi in Action"
               className="hpi-in-action-icon"
             />
