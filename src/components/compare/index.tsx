@@ -72,7 +72,7 @@ export const Compare: React.FC<Props> = () => {
               </select>
             </div>
             <img
-              src={'/assets/hpi_on_tablet.png'}
+              src={'./assets/hpi_on_tablet.png'}
               className="hpi-compare-bg"
               alt="hpi tablet view"
             />

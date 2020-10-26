@@ -8,7 +8,7 @@ export const Hero: React.FC<Props> = () => {
   return (
     <section className="container-fluid hero-container">
       <img
-        src={'/assets/hpiBg.svg'}
+        src={'./assets/hpiBg.svg'}
         className="hpi-hero-bg"
         alt="radian gradient"
       />
