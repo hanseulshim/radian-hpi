@@ -43,17 +43,17 @@ export const Compare: React.FC<Props> = () => {
                 src={`static/images/indicators/${compare.titleIcon}`}
                 alt="Price index icon"
               />
-              {!competitor ? (
-                <h2>{compare.title}</h2>
-              ) : (
-                <h2>How this type of competitor compares to Radian HPI</h2>
-              )}
+              <h2>{compare.title}</h2>
             </div>
           </div>
         </div>
         <div className="row compare-content">
           <div className="col compare-select">
-            <h4>{compare.subtitle}</h4>
+            {!competitor ? (
+              <h4>{compare.subtitle}</h4>
+            ) : (
+              <h4>How this type of competitor compares to Radian HPI</h4>
+            )}
             <p>{compare.instructions}</p>
             <div className="hpi-tool-select">
               <h5>Are you currently using an index tool?</h5>
@@ -71,6 +71,11 @@ export const Compare: React.FC<Props> = () => {
                 })}
               </select>
             </div>
+            <img
+              src={'/assets/hpi_on_tablet.png'}
+              className="hpi-compare-bg"
+              alt="hpi tablet view"
+            />
           </div>
           <div className="col compare-table">
             <table className="table table-borderless">

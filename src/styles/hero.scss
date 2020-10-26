@@ -3,12 +3,21 @@
 }
 
 .hero-container {
-  background-image: url('/assets/hpiBg.svg');
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
+  // background-image: url('/assets/hpiBg.svg');
+  // background-repeat: no-repeat;
+  // background-position: bottom;
+  // background-size: cover;
+  position: relative;
   padding: 5% 5% 0 5%;
   margin-bottom: 1em;
+}
+
+.hpi-hero-bg {
+  position: absolute;
+  top: -200px;
+  left: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 .description {

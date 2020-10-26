@@ -7,6 +7,11 @@ export const Hero: React.FC<Props> = () => {
   const { hero } = useContext(ContentContext)
   return (
     <section className="container-fluid hero-container">
+      <img
+        src={'/assets/hpiBg.svg'}
+        className="hpi-hero-bg"
+        alt="radian gradient"
+      />
       <div className="row hero-content">
         <div className="col">
           <h1 className="display-3">{hero?.title}</h1>

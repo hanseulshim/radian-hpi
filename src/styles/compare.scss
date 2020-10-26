@@ -13,11 +13,19 @@
     flex-direction: column;
     padding-left: 10%;
     padding-bottom: 400px;
-    background-image: url('/assets/hpi_on_tablet.png');
-    background-repeat: no-repeat;
-    background-position: bottom left;
-    background-size: 500px;
+    // background-image: url('/assets/hpi_on_tablet.png');
+    // background-repeat: no-repeat;
+    // background-position: bottom left;
+    // background-size: 500px;
     max-width: 700px;
+
+    .hpi-compare-bg {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 70%;
+      z-index: -1;
+    }
 
     h4 {
       margin-bottom: 1em;
@@ -29,7 +37,9 @@
 
   @media screen and (max-width: 576px) {
     .compare-select {
-      background-image: none;
+      .hpi-compare-bg {
+        display: none;
+      }
     }
   }
 
