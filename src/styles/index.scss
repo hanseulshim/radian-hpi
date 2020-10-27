@@ -7,6 +7,7 @@
 @import 'blog.scss';
 @import 'compare.scss';
 @import 'hpiInAction.scss';
+@import 'demo.scss';
 
 section {
   margin-bottom: 7.5%;
@@ -19,4 +20,16 @@ section {
 
 .hpi-section-subtitle {
   margin-bottom: 2.5%;
+}
+
+.header {
+  width: 100%;
+}
+
+.footer_banner {
+  width: 100%;
+}
+
+.footer {
+  width: 100%;
 }

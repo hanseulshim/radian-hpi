@@ -7,6 +7,7 @@ import { Media } from './media'
 import { Blog } from './blog'
 import { Compare } from './compare'
 import { HpiInAction } from './hpi-in-action'
+import { RequestDemo } from './request-demo'
 
 export const ContentContext = React.createContext<DataInterface>(initialState)
 
@@ -38,7 +39,20 @@ export const App: React.FC = () => {
         <Blog />
         <Compare />
         <HpiInAction />
+        <RequestDemo />
       </main>
+      <footer>
+        <img
+          src={'./assets/hpi_footer_banner.png'}
+          alt="dummy-footer-banner"
+          className="footer_banner"
+        />
+        <img
+          src={'./assets/hpi_footer.png'}
+          alt="dummy-footer"
+          className="footer"
+        />
+      </footer>
     </ContentContext.Provider>
   )
 }
