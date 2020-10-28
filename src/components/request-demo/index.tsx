@@ -12,14 +12,14 @@ export const RequestDemo: React.FC<Props> = () => {
       </div>
       <form className="hpi-request-demo-form">
         <div className="row">
-          <div className="col">
+          <div className="col-md-12 col-lg-6">
             <input
               type="text"
               className="form-control"
               placeholder="First name"
             />
           </div>
-          <div className="col">
+          <div className="col-md-12 col-lg-6">
             <input
               type="text"
               className="form-control"
@@ -28,14 +28,14 @@ export const RequestDemo: React.FC<Props> = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col-md-12 col-lg-6">
             <input
               type="text"
               className="form-control"
               placeholder="Company name"
             />
           </div>
-          <div className="col">
+          <div className="col-md-12 col-lg-6">
             <input
               type="text"
               className="form-control"
@@ -44,14 +44,14 @@ export const RequestDemo: React.FC<Props> = () => {
           </div>
         </div>
         <div className="row">
-          <div className="col">
+          <div className="col-md-12 col-lg-6">
             <input
               type="text"
               className="form-control"
               placeholder="Phone number"
             />
           </div>
-          <div className="col">
+          <div className="col-md-12 col-lg-6">
             <input
               type="text"
               className="form-control"
