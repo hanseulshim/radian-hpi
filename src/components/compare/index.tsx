@@ -19,7 +19,9 @@ interface Competitor {
 
 export const Compare: React.FC<Props> = () => {
   const { compare } = useContext(ContentContext)
-  const [competitor, setCompetitor] = useState<Competitor | null>(null)
+  const [competitor, setCompetitor] = useState<Competitor | null | undefined>(
+    undefined
+  )
 
   if (compare) {
     const { competitors, radianHpi } = compare
@@ -31,6 +33,8 @@ export const Compare: React.FC<Props> = () => {
       )
       if (selectedCompetitor) {
         setCompetitor(selectedCompetitor)
+      } else {
+        setCompetitor(undefined)
       }
     }
 
@@ -59,9 +63,7 @@ export const Compare: React.FC<Props> = () => {
               <h5>Are you currently using an index tool?</h5>
               <p>If yes, choose a tool</p>
               <select className="custom-select" onChange={onChange}>
-                <option disabled selected value={undefined}>
-                  Choose an app...
-                </option>
+                <option value={undefined}>Choose an app...</option>
                 {competitors?.map((competitor, idx) => {
                   return (
                     <option value={idx} key={'competitor' + idx}>

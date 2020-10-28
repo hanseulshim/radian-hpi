@@ -1,5 +1,4 @@
-import React, { useContext } from 'react'
-import { ContentContext } from 'components/App'
+import React from 'react'
 
 interface Props {}
 

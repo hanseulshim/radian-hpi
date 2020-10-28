@@ -50,7 +50,7 @@ export const HpiInAction: React.FC<Props> = () => {
           {!selectedCard &&
             cards?.map((card, idx) => {
               return (
-                <div className="col">
+                <div className="col" key={'radian-feature' + idx}>
                   <div className="hpi-card" onClick={() => onCardClick(idx)}>
                     <img
                       src={`./assets/${card.cardImage}`}
@@ -87,9 +87,12 @@ export const HpiInAction: React.FC<Props> = () => {
                 <h4>Most valuable features</h4>
                 {selectedCard.cardFeatures && (
                   <div className="hpi-card-full-content-features">
-                    {selectedCard.cardFeatures.map((feature, index) => {
+                    {selectedCard.cardFeatures.map((feature, idx) => {
                       return (
-                        <div className="hpi-card-full-content-feature">
+                        <div
+                          className="hpi-card-full-content-feature"
+                          key={`${feature.featureTitle} + ${idx}`}
+                        >
                           <h5>{feature.featureTitle}</h5>
                           <p>{feature.featureDescription}</p>
                         </div>

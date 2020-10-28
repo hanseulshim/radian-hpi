@@ -1,5 +1,9 @@
 // Import any custom styles (outside of Radian theme builder) here
 
+:root {
+  --section-padding-bottom: 7.5%;
+}
+
 // For example @import 'app.scss';
 @import 'hero.scss';
 @import 'learning-center.scss';
@@ -10,7 +14,6 @@
 @import 'demo.scss';
 
 section {
-  margin-bottom: 7.5%;
   color: var(--blue);
 }
 
