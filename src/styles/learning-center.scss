@@ -1,5 +1,6 @@
 .learning-center-container {
   padding: 0 15%;
+  padding-bottom: var(--section-padding-bottom);
 
   .description {
     padding-bottom: 2.5%;
@@ -20,4 +21,34 @@
 .icon-description {
   width: 50%;
   margin-left: 20px;
+}
+
+// Responsive
+
+@media screen and (max-width: 768px) {
+  .learning-center-title {
+    text-align: center;
+  }
+  .description {
+    h3 {
+      margin-bottom: 1em;
+    }
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .hpi-learning-center-feature {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    div {
+      width: 100%;
+    }
+  }
+
+  .hpi-learning-center-feature:nth-child(2) {
+    margin-bottom: 1em;
+  }
 }

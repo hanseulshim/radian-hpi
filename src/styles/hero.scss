@@ -1,14 +1,20 @@
-.header {
-  width: 100%;
+.hero-container {
+  position: relative;
+  padding: 5% 5% 0 5%;
 }
 
-.hero-container {
-  background-image: url('/assets/hpiBg.svg');
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: cover;
-  color: var(--blue);
-  padding: 5%;
+.hpi-hero-image {
+  width: 100%;
+  min-width: 400px;
+  max-width: 600px;
+}
+
+.hpi-hero-bg {
+  position: absolute;
+  top: -200px;
+  left: 0;
+  width: 100%;
+  z-index: -1;
 }
 
 .description {
@@ -16,15 +22,46 @@
 }
 
 .hero-content {
-  padding: 5% 5% 0 5%;
+  padding: 5% 5% 5% 5%;
 }
 
 .featured-on {
+  margin-top: 1em;
   text-align: center;
+  p {
+    margin-bottom: 5px;
+  }
 
   .logos {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+    border-top: 1px solid var(--gray);
+    border-bottom: 1px solid var(--gray);
     padding: 1em 0;
+
+    img:nth-child(1) {
+      margin-right: 1.5em;
+    }
+  }
+}
+
+// Responsive
+
+@media screen and (max-width: 768px) {
+  .hpi-description {
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  .hpi-hero-bg {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .featured-on {
+    margin-bottom: 2em;
   }
 }

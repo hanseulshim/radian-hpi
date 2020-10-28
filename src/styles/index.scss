@@ -1,8 +1,21 @@
 // Import any custom styles (outside of Radian theme builder) here
 
+:root {
+  --section-padding-bottom: 7.5%;
+}
+
 // For example @import 'app.scss';
 @import 'hero.scss';
 @import 'learning-center.scss';
+@import 'media.scss';
+@import 'blog.scss';
+@import 'compare.scss';
+@import 'hpiInAction.scss';
+@import 'demo.scss';
+
+section {
+  color: var(--blue);
+}
 
 .hpi-section-title {
   margin-bottom: 5%;
@@ -10,4 +23,16 @@
 
 .hpi-section-subtitle {
   margin-bottom: 2.5%;
+}
+
+.header {
+  width: 100%;
+}
+
+.footer_banner {
+  width: 100%;
+}
+
+.footer {
+  width: 100%;
 }

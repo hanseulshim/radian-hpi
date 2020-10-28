@@ -5,7 +5,8 @@
     "description": "Leveraging a wealth of housing data and machine learning, Radian Home Price Index contains the most accurate housing valuations across nearly all of the U.S. housing stock. Radian valuations are based on 'current' condition and are updated monthly. Give it a try below.",
     "cta": "Learn More"
   },
-  "learningCenter":{
+  "learningCenter": {
+    "titleIcon": "lightbulb-on-light.svg",
     "title": "Learning Center",
     "subtitle": "The next generation of home price analysis",
     "description": "99% of homes in the U.S. aren’t transacted each month, so why rely on an index that measures only those that do? Red Bell’s Radian Home Price Index leverages a wealth of data and properly valuation expertise to value nearly all of the U.S. housingstock– offering a truly unique view on patterns and trends in the U.S. housing markets and the ability to create discrete indices on a wide range of variables and dimensions.",
@@ -29,6 +30,195 @@
         "icon": "chip-on-light.svg",
         "title": "Advanced Methods",
         "description": "Driven by artificial intelligence and machine learning to empower the best results."
+      }
+    ]
+  },
+  "media": {
+    "downloadSectionTitle": "Download the Whitepaper",
+    "downloadImage": "impacts_of_ai.png",
+    "downloadTitle": "The Impacts of AI on Modern Home Price Indices",
+    "downloadLink": null
+  },
+  "compare": {
+    "titleIcon": "bag-with-tag-on-light.svg",
+    "title": "Compare the Radian Home Price Index to the Competition",
+    "subtitle": "There are a number of similar tools out there, but Radian HPI stands above the rest.",
+    "instructions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae gravida aliquam quisque enim convallis et pulvinar vitae. Nunc commodo lacus, orci arcu dictum dui.",
+    "competitors": [
+      {
+        "name": "House Canary",
+        "indexType": "Repeat Sales (Arithmetic)",
+        "observations": "Sales Pairs",
+        "dataFrequency": "Aggregated (3 mos)",
+        "monthlyObservations": "~ 400,000",
+        "propertyTransactionExclusions": [
+          "New Construction",
+          "Condo (limited)",
+          "Refinances"
+        ],
+        "indexDeliveryDelay": "+45-75 Days",
+        "propertyCondition": "Assumes 'Constant' Condition",
+        "imposedModelAdjustments": "Various Model-based Weighting",
+        "propertyType": ["Single Family", "Townhome"],
+        "statesInNationalIndex": "37"
+      },
+      {
+        "name": "Collateral Analytics",
+        "indexType": "Repeat Sales (Arithmetic)",
+        "observations": "Sales Pairs",
+        "dataFrequency": "Aggregated (3 mos)",
+        "monthlyObservations": "~ 400,000",
+        "propertyTransactionExclusions": [
+          "New Construction",
+          "Condo (limited)",
+          "Refinances"
+        ],
+        "indexDeliveryDelay": "+45-75 Days",
+        "propertyCondition": "Assumes 'Constant' Condition",
+        "imposedModelAdjustments": "Various Model-based Weighting",
+        "propertyType": ["Single Family", "Townhome"],
+        "statesInNationalIndex": "37"
+      },
+      {
+        "name": "Zillow",
+        "indexType": "Repeat Sales (Arithmetic)",
+        "observations": "Sales Pairs",
+        "dataFrequency": "Aggregated (3 mos)",
+        "monthlyObservations": "~ 400,000",
+        "propertyTransactionExclusions": [
+          "New Construction",
+          "Condo (limited)",
+          "Refinances"
+        ],
+        "indexDeliveryDelay": "+45-75 Days",
+        "propertyCondition": "Assumes 'Constant' Condition",
+        "imposedModelAdjustments": "Various Model-based Weighting",
+        "propertyType": ["Single Family", "Townhome"],
+        "statesInNationalIndex": "37"
+      },
+      {
+        "name": "Redfin",
+        "indexType": "Repeat Sales (Arithmetic)",
+        "observations": "Sales Pairs",
+        "dataFrequency": "Aggregated (3 mos)",
+        "monthlyObservations": "~ 400,000",
+        "propertyTransactionExclusions": [
+          "New Construction",
+          "Condo (limited)",
+          "Refinances"
+        ],
+        "indexDeliveryDelay": "+45-75 Days",
+        "propertyCondition": "Assumes 'Constant' Condition",
+        "imposedModelAdjustments": "Various Model-based Weighting",
+        "propertyType": ["Single Family", "Townhome"],
+        "statesInNationalIndex": "37"
+      },
+      {
+        "name": "Trulia",
+        "indexType": "Repeat Sales (Arithmetic)",
+        "observations": "Sales Pairs",
+        "dataFrequency": "Aggregated (3 mos)",
+        "monthlyObservations": "~ 400,000",
+        "propertyTransactionExclusions": [
+          "New Construction",
+          "Condo (limited)",
+          "Refinances"
+        ],
+        "indexDeliveryDelay": "+45-75 Days",
+        "propertyCondition": "Assumes 'Constant' Condition",
+        "imposedModelAdjustments": "Various Model-based Weighting",
+        "propertyType": ["Single Family", "Townhome"],
+        "statesInNationalIndex": "37"
+      }
+    ],
+    "radianHpi": {
+      "name": "Radian HPI",
+      "indexType": "Hedonic, All Property, based on Ensemble",
+      "observations": "Housing Stock AVMs",
+      "dataFrequency": "Monthly",
+      "monthlyObservations": "90,000,000",
+      "propertyTransactionExclusions": null,
+      "indexDeliveryDelay": "+15 days",
+      "propertyCondition": "Uses 'Current' Condition",
+      "imposedModelAdjustments": "None Needed",
+      "propertyType": ["Single Family", "Condo", "Townhome"],
+      "statesInNationalIndex": "50"
+    },
+    "backgroundImage": "hpi_on_tablet.png",
+    "hpiRateFinderImage": "hpi_rate_finder.png"
+  },
+  "hpiInAction": {
+    "titleIcon": "calendar-person-on-light.svg",
+    "title": "HPI In Action",
+    "subtitle": "Click a user below to learn how HPI is helping real people",
+    "cards": [
+      {
+        "cardImage": "pic_lenders.png",
+        "cardTitle": "Lenders & Servicers",
+        "cardSummary": "Suspendisse icaculis tempus semper phasellus platea id viverra et integer",
+        "cardTitleFull": "Lender & Servicer",
+        "cardBio": "Lenders & Servicers trust RADIAN's HPI to judge real-world home price valuations against highly specific indices, informing lending decions on a daily basis",
+        "cardFeatures": [
+          {
+            "featureTitle": "Custom Indices",
+            "featureDescription": "Radian HPI allows you to create highly specific indices, from the broadest set of attributes and dimensions"
+          },
+          {
+            "featureTitle": "Location Granularity",
+            "featureDescription": "RADIAN HPI provides the most comprehensive and granular index data in real-estate, down to the neighborhood level & beyond"
+          }
+        ]
+      },
+      {
+        "cardImage": "pic_investors.png",
+        "cardTitle": "Investors",
+        "cardSummary": "Suspendisse icaculis tempus semper phasellus platea id viverra et integer",
+        "cardTitleFull": "Investor",
+        "cardBio": "With a keen interest in the strength of housing markets, investors are using RADIAN's HPI to understand trends and find pockets of investment opportunity not seen in less granular datasets.",
+        "cardFeatures": [
+          {
+            "featureTitle": "Home Price Appreciation",
+            "featureDescription": "We give you the tools to view appreciation or depreciation trends across the nation and make comparison across time and markets."
+          },
+          {
+            "featureTitle": "Speed to Market",
+            "featureDescription": "RADIAN HPI gives you access to the most recent data, days or weeks before other indices so you have the best data at your fingertips"
+          }
+        ]
+      },
+      {
+        "cardImage": "pic_agents.png",
+        "cardTitle": "Agents",
+        "cardSummary": "Suspendisse icaculis tempus semper phasellus platea id viverra et integer",
+        "cardTitleFull": "Agent",
+        "cardBio": "Your clients are your business, and you owe them insights from the most comprehensive data available. Agents across the country are using RADIAN HPI and so should you.",
+        "cardFeatures": [
+          {
+            "featureTitle": "More single-family homes",
+            "featureDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
+          },
+          {
+            "featureTitle": "Most accurate values",
+            "featureDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
+          }
+        ]
+      },
+      {
+        "cardImage": "pic_researchers.png",
+        "cardTitle": "Researches and Modelers",
+        "cardSummary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor",
+        "cardTitleFull": "Researcher & Modeler",
+        "cardBio": "Highly focused on data accuracy, with their primary goals on identifying market trends. The RADIAN team consists of researchers and modelers and our product speaks for itself",
+        "cardFeatures": [
+          {
+            "featureTitle": "Data accuracy",
+            "featureDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
+          },
+          {
+            "featureTitle": "Most granular locations",
+            "featureDescription": "Lorem ipsum dolor sit amet, consectetur adipiscing elit ut aliquam, purus sit amet luctus venenatis, lectus magna fringilla urna, porttitor"
+          }
+        ]
       }
     ]
   }
