@@ -41,7 +41,7 @@ export const Compare: React.FC<Props> = () => {
     return (
       <section className="container-fluid compare-container">
         <div className="row">
-          <div className="col">
+          <div className="col-sm-12 col-lg-6">
             <div className="compare-title d-flex align-items-center justify-content-center">
               <img
                 src={`static/images/indicators/${compare.titleIcon}`}
@@ -52,7 +52,7 @@ export const Compare: React.FC<Props> = () => {
           </div>
         </div>
         <div className="row compare-content">
-          <div className="col compare-select">
+          <div className="col-md-12 compare-select">
             {!competitor ? (
               <h4>{compare.subtitle}</h4>
             ) : (
