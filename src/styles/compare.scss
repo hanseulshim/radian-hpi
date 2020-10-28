@@ -5,7 +5,6 @@
   .compare-title {
     padding-left: 5%;
     margin-bottom: 5%;
-    // width: 50%;
   }
 
   .compare-select {
@@ -17,9 +16,9 @@
 
     .hpi-compare-bg {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 70%;
+      bottom: -50px;
+      left: -50px;
+      width: 80%;
       z-index: -1;
     }
 
