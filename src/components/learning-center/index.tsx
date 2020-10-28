@@ -10,7 +10,7 @@ export const LearningCenter: React.FC<Props> = () => {
     const icons = learningCenter.icons
     return (
       <section className="container-fluid learning-center-container">
-        <div className="row hpi-section-title">
+        <div className="row hpi-section-title learning-center-title">
           <div className="col d-flex flex-column justify-content-center align-items-center">
             <img
               src={`./static/images/indicators/${learningCenter.titleIcon}`}
@@ -26,7 +26,7 @@ export const LearningCenter: React.FC<Props> = () => {
         </div>
         <div className="row">
           <div className="col d-flex flex-column">
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center hpi-learning-center-feature">
               <img
                 src={`./static/images/indicators/${icons![0].icon}`}
                 alt="radian icon"
@@ -37,7 +37,7 @@ export const LearningCenter: React.FC<Props> = () => {
                 <p>{icons![0].description}</p>
               </div>
             </div>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center hpi-learning-center-feature">
               <img
                 src={`./static/images/indicators/${icons![1].icon}`}
                 alt="radian icon"
@@ -50,7 +50,7 @@ export const LearningCenter: React.FC<Props> = () => {
             </div>
           </div>
           <div className="col d-flex flex-column">
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center hpi-learning-center-feature">
               <img
                 src={`./static/images/indicators/${icons![2].icon}`}
                 alt="light-bulb-on"
@@ -61,7 +61,7 @@ export const LearningCenter: React.FC<Props> = () => {
                 <p>{icons![2].description}</p>
               </div>
             </div>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center hpi-learning-center-feature">
               <img
                 src={`./static/images/indicators/${icons![3].icon}`}
                 alt="light-bulb-on"

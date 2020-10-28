@@ -3,6 +3,12 @@
   padding: 5% 5% 0 5%;
 }
 
+.hpi-hero-image {
+  width: 100%;
+  min-width: 400px;
+  max-width: 600px;
+}
+
 .hpi-hero-bg {
   position: absolute;
   top: -200px;
@@ -34,5 +40,28 @@
     img:nth-child(1) {
       margin-right: 1.5em;
     }
+  }
+}
+
+// Responsive
+
+@media screen and (max-width: 768px) {
+  .hpi-description {
+    text-align: center;
+    margin-bottom: 2em;
+  }
+
+  .hpi-hero-bg {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .featured-on {
+    margin-bottom: 2em;
   }
 }
