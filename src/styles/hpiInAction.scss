@@ -1,5 +1,5 @@
 .hpi-in-action-container {
-  padding: 0 15% 5% 15%;
+  padding: 0 10% 5% 10%;
   background-color: var(--light);
   margin-bottom: 0;
 
@@ -120,4 +120,30 @@
 .icon-description {
   width: 50%;
   margin-left: 20px;
+}
+
+// Responsive
+
+@media screen and (max-width: 567px) {
+  .hpi-in-action-description {
+    text-align: center;
+  }
+
+  .hpi-card {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hpi-card-full {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .hpi-card-full-content-features {
+    display: flex;
+    flex-direction: column;
+  }
 }

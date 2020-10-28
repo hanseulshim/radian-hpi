@@ -36,7 +36,7 @@ export const HpiInAction: React.FC<Props> = () => {
     return (
       <section className="container-fluid hpi-in-action-container">
         <div className="row">
-          <div className="col d-flex flex-column justify-content-center align-items-center">
+          <div className="d-flex flex-column justify-content-center align-items-center col-12 hpi-in-action-description">
             <img
               src={`./static/images/indicators/${hpiInAction.titleIcon}`}
               alt="Hpi in Action"
@@ -50,7 +50,7 @@ export const HpiInAction: React.FC<Props> = () => {
           {!selectedCard &&
             cards?.map((card, idx) => {
               return (
-                <div className="col" key={'radian-feature' + idx}>
+                <div className="col-md-6 col-lg-3" key={'radian-feature' + idx}>
                   <div className="hpi-card" onClick={() => onCardClick(idx)}>
                     <img
                       src={`./assets/${card.cardImage}`}
