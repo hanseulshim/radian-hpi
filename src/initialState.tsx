@@ -1,6 +1,7 @@
 export const initialState = {
   hero: null,
   learningCenter: null,
+  exploreTheData: null,
   media: null,
   compare: null,
   hpiInAction: null
@@ -79,5 +80,13 @@ export interface DataInterface {
         featureDescription: string | null
       }>
     }> | null
+  } | null
+  exploreTheData: {
+    title: string | null
+    wizard: {
+      title: string | null
+      image: string | null
+      subtitle: string | null
+    } | null
   } | null
 }

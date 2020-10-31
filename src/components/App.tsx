@@ -4,7 +4,7 @@ import { Hero } from './hero'
 import { DataInterface, initialState } from 'initialState'
 import { LearningCenter } from './learning-center'
 import { Media } from './media'
-// import { ExploreTheData } from './explore-the-data'
+import { ExploreTheData } from './explore-the-data'
 import { Blog } from './blog'
 import { Compare } from './compare'
 import { HpiInAction } from './hpi-in-action'
@@ -36,7 +36,7 @@ export const App: React.FC = () => {
       <main>
         <Hero />
         <LearningCenter />
-        {/* <ExploreTheData /> */}
+        <ExploreTheData />
         <Media />
         <Blog />
         <Compare />

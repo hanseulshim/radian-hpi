@@ -221,5 +221,13 @@
         ]
       }
     ]
+  },
+  "exploreTheData": {
+    "title": "Explore The Data",
+    "wizard": {
+      "title": "Personalize Your Experience",
+      "image": "hpi_wizard_imac.png",
+      "subtitle": "Just a few simple steps and you'll see an interactive demo of RADIAN HPI"
+    }
   }
 }
