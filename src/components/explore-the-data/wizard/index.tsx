@@ -3,6 +3,7 @@ import { ContentContext } from 'components/App'
 import { GetStarted } from './screens/GetStarted'
 import { Industry } from './screens/Industry'
 import { LocationAttribute } from './screens/LocationAttribute'
+import { Role } from './screens/Role'
 
 interface Props {}
 
@@ -19,10 +20,11 @@ export const Wizard: React.FC<Props> = () => {
     locationType: '',
     location: '',
     attribute: '',
-    role: ''
+    role: '',
+    usesIndexTool: undefined
   })
 
-  const onFormChange = (name: string, value: string) =>
+  const onFormChange = (name: string, value: string | boolean) =>
     setForm({
       ...form,
       [name]: value
@@ -58,6 +60,15 @@ export const Wizard: React.FC<Props> = () => {
               locationType={form.locationType}
               location={form.location}
               attribute={form.attribute}
+            />
+          )}
+          {screen === 3 && (
+            <Role
+              onFormChange={onFormChange}
+              changeScreen={changeScreen}
+              currentScreen={screen}
+              role={form.role}
+              usesIndexTool={form.usesIndexTool}
             />
           )}
           {screen === 0 && (
