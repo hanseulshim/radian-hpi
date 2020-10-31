@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { ContentContext } from 'components/App'
 import { GetStarted } from './screens/GetStarted'
 import { Industry } from './screens/Industry'
+import { LocationAttribute } from './screens/LocationAttribute'
 
 interface Props {}
 
@@ -46,9 +47,19 @@ export const Wizard: React.FC<Props> = () => {
               onFormChange={onFormChange}
               changeScreen={changeScreen}
               currentScreen={screen}
+              industry={form.industry}
             />
           )}
-          {screen === 1 && <p>Next</p>}
+          {screen === 2 && (
+            <LocationAttribute
+              onFormChange={onFormChange}
+              changeScreen={changeScreen}
+              currentScreen={screen}
+              locationType={form.locationType}
+              location={form.location}
+              attribute={form.attribute}
+            />
+          )}
           {screen === 0 && (
             <img
               src={'./assets/hpi_wizard_bg.svg'}
