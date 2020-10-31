@@ -54,7 +54,6 @@ export const Role: React.FC<Props> = ({
           No
         </button>
       </div>
-
       <div className="generate">
         <button
           className="btn btn-primary"
