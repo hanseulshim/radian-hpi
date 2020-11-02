@@ -6,11 +6,11 @@ interface Form {
   location: string
   attribute: string
   role: string
-  usesIndexTool: boolean | undefined
+  usesIndexTool: boolean
 }
 
 interface Props {
-  onFormChange: (name: string, value: string | boolean) => void
+  onFormChange: (form: Form) => void
   changeScreen: (screen: number) => void
   currentScreen: number
   form: Form
@@ -35,7 +35,12 @@ export const Role: React.FC<Props> = ({
       <div className="role">
         <select
           className="custom-select role-select"
-          onChange={e => onFormChange('role', e.target.value)}
+          onChange={e =>
+            onFormChange({
+              ...form,
+              role: e.target.value
+            })
+          }
           value={form.role}
         >
           <option value={''}>What is your role?</option>
@@ -50,13 +55,13 @@ export const Role: React.FC<Props> = ({
         <p>Do you use a home price index today?</p>
         <button
           className="btn btn-outline-primary"
-          onClick={e => onFormChange('usesIndexTool', true)}
+          onClick={e => onFormChange({ ...form, usesIndexTool: true })}
         >
           Yes
         </button>
         <button
           className="btn btn-outline-primary"
-          onClick={e => onFormChange('usesIndexTool', false)}
+          onClick={e => onFormChange({ ...form, usesIndexTool: false })}
         >
           No
         </button>

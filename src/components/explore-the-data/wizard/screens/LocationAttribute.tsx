@@ -8,11 +8,11 @@ interface Form {
   location: string
   attribute: string
   role: string
-  usesIndexTool: boolean | undefined
+  usesIndexTool: boolean
 }
 
 interface Props {
-  onFormChange: (name: string, value: string) => void
+  onFormChange: (form: Form) => void
   changeScreen: (screen: number) => void
   currentScreen: number
   form: Form
@@ -39,7 +39,12 @@ export const LocationAttribute: React.FC<Props> = ({
   const onLocationTypeChange = async (
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
-    onFormChange('locationType', e.target.value)
+    onFormChange({
+      ...form,
+      locationType: e.target.value,
+      location: '',
+      attribute: ''
+    })
     setText('')
     setSuggestions([])
     try {
@@ -64,7 +69,11 @@ export const LocationAttribute: React.FC<Props> = ({
   const onLocationSelect = (value: string) => {
     setText(value)
     setSuggestions([])
-    onFormChange('location', value)
+    onFormChange({
+      ...form,
+      location: value,
+      attribute: ''
+    })
   }
 
   const renderSuggestions = () => {
@@ -116,7 +125,7 @@ export const LocationAttribute: React.FC<Props> = ({
       <div className="attributes">
         <select
           className="custom-select attribute-select"
-          onChange={e => onFormChange('attribute', e.target.value)}
+          onChange={e => onFormChange({ ...form, attribute: e.target.value })}
           disabled={!form.locationType || !form.location}
           value={form.attribute}
         >

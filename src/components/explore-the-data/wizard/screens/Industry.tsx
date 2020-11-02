@@ -7,11 +7,11 @@ interface Form {
   location: string
   attribute: string
   role: string
-  usesIndexTool: boolean | undefined
+  usesIndexTool: boolean
 }
 
 interface Props {
-  onFormChange: (name: string, value: string) => void
+  onFormChange: (form: Form) => void
   changeScreen: (screen: number) => void
   currentScreen: number
   form: Form
@@ -35,7 +35,7 @@ export const Industry: React.FC<Props> = ({
     <div className="industry-container">
       <select
         className="custom-select"
-        onChange={e => onFormChange('industry', e.target.value)}
+        onChange={e => onFormChange({ ...form, industry: e.target.value })}
         value={form.industry}
       >
         <option value={''}>What is your industry?</option>

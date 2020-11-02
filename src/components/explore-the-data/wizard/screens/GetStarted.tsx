@@ -3,13 +3,11 @@ import { ContentContext } from 'components/App'
 import { acceptCookies } from 'api'
 
 interface Props {
-  onFormChange: (name: string, value: string) => void
   changeScreen: (screen: number) => void
   currentScreen: number
 }
 
 export const GetStarted: React.FC<Props> = ({
-  onFormChange,
   changeScreen,
   currentScreen
 }) => {

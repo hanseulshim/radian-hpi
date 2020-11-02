@@ -7,6 +7,15 @@ import { Role } from './screens/Role'
 
 interface Props {}
 
+interface Form {
+  industry: string
+  locationType: string
+  location: string
+  attribute: string
+  role: string
+  usesIndexTool: boolean
+}
+
 export const Wizard: React.FC<Props> = () => {
   const { exploreTheData } = useContext(ContentContext)
   const wizard = exploreTheData?.wizard
@@ -21,13 +30,12 @@ export const Wizard: React.FC<Props> = () => {
     location: '',
     attribute: '',
     role: '',
-    usesIndexTool: undefined
+    usesIndexTool: false
   })
 
-  const onFormChange = (name: string, value: string | boolean) => {
+  const onFormChange = (form: Form) => {
     setForm({
-      ...form,
-      [name]: value
+      ...form
     })
   }
 
@@ -39,11 +47,7 @@ export const Wizard: React.FC<Props> = () => {
         <div className="wizard-container">
           <h2>{wizard.title}</h2>
           {screen === 0 && (
-            <GetStarted
-              onFormChange={onFormChange}
-              changeScreen={changeScreen}
-              currentScreen={screen}
-            />
+            <GetStarted changeScreen={changeScreen} currentScreen={screen} />
           )}
           {screen === 1 && (
             <Industry
