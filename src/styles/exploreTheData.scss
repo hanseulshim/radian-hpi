@@ -179,6 +179,9 @@
         button {
           background: none;
         }
+        :nth-child(2) {
+          margin-right: 10px;
+        }
       }
 
       .generate {

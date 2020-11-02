@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ContentContext } from 'components/App'
 
 interface Form {
   industry: string
@@ -22,6 +23,10 @@ export const Role: React.FC<Props> = ({
   currentScreen,
   form
 }) => {
+  const { exploreTheData } = useContext(ContentContext)
+  const wizard = exploreTheData?.wizard
+  const roles = wizard?.roles
+
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
   }
@@ -44,8 +49,14 @@ export const Role: React.FC<Props> = ({
           value={form.role}
         >
           <option value={''}>What is your role?</option>
-          <option value={'good guy'}>Good guy</option>
-          <option value={'bad guy'}>Bad guy</option>
+          {roles &&
+            roles.map((role, idx) => {
+              return (
+                <option value={role} key={role}>
+                  {role}
+                </option>
+              )
+            })}
         </select>
       </div>
       <div

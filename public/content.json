@@ -279,6 +279,24 @@
         "SqFt <= 1,500",
         "Type Condo",
         "Type Single Family"
+      ],
+      "roles": [
+        "Asset Management",
+        "Broker",
+        "Agent",
+        "Default Management",
+        "GSE/Government",
+        "Loan Officer",
+        "Operations",
+        "Processing",
+        "Property Investor",
+        "Risk Management",
+        "Sales",
+        "Secondary Markets",
+        "Servicing",
+        "Underwriting",
+        "Valuations",
+        "Other"
       ]
     }
   }

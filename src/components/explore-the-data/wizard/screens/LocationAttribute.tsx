@@ -91,6 +91,32 @@ export const LocationAttribute: React.FC<Props> = ({
     )
   }
 
+  const getAtrributes = () => {
+    const nonNationalAttributes = [
+      'Beds 0',
+      'Beds 1',
+      'Beds 2',
+      'Beds 3',
+      'Beds 4',
+      'Beds 5',
+      'Beds 5+',
+      'SqFt 4,000+',
+      'SqFt 2,500 <= 4,000',
+      'SqFt 1,500 <= 2,500',
+      'SqFt <= 1,500'
+    ]
+    return (form.locationType !== 'National'
+      ? nonNationalAttributes
+      : attributes
+    )?.map((attr, idx) => {
+      return (
+        <option value={attr} key={attr}>
+          {attr}
+        </option>
+      )
+    })
+  }
+
   return (
     <div className="location-attribute-container">
       <p>Pick a location and attribute</p>
@@ -130,14 +156,7 @@ export const LocationAttribute: React.FC<Props> = ({
           value={form.attribute}
         >
           <option value={''}>Compare attributes</option>
-          {attributes &&
-            attributes.map((attr, idx) => {
-              return (
-                <option value={attr} key={attr}>
-                  {attr}
-                </option>
-              )
-            })}
+          {getAtrributes()}
         </select>
       </div>
       <div className="continue">

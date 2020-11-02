@@ -90,6 +90,7 @@ export interface DataInterface {
       industries: Array<string> | null
       geos: Array<string> | null
       attributes: Array<string> | null
+      roles: Array<string> | null
     } | null
   } | null
 }
