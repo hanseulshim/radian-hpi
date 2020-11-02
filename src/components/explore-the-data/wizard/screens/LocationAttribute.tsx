@@ -2,31 +2,36 @@ import React, { useContext, useState } from 'react'
 import { ContentContext } from 'components/App'
 import { getWizardLocations } from 'api'
 
+interface Form {
+  industry: string
+  locationType: string
+  location: string
+  attribute: string
+  role: string
+  usesIndexTool: boolean | undefined
+}
+
 interface Props {
   onFormChange: (name: string, value: string) => void
   changeScreen: (screen: number) => void
   currentScreen: number
-  locationType: string
-  location: string
-  attribute: string
+  form: Form
 }
 
 export const LocationAttribute: React.FC<Props> = ({
   onFormChange,
   changeScreen,
   currentScreen,
-  locationType,
-  location,
-  attribute
+  form
 }) => {
   const { exploreTheData } = useContext(ContentContext)
-  const wizard = exploreTheData?.wizard
-  const geos = wizard?.geos
-
   const [locations, setLocations] = useState([])
   const [text, setText] = useState('')
   const [suggestions, setSuggestions] = useState<string[]>([])
 
+  const wizard = exploreTheData?.wizard
+  const geos = wizard?.geos
+  const attributes = wizard?.attributes
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
   }
@@ -59,23 +64,11 @@ export const LocationAttribute: React.FC<Props> = ({
   const onLocationSelect = (value: string) => {
     setText(value)
     setSuggestions([])
+    onFormChange('location', value)
   }
 
   const renderSuggestions = () => {
-    const input = document.getElementById('hpi-location-select')
-
     if (suggestions.length === 0) {
-      if (input === document.activeElement) {
-        return (
-          <ul>
-            {locations.map((loc, idx) => (
-              <li key={loc} onClick={() => onLocationSelect(loc)}>
-                {loc}
-              </li>
-            ))}
-          </ul>
-        )
-      }
       return null
     }
     return (
@@ -96,7 +89,7 @@ export const LocationAttribute: React.FC<Props> = ({
         <select
           className="custom-select location-type-select"
           onChange={e => onLocationTypeChange(e)}
-          value={locationType}
+          value={form.locationType}
         >
           <option value={''}>All...</option>
           {geos &&
@@ -113,7 +106,7 @@ export const LocationAttribute: React.FC<Props> = ({
             className="form-control location-select"
             onChange={e => onLocationInputChange(e)}
             value={text}
-            disabled={!locationType}
+            disabled={!form.locationType}
             type="text"
             id="hpi-location-select"
           />
@@ -124,18 +117,24 @@ export const LocationAttribute: React.FC<Props> = ({
         <select
           className="custom-select attribute-select"
           onChange={e => onFormChange('attribute', e.target.value)}
-          disabled={!locationType || !location}
-          value={attribute}
+          disabled={!form.locationType || !form.location}
+          value={form.attribute}
         >
           <option value={''}>Compare attributes</option>
-          <option value={'bedrooms'}>Bedrooms</option>
-          <option value={'price'}>Price</option>
+          {attributes &&
+            attributes.map((attr, idx) => {
+              return (
+                <option value={attr} key={attr}>
+                  {attr}
+                </option>
+              )
+            })}
         </select>
       </div>
       <div className="continue">
         <button
           className="btn btn-primary"
-          disabled={!locationType || !location || !attribute}
+          disabled={!form.locationType || !form.location || !form.attribute}
           onClick={() => changeScreen(currentScreen + 1)}
         >
           Continue

@@ -87,8 +87,9 @@ export interface DataInterface {
       title: string | null
       image: string | null
       subtitle: string | null
-      industries: Array<string>
-      geos: Array<string>
+      industries: Array<string> | null
+      geos: Array<string> | null
+      attributes: Array<string> | null
     } | null
   } | null
 }

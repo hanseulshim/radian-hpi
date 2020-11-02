@@ -258,6 +258,27 @@
         "Zip Code",
         "City",
         "Neighborhood"
+      ],
+      "attributes": [
+        "Beds 0",
+        "Beds 1",
+        "Beds 2",
+        "Beds 3",
+        "Beds 4",
+        "Beds 5",
+        "Beds 5+",
+        "Price $1M+",
+        "Price $500k < $1M",
+        "Price $250k < $500k",
+        "Price $150k < $250k",
+        "Price $100k < $150k",
+        "Price < $100k",
+        "SqFt 4,000+",
+        "SqFt 2,500 <= 4,000",
+        "SqFt 1,500 <= 2,500",
+        "SqFt <= 1,500",
+        "Type Condo",
+        "Type Single Family"
       ]
     }
   }

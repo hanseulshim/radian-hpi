@@ -1,19 +1,26 @@
 import React from 'react'
 
+interface Form {
+  industry: string
+  locationType: string
+  location: string
+  attribute: string
+  role: string
+  usesIndexTool: boolean | undefined
+}
+
 interface Props {
   onFormChange: (name: string, value: string | boolean) => void
   changeScreen: (screen: number) => void
   currentScreen: number
-  role: string
-  usesIndexTool: boolean | undefined
+  form: Form
 }
 
 export const Role: React.FC<Props> = ({
   onFormChange,
   changeScreen,
   currentScreen,
-  role,
-  usesIndexTool
+  form
 }) => {
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
@@ -29,7 +36,7 @@ export const Role: React.FC<Props> = ({
         <select
           className="custom-select role-select"
           onChange={e => onFormChange('role', e.target.value)}
-          value={role}
+          value={form.role}
         >
           <option value={''}>What is your role?</option>
           <option value={'good guy'}>Good guy</option>
@@ -38,7 +45,7 @@ export const Role: React.FC<Props> = ({
       </div>
       <div
         className="uses-index-tool"
-        style={{ visibility: role ? 'visible' : 'hidden' }}
+        style={{ visibility: form.role ? 'visible' : 'hidden' }}
       >
         <p>Do you use a home price index today?</p>
         <button
@@ -57,7 +64,7 @@ export const Role: React.FC<Props> = ({
       <div className="generate">
         <button
           className="btn btn-primary"
-          disabled={!role || usesIndexTool === undefined}
+          disabled={!form.role || form.usesIndexTool === undefined}
           onClick={() => changeScreen(0)}
         >
           Generate!

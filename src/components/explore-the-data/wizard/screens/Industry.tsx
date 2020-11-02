@@ -1,18 +1,27 @@
 import React, { useContext } from 'react'
 import { ContentContext } from 'components/App'
 
+interface Form {
+  industry: string
+  locationType: string
+  location: string
+  attribute: string
+  role: string
+  usesIndexTool: boolean | undefined
+}
+
 interface Props {
   onFormChange: (name: string, value: string) => void
   changeScreen: (screen: number) => void
   currentScreen: number
-  industry: string
+  form: Form
 }
 
 export const Industry: React.FC<Props> = ({
   onFormChange,
   changeScreen,
   currentScreen,
-  industry
+  form
 }) => {
   const { exploreTheData } = useContext(ContentContext)
   const wizard = exploreTheData?.wizard
@@ -27,7 +36,7 @@ export const Industry: React.FC<Props> = ({
       <select
         className="custom-select"
         onChange={e => onFormChange('industry', e.target.value)}
-        value={industry}
+        value={form.industry}
       >
         <option value={''}>What is your industry?</option>
         {industries &&
@@ -42,7 +51,7 @@ export const Industry: React.FC<Props> = ({
       <div className="continue">
         <button
           className="btn btn-primary"
-          disabled={!industry}
+          disabled={!form.industry}
           onClick={() => changeScreen(currentScreen + 1)}
         >
           Continue

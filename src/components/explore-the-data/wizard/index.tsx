@@ -24,11 +24,12 @@ export const Wizard: React.FC<Props> = () => {
     usesIndexTool: undefined
   })
 
-  const onFormChange = (name: string, value: string | boolean) =>
+  const onFormChange = (name: string, value: string | boolean) => {
     setForm({
       ...form,
       [name]: value
     })
+  }
 
   const changeScreen = (screenIndex: number) => setScreen(screenIndex)
 
@@ -49,7 +50,7 @@ export const Wizard: React.FC<Props> = () => {
               onFormChange={onFormChange}
               changeScreen={changeScreen}
               currentScreen={screen}
-              industry={form.industry}
+              form={form}
             />
           )}
           {screen === 2 && (
@@ -57,9 +58,7 @@ export const Wizard: React.FC<Props> = () => {
               onFormChange={onFormChange}
               changeScreen={changeScreen}
               currentScreen={screen}
-              locationType={form.locationType}
-              location={form.location}
-              attribute={form.attribute}
+              form={form}
             />
           )}
           {screen === 3 && (
@@ -67,8 +66,7 @@ export const Wizard: React.FC<Props> = () => {
               onFormChange={onFormChange}
               changeScreen={changeScreen}
               currentScreen={screen}
-              role={form.role}
-              usesIndexTool={form.usesIndexTool}
+              form={form}
             />
           )}
           {screen === 0 && (
