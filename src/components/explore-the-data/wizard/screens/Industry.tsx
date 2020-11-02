@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ContentContext } from 'components/App'
 
 interface Props {
   onFormChange: (name: string, value: string) => void
@@ -13,6 +14,10 @@ export const Industry: React.FC<Props> = ({
   currentScreen,
   industry
 }) => {
+  const { exploreTheData } = useContext(ContentContext)
+  const wizard = exploreTheData?.wizard
+  const industries = wizard?.industries
+
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
   }
@@ -25,8 +30,14 @@ export const Industry: React.FC<Props> = ({
         value={industry}
       >
         <option value={''}>What is your industry?</option>
-        <option value={'finance'}>Finance</option>
-        <option value={'software'}>software</option>
+        {industries &&
+          industries.map((ind, idx) => {
+            return (
+              <option value={ind} key={ind}>
+                {ind}
+              </option>
+            )
+          })}
       </select>
       <div className="continue">
         <button

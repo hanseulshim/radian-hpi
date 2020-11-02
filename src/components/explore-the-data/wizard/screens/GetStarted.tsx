@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react'
 import { ContentContext } from 'components/App'
+import { acceptCookies } from 'api'
 
 interface Props {
   onFormChange: (name: string, value: string) => void
@@ -14,6 +15,11 @@ export const GetStarted: React.FC<Props> = ({
 }) => {
   const { exploreTheData } = useContext(ContentContext)
   const wizard = exploreTheData?.wizard
+
+  const onAcceptCookie = async () => {
+    const result = await acceptCookies()
+    console.log(result)
+  }
 
   return (
     <div className="get-started-container">
@@ -31,7 +37,9 @@ export const GetStarted: React.FC<Props> = ({
       </button>
       <div className="hpi-cookies">
         <span>For faster personalization, please accept cookies</span>
-        <button className="btn btn-outline-primary">Accept</button>
+        <button className="btn btn-outline-primary" onClick={onAcceptCookie}>
+          Accept
+        </button>
       </div>
     </div>
   )

@@ -227,7 +227,38 @@
     "wizard": {
       "title": "Personalize Your Experience",
       "image": "hpi_wizard_imac.png",
-      "subtitle": "Just a few simple steps and you'll see an interactive demo of RADIAN HPI"
+      "subtitle": "Just a few simple steps and you'll see an interactive demo of RADIAN HPI",
+      "industries": [
+        "Finance",
+        "Depository Institution",
+        "Non-depository institution",
+        "Non-depository credit institution",
+        "Security & commodity brokers, dealers, exchanges, & services",
+        "Insurance carrier",
+        "Insurance agent, broker, & service",
+        "Real estate",
+        "Holding & other investment office",
+        "Agriculture, Forestry, & Fishing",
+        "Mining",
+        "Construction",
+        "Manufacturing",
+        "Transportation, communications, electric, gas, and sanitary services",
+        "Wholesale trade",
+        "Retail trade",
+        "Other services",
+        "Public Administration",
+        "Other"
+      ],
+      "geos": [
+        "National",
+        "Region",
+        "State",
+        "County",
+        "CBSA",
+        "Zip Code",
+        "City",
+        "Neighborhood"
+      ]
     }
   }
 }

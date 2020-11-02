@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
+import { ContentContext } from 'components/App'
+import { getWizardLocations } from 'api'
 
 interface Props {
   onFormChange: (name: string, value: string) => void
@@ -17,8 +19,26 @@ export const LocationAttribute: React.FC<Props> = ({
   location,
   attribute
 }) => {
+  const { exploreTheData } = useContext(ContentContext)
+  const wizard = exploreTheData?.wizard
+  const geos = wizard?.geos
+
+  const [locations, setLocations] = useState([])
+
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
+  }
+
+  const onLocationTypeChange = async (
+    e: React.ChangeEvent<HTMLSelectElement>
+  ) => {
+    onFormChange('locationType', e.target.value)
+    try {
+      const result = await getWizardLocations(e.target.value.toLowerCase())
+      setLocations(result)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -27,21 +47,33 @@ export const LocationAttribute: React.FC<Props> = ({
       <div className="locations">
         <select
           className="custom-select location-type-select"
-          onChange={e => onFormChange('locationType', e.target.value)}
+          onChange={e => onLocationTypeChange(e)}
           value={locationType}
         >
           <option value={''}>All...</option>
-          <option value={'zipcode'}>Zip Code</option>
-          <option value={'neighborhood'}>Neighborhood</option>
+          {geos &&
+            geos.map((geo, idx) => {
+              return (
+                <option value={geo} key={geo}>
+                  {geo}
+                </option>
+              )
+            })}
         </select>
         <select
           className="custom-select location-select"
           onChange={e => onFormChange('location', e.target.value)}
           value={location}
+          disabled={!locationType}
         >
-          <option value={''}>Type a specific location here</option>
-          <option value={'zipcode'}>Zip Code</option>
-          <option value={'neighborhood'}>Neighborhood</option>
+          {locations &&
+            locations.map((loc, idx) => {
+              return (
+                <option value={loc} key={loc}>
+                  {loc}
+                </option>
+              )
+            })}
         </select>
       </div>
       <div className="attributes">
