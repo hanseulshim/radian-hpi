@@ -8,6 +8,10 @@ export const ExploreTheData: React.FC<Props> = () => {
   const { exploreTheData } = useContext(ContentContext)
   const [showWizard, setWizard] = useState(true)
 
+  const setWizardScreen = (boolean: boolean) => {
+    setWizard(boolean)
+  }
+
   return (
     <section className="container-fluid explore-the-data-container">
       <div className="row hpi-section-title learning-center-title">
@@ -18,7 +22,7 @@ export const ExploreTheData: React.FC<Props> = () => {
       <div className="row">
         <div className={`col col-sm-12 viz-container`}>
           <h3>HPI Insights Dashboard</h3>
-          {showWizard && <Wizard />}
+          {showWizard && <Wizard setWizardScreen={setWizardScreen} />}
         </div>
       </div>
     </section>

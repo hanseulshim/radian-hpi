@@ -4,8 +4,11 @@ import { GetStarted } from './screens/GetStarted'
 import { Industry } from './screens/Industry'
 import { LocationAttribute } from './screens/LocationAttribute'
 import { Role } from './screens/Role'
+import { generateWizard } from 'api'
 
-interface Props {}
+interface Props {
+  setWizardScreen: (boolean: boolean) => void
+}
 
 interface Form {
   industry: string
@@ -16,7 +19,7 @@ interface Form {
   usesIndexTool: boolean
 }
 
-export const Wizard: React.FC<Props> = () => {
+export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
   const { exploreTheData } = useContext(ContentContext)
   const wizard = exploreTheData?.wizard
 
@@ -40,6 +43,18 @@ export const Wizard: React.FC<Props> = () => {
   }
 
   const changeScreen = (screenIndex: number) => setScreen(screenIndex)
+
+  const onGenerate = async () => {
+    try {
+      const result = await generateWizard(form)
+      if (result) {
+        // Generate cookie here?
+        setWizardScreen(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   if (wizard) {
     return (
@@ -71,6 +86,7 @@ export const Wizard: React.FC<Props> = () => {
               changeScreen={changeScreen}
               currentScreen={screen}
               form={form}
+              onGenerate={onGenerate}
             />
           )}
           {screen === 0 && (

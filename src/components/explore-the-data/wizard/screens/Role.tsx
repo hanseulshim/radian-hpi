@@ -15,13 +15,15 @@ interface Props {
   changeScreen: (screen: number) => void
   currentScreen: number
   form: Form
+  onGenerate: () => void
 }
 
 export const Role: React.FC<Props> = ({
   onFormChange,
   changeScreen,
   currentScreen,
-  form
+  form,
+  onGenerate
 }) => {
   const { exploreTheData } = useContext(ContentContext)
   const wizard = exploreTheData?.wizard
@@ -81,7 +83,7 @@ export const Role: React.FC<Props> = ({
         <button
           className="btn btn-primary"
           disabled={!form.role || form.usesIndexTool === undefined}
-          onClick={() => changeScreen(0)}
+          onClick={() => onGenerate()}
         >
           Generate!
         </button>
