@@ -24,6 +24,8 @@ export const LocationAttribute: React.FC<Props> = ({
   const geos = wizard?.geos
 
   const [locations, setLocations] = useState([])
+  const [text, setText] = useState('')
+  const [suggestions, setSuggestions] = useState<string[]>([])
 
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
@@ -33,12 +35,58 @@ export const LocationAttribute: React.FC<Props> = ({
     e: React.ChangeEvent<HTMLSelectElement>
   ) => {
     onFormChange('locationType', e.target.value)
+    setText('')
+    setSuggestions([])
     try {
       const result = await getWizardLocations(e.target.value.toLowerCase())
       setLocations(result)
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const onLocationInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let arr: string[] = []
+    const value = e.target.value
+
+    if (value.length > 0) {
+      arr = locations.sort().filter((v: string) => v.includes(value))
+    }
+    setSuggestions(arr)
+    setText(value)
+  }
+
+  const onLocationSelect = (value: string) => {
+    setText(value)
+    setSuggestions([])
+  }
+
+  const renderSuggestions = () => {
+    const input = document.getElementById('hpi-location-select')
+
+    if (suggestions.length === 0) {
+      if (input === document.activeElement) {
+        return (
+          <ul>
+            {locations.map((loc, idx) => (
+              <li key={loc} onClick={() => onLocationSelect(loc)}>
+                {loc}
+              </li>
+            ))}
+          </ul>
+        )
+      }
+      return null
+    }
+    return (
+      <ul>
+        {suggestions.map((loc, idx) => (
+          <li key={loc} onClick={() => onLocationSelect(loc)}>
+            {loc}
+          </li>
+        ))}
+      </ul>
+    )
   }
 
   return (
@@ -60,21 +108,17 @@ export const LocationAttribute: React.FC<Props> = ({
               )
             })}
         </select>
-        <select
-          className="custom-select location-select"
-          onChange={e => onFormChange('location', e.target.value)}
-          value={location}
-          disabled={!locationType}
-        >
-          {locations &&
-            locations.map((loc, idx) => {
-              return (
-                <option value={loc} key={loc}>
-                  {loc}
-                </option>
-              )
-            })}
-        </select>
+        <div className="location-select">
+          <input
+            className="form-control location-select"
+            onChange={e => onLocationInputChange(e)}
+            value={text}
+            disabled={!locationType}
+            type="text"
+            id="hpi-location-select"
+          />
+          {renderSuggestions()}
+        </div>
       </div>
       <div className="attributes">
         <select
