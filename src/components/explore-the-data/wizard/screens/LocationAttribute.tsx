@@ -77,8 +77,19 @@ export const LocationAttribute: React.FC<Props> = ({
   }
 
   const renderSuggestions = () => {
-    if (suggestions.length === 0) {
+    if (text && suggestions.length === 0) {
       return null
+    }
+    if (!text && suggestions.length === 0) {
+      return (
+        <ul>
+          {locations.map((loc, idx) => (
+            <li key={loc} onClick={() => onLocationSelect(loc)}>
+              {loc}
+            </li>
+          ))}
+        </ul>
+      )
     }
     return (
       <ul>
