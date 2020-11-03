@@ -1,6 +1,7 @@
 import React, { useContext } from 'react'
 import { ContentContext } from 'components/App'
 import { acceptCookies } from 'api'
+import { useCookies } from 'react-cookie'
 
 interface Props {
   changeScreen: (screen: number) => void
@@ -14,9 +15,13 @@ export const GetStarted: React.FC<Props> = ({
   const { exploreTheData } = useContext(ContentContext)
   const wizard = exploreTheData?.wizard
 
+  const [cookies, setCookie] = useCookies(['acceptsCookies'])
+
   const onAcceptCookie = async () => {
     const result = await acceptCookies()
-    console.log(result)
+    if (result) {
+      setCookie('acceptsCookies', true)
+    }
   }
 
   return (
@@ -33,12 +38,14 @@ export const GetStarted: React.FC<Props> = ({
       >
         Get Started
       </button>
-      <div className="hpi-cookies">
-        <span>For faster personalization, please accept cookies</span>
-        <button className="btn btn-outline-primary" onClick={onAcceptCookie}>
-          Accept
-        </button>
-      </div>
+      {!cookies.acceptsCookies && (
+        <div className="hpi-cookies">
+          <span>For faster personalization, please accept cookies</span>
+          <button className="btn btn-outline-primary" onClick={onAcceptCookie}>
+            Accept
+          </button>
+        </div>
+      )}
     </div>
   )
 }

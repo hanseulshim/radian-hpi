@@ -5,6 +5,7 @@ import { Industry } from './screens/Industry'
 import { LocationAttribute } from './screens/LocationAttribute'
 import { Role } from './screens/Role'
 import { generateWizard } from 'api'
+import { useCookies } from 'react-cookie'
 
 interface Props {
   setWizardScreen: (boolean: boolean) => void
@@ -36,6 +37,8 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
     usesIndexTool: false
   })
 
+  const [cookies, setCookie] = useCookies(['wizardSelections'])
+
   const onFormChange = (form: Form) => {
     setForm({
       ...form
@@ -45,10 +48,16 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
   const changeScreen = (screenIndex: number) => setScreen(screenIndex)
 
   const onGenerate = async () => {
+    const payload = Object.fromEntries(
+      Object.entries(form).map(([k, v]) => [
+        k,
+        typeof v === 'string' ? v.toLowerCase() : v
+      ])
+    )
     try {
-      const result = await generateWizard(form)
+      const result = await generateWizard(payload as any)
       if (result) {
-        // Generate cookie here?
+        setCookie('wizardSelections', payload)
         setWizardScreen(false)
       }
     } catch (error) {

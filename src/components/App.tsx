@@ -9,6 +9,7 @@ import { Blog } from './blog'
 import { Compare } from './compare'
 import { HpiInAction } from './hpi-in-action'
 import { RequestDemo } from './request-demo'
+import { CookiesProvider } from 'react-cookie'
 
 export const ContentContext = React.createContext<DataInterface>(initialState)
 
@@ -25,36 +26,38 @@ export const App: React.FC = () => {
     fetchContent()
   }, [])
   return (
-    <ContentContext.Provider value={content}>
-      <header>
-        <img
-          src={'./assets/header.png'}
-          alt="dummy-header"
-          className="header"
-        />
-      </header>
-      <main>
-        <Hero />
-        <LearningCenter />
-        <ExploreTheData />
-        <Media />
-        <Blog />
-        <Compare />
-        <HpiInAction />
-        <RequestDemo />
-      </main>
-      <footer>
-        <img
-          src={'./assets/hpi_footer_banner.png'}
-          alt="dummy-footer-banner"
-          className="footer_banner"
-        />
-        <img
-          src={'./assets/hpi_footer.png'}
-          alt="dummy-footer"
-          className="footer"
-        />
-      </footer>
-    </ContentContext.Provider>
+    <CookiesProvider>
+      <ContentContext.Provider value={content}>
+        <header>
+          <img
+            src={'./assets/header.png'}
+            alt="dummy-header"
+            className="header"
+          />
+        </header>
+        <main>
+          <Hero />
+          <LearningCenter />
+          <ExploreTheData />
+          <Media />
+          <Blog />
+          <Compare />
+          <HpiInAction />
+          <RequestDemo />
+        </main>
+        <footer>
+          <img
+            src={'./assets/hpi_footer_banner.png'}
+            alt="dummy-footer-banner"
+            className="footer_banner"
+          />
+          <img
+            src={'./assets/hpi_footer.png'}
+            alt="dummy-footer"
+            className="footer"
+          />
+        </footer>
+      </ContentContext.Provider>
+    </CookiesProvider>
   )
 }

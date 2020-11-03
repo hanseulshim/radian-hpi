@@ -36,10 +36,10 @@ export const getWizardLocations = async (location: string) => {
 export const generateWizard = async (form: Form) => {
   try {
     const result = await axios.post(`${URL}/wizard/generate`, {
-      industry: form.industry.toLowerCase(),
-      location: form.location.toLowerCase(),
-      attribute: form.attribute.toLowerCase(),
-      role: form.role.toLowerCase(),
+      industry: form.industry,
+      location: form.location,
+      attribute: form.attribute,
+      role: form.role,
       hpi: form.usesIndexTool
     })
     return result.data
