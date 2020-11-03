@@ -9,7 +9,10 @@ export const LearningCenter: React.FC<Props> = () => {
   if (learningCenter) {
     const icons = learningCenter.icons
     return (
-      <section className="container-fluid learning-center-container">
+      <section
+        className="container-fluid learning-center-container"
+        id="learnMore"
+      >
         <div className="row hpi-section-title learning-center-title">
           <div className="col d-flex flex-column justify-content-center align-items-center">
             <img
