@@ -35,6 +35,11 @@ export const HpiInAction: React.FC<Props> = () => {
 
     return (
       <section className="container-fluid hpi-in-action-container">
+        <img
+          src={`./assets/hpi_in_action_bg.svg`}
+          alt="hpi-in-action-background"
+          className="hpi-in-action-background"
+        />
         <div className="row">
           <div className="d-flex flex-column justify-content-center align-items-center col-12 hpi-in-action-description">
             <img

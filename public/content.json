@@ -221,5 +221,83 @@
         ]
       }
     ]
+  },
+  "exploreTheData": {
+    "title": "Explore The Data",
+    "wizard": {
+      "title": "Personalize Your Experience",
+      "image": "hpi_wizard_imac.png",
+      "subtitle": "Just a few simple steps and you'll see an interactive demo of RADIAN HPI",
+      "industries": [
+        "Finance",
+        "Depository Institution",
+        "Non-depository institution",
+        "Non-depository credit institution",
+        "Security & commodity brokers, dealers, exchanges, & services",
+        "Insurance carrier",
+        "Insurance agent, broker, & service",
+        "Real estate",
+        "Holding & other investment office",
+        "Agriculture, Forestry, & Fishing",
+        "Mining",
+        "Construction",
+        "Manufacturing",
+        "Transportation, communications, electric, gas, and sanitary services",
+        "Wholesale trade",
+        "Retail trade",
+        "Other services",
+        "Public Administration",
+        "Other"
+      ],
+      "geos": [
+        "National",
+        "Region",
+        "State",
+        "County",
+        "CBSA",
+        "Zip Code",
+        "City",
+        "Neighborhood"
+      ],
+      "attributes": [
+        "Beds 0",
+        "Beds 1",
+        "Beds 2",
+        "Beds 3",
+        "Beds 4",
+        "Beds 5",
+        "Beds 5+",
+        "Price $1M+",
+        "Price $500k < $1M",
+        "Price $250k < $500k",
+        "Price $150k < $250k",
+        "Price $100k < $150k",
+        "Price < $100k",
+        "SqFt 4,000+",
+        "SqFt 2,500 <= 4,000",
+        "SqFt 1,500 <= 2,500",
+        "SqFt <= 1,500",
+        "Type Condo",
+        "Type Single Family"
+      ],
+      "roles": [
+        "Asset Management",
+        "Broker",
+        "Agent",
+        "Default Management",
+        "GSE/Government",
+        "Loan Officer",
+        "Operations",
+        "Processing",
+        "Property Investor",
+        "Risk Management",
+        "Sales",
+        "Secondary Markets",
+        "Servicing",
+        "Underwriting",
+        "Valuations",
+        "Other"
+      ]
+    }
   }
 }
