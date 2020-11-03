@@ -39,14 +39,6 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
 
   const [cookies, setCookie] = useCookies(['wizardSelections'])
 
-  const onFormChange = (form: Form) => {
-    setForm({
-      ...form
-    })
-  }
-
-  const changeScreen = (screenIndex: number) => setScreen(screenIndex)
-
   const onGenerate = async () => {
     const payload = Object.fromEntries(
       Object.entries(form).map(([k, v]) => [
@@ -64,6 +56,14 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
       console.log(error)
     }
   }
+
+  const onFormChange = (form: Form) => {
+    setForm({
+      ...form
+    })
+  }
+
+  const changeScreen = (screenIndex: number) => setScreen(screenIndex)
 
   if (wizard) {
     return (
