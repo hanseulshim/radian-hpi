@@ -12,6 +12,7 @@ export const Dashboard: React.FC<Props> = () => {
   const [cookies] = useCookies(['wizardSelections'])
   const [geos, setGeos] = useState<Geo[]>([])
   const [locations, setLocations] = useState<Geo[]>([])
+  const [searchEnabled, setSearchEnabled] = useState<boolean>(false)
   const [text, setText] = useState('')
   const [suggestions, setSuggestions] = useState<Geo[]>([])
 
@@ -46,7 +47,7 @@ export const Dashboard: React.FC<Props> = () => {
   }
 
   const renderSuggestions = () => {
-    if (!text && suggestions.length === 0) {
+    if (!text && suggestions.length === 0 && locations.length > 0) {
       return (
         <ul>
           {locations.map((loc, idx) => (
@@ -84,11 +85,13 @@ export const Dashboard: React.FC<Props> = () => {
             <input
               className="form-control"
               onChange={e => onLocationInputChange(e)}
+              onFocus={() => setSearchEnabled(true)}
+              onBlur={() => setSearchEnabled(false)}
               value={text}
-              // disabled={!form.locationType}
+              placeholder="Location"
               type="text"
             />
-            {renderSuggestions()}
+            {searchEnabled && renderSuggestions()}
           </div>
           <select className="custom-select" defaultValue={''}>
             <option disabled value={''}>
