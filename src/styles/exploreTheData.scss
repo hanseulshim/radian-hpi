@@ -37,6 +37,30 @@ $color-5: #fa7268;
             flex: 0.75;
           }
           .location-select {
+            .suggestion {
+              display: flex;
+              justify-content: space-between;
+              .national,
+              .city {
+                color: $color-0;
+              }
+              .region,
+              .neighborhood {
+                color: $color-1;
+              }
+              .state {
+                color: $color-2;
+              }
+              .county {
+                color: $color-3;
+              }
+              .cbsa {
+                color: $color-4;
+              }
+              .zip {
+                color: $color-5;
+              }
+            }
             width: 60%;
             position: relative;
             input {

@@ -8,12 +8,50 @@ interface Geo {
   type: string
 }
 
+const rest = [
+  'All',
+  'Beds 0',
+  'Beds 1',
+  'Beds 2',
+  'Beds 3',
+  'Beds 4',
+  'Beds 5+',
+  'Sqft 4,000+',
+  'Sqft 2,500 <= 4,000',
+  'Sqft 1,500 <= 2,500',
+  'Sqft < 1,500'
+]
+
+const national = [
+  'All',
+  'Beds 0',
+  'Beds 1',
+  'Beds 2',
+  'Beds 3',
+  'Beds 4',
+  'Beds 5+',
+  'Price $1M+',
+  'Price $500k < $1M',
+  'Price $250k < $500k',
+  'Price $150k < $250k',
+  'Price $100k < $150k',
+  'Price < $100k',
+  'Sqft 4,000+',
+  'Sqft 2,500 <= 4,000',
+  'Sqft 1,500 <= 2,500',
+  'Sqft < 1,500',
+  'Type Condo',
+  'Type Single Family'
+]
+
 export const Dashboard: React.FC<Props> = () => {
   const [cookies] = useCookies(['wizardSelections'])
   const [geos, setGeos] = useState<Geo[]>([])
   const [locations, setLocations] = useState<Geo[]>([])
   const [searchEnabled, setSearchEnabled] = useState<boolean>(false)
   const [text, setText] = useState('')
+  const [type, setType] = useState('')
+  const [attributes, setAttributes] = useState<string[]>([])
   const [suggestions, setSuggestions] = useState<Geo[]>([])
 
   const { wizardSelections } = cookies
@@ -39,9 +77,25 @@ export const Dashboard: React.FC<Props> = () => {
     setText(value)
   }
 
-  const onLocationSelect = (value: string) => {
+  const onAttributeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const arr = geos.slice()
+    if (arr.length > 5) {
+      arr.pop()
+    }
+    arr.push({ name: text, type: e.target.value })
+    setGeos(arr)
+    setText('')
+    setType('')
+  }
+
+  const onLocationSelect = async (loc: Geo) => {
     setSearchEnabled(false)
-    setText(value)
+    setText(loc.name)
+    if (loc.type === 'national') {
+      setAttributes(national)
+    } else {
+      setAttributes(rest)
+    }
     setSuggestions([])
   }
 
@@ -50,8 +104,11 @@ export const Dashboard: React.FC<Props> = () => {
       return (
         <ul>
           {locations.map((loc, idx) => (
-            <li key={idx} onClick={() => onLocationSelect(loc.name)}>
-              {loc.name}
+            <li key={idx} onClick={() => onLocationSelect(loc)}>
+              <div className="suggestion">
+                <span>{loc.name}</span>
+                <span className={loc.type.toLowerCase()}>{loc.type}</span>
+              </div>
             </li>
           ))}
         </ul>
@@ -62,7 +119,7 @@ export const Dashboard: React.FC<Props> = () => {
     return (
       <ul>
         {suggestions.map((loc, idx) => (
-          <li key={idx} onClick={() => onLocationSelect(loc.name)}>
+          <li key={idx} onClick={() => onLocationSelect(loc)}>
             {loc.name}
           </li>
         ))}
@@ -88,7 +145,7 @@ export const Dashboard: React.FC<Props> = () => {
               onBlur={() =>
                 setTimeout(() => {
                   setSearchEnabled(false)
-                }, 150)
+                }, 200)
               }
               value={text}
               placeholder="Location"
@@ -96,10 +153,19 @@ export const Dashboard: React.FC<Props> = () => {
             />
             {searchEnabled && renderSuggestions()}
           </div>
-          <select className="custom-select" defaultValue={''}>
+          <select
+            className="custom-select"
+            onChange={e => onAttributeChange(e)}
+            value={type}
+          >
             <option disabled value={''}>
               Attribute
             </option>
+            {attributes.map(attribute => (
+              <option value={attribute} key={attribute}>
+                {attribute}
+              </option>
+            ))}
           </select>
         </div>
         <div className="location-toggle">
