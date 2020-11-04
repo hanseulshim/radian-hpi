@@ -47,3 +47,27 @@ export const generateWizard = async (form: Form) => {
     console.log(error)
   }
 }
+
+export const dashboardLocations = async (form: Form) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/location`, {
+      attribute: form.attribute,
+      location: form.location
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardGeo = async (form: Form) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/geo`, {
+      attribute: form.attribute,
+      location: form.location
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}

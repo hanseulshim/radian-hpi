@@ -57,10 +57,12 @@ export const LocationAttribute: React.FC<Props> = ({
 
   const onLocationInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let arr: string[] = []
-    const value = e.target.value
+    const value = e.target.value.toLowerCase()
 
     if (value.length > 0) {
-      arr = locations.sort().filter((v: string) => v.includes(value))
+      arr = locations
+        .sort()
+        .filter((v: string) => v.toLowerCase().includes(value))
     }
     setSuggestions(arr)
     setText(value)
@@ -77,10 +79,7 @@ export const LocationAttribute: React.FC<Props> = ({
   }
 
   const renderSuggestions = () => {
-    if (text && suggestions.length === 0) {
-      return null
-    }
-    if (!text && suggestions.length === 0) {
+    if (!text && suggestions.length === 0 && locations.length > 0) {
       return (
         <ul>
           {locations.map((loc, idx) => (
@@ -90,6 +89,8 @@ export const LocationAttribute: React.FC<Props> = ({
           ))}
         </ul>
       )
+    } else if (suggestions.length === 0) {
+      return null
     }
     return (
       <ul>
