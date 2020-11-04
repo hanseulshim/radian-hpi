@@ -1,12 +1,14 @@
 import React, { useContext, useState } from 'react'
 import { ContentContext } from 'components/App'
 import { Wizard } from './wizard'
+import { Dashboard } from './dashboard'
 import { useCookies } from 'react-cookie'
 
 interface Props {}
 
 export const ExploreTheData: React.FC<Props> = () => {
   const { exploreTheData } = useContext(ContentContext)
+  const [showWizard, setWizard] = useState(false)
   const [cookies] = useCookies(['wizardSelections'])
   const [showWizard, setWizard] = useState(!cookies.wizardSelections)
 
@@ -26,7 +28,8 @@ export const ExploreTheData: React.FC<Props> = () => {
       </div>
       <div className="row">
         <div className={`col col-sm-12 viz-container`}>
-          <h3>HPI Insights Dashboard</h3>
+          <h3 className="title-row">HPI Insights Dashboard</h3>
+          <Dashboard />
           {showWizard && <Wizard setWizardScreen={setWizardScreen} />}
         </div>
       </div>
