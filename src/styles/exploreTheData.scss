@@ -156,10 +156,12 @@ $color-5: #fa7268;
       }
       .main-panel {
         flex: 3;
-        padding: 1em;
+        padding: 0 1em 1em 1em;
       }
     }
   }
+
+  // Wizard Styles
 
   .wizard-overlay {
     position: absolute;
@@ -350,6 +352,38 @@ $color-5: #fa7268;
           top: 45%;
           width: 2em;
           cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+// Dashboard Styles
+
+.hpi-dashboard-main-container {
+  display: flex;
+  flex-direction: column;
+  .controls {
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 1px solid var(--gray);
+    padding-bottom: 2em;
+    .year-select-container {
+      display: flex;
+      border-radius: 20px;
+      align-items: center;
+      background-color: var(--gray);
+      margin-left: 30px;
+      .option {
+        padding: 5px 20px;
+        border-radius: 20px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &.selected {
+          background-color: var(--teal);
+          color: var(--white);
         }
       }
     }

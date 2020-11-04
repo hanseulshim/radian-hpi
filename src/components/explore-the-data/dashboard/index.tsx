@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { dashboardGeo, dashboardLocations } from 'api'
 import IconX from './IconX'
+import { Main } from './main/main'
 interface Props {}
 interface Geo {
   name: string
@@ -113,7 +114,9 @@ export const Dashboard: React.FC<Props> = () => {
           })}
         </div>
       </div>
-      <div className="main-panel">main</div>
+      <div className="main-panel">
+        <Main />
+      </div>
     </div>
   )
 }
