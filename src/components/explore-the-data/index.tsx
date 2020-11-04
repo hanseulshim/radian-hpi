@@ -8,7 +8,6 @@ interface Props {}
 
 export const ExploreTheData: React.FC<Props> = () => {
   const { exploreTheData } = useContext(ContentContext)
-  const [showWizard, setWizard] = useState(false)
   const [cookies] = useCookies(['wizardSelections'])
   const [showWizard, setWizard] = useState(!cookies.wizardSelections)
 
