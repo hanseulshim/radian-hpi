@@ -32,8 +32,6 @@ export const Dashboard: React.FC<Props> = () => {
     let arr: Geo[] = []
     const value = e.target.value.toLowerCase()
 
-    console.log(value, locations)
-
     if (value.length > 0) {
       arr = locations.filter((v: Geo) => v.name.toLowerCase().includes(value))
     }
@@ -42,6 +40,7 @@ export const Dashboard: React.FC<Props> = () => {
   }
 
   const onLocationSelect = (value: string) => {
+    setSearchEnabled(false)
     setText(value)
     setSuggestions([])
   }
@@ -86,7 +85,11 @@ export const Dashboard: React.FC<Props> = () => {
               className="form-control"
               onChange={e => onLocationInputChange(e)}
               onFocus={() => setSearchEnabled(true)}
-              onBlur={() => setSearchEnabled(false)}
+              onBlur={() =>
+                setTimeout(() => {
+                  setSearchEnabled(false)
+                }, 150)
+              }
               value={text}
               placeholder="Location"
               type="text"
