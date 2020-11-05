@@ -24,10 +24,7 @@ export const AhpaStock: React.FC<Props> = ({ locations }) => {
     getHpi()
   }, [locations])
 
-  console.log(stocks)
-
   const max = Math.max(...stocks.map(stock => +stock.value))
-  console.log(max)
 
   return (
     <div className="hpi-stock-container">
