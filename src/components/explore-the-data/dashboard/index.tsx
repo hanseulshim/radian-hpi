@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { dashboardGeo, dashboardLocations } from 'api'
 import IconX from './IconX'
+import HpiStock from './HpiStock'
+import AhpaStock from './AhpaStock'
 interface Props {}
 interface Geo {
-  name: string
+  location: string
   type: string
 }
 
@@ -71,7 +73,9 @@ export const Dashboard: React.FC<Props> = () => {
     const value = e.target.value.toLowerCase()
 
     if (value.length > 0) {
-      arr = locations.filter((v: Geo) => v.name.toLowerCase().includes(value))
+      arr = locations.filter((v: Geo) =>
+        v.location.toLowerCase().includes(value)
+      )
     }
     setSuggestions(arr)
     setText(value)
@@ -82,7 +86,7 @@ export const Dashboard: React.FC<Props> = () => {
     if (arr.length > 5) {
       arr.pop()
     }
-    arr.push({ name: text, type: e.target.value })
+    arr.push({ location: text, type: e.target.value })
     setGeos(arr)
     setText('')
     setType('')
@@ -90,7 +94,7 @@ export const Dashboard: React.FC<Props> = () => {
 
   const onLocationSelect = async (loc: Geo) => {
     setSearchEnabled(false)
-    setText(loc.name)
+    setText(loc.location)
     if (loc.type === 'national') {
       setAttributes(national)
     } else {
@@ -106,7 +110,7 @@ export const Dashboard: React.FC<Props> = () => {
           {locations.map((loc, idx) => (
             <li key={idx} onClick={() => onLocationSelect(loc)}>
               <div className="suggestion">
-                <span>{loc.name}</span>
+                <span>{loc.location}</span>
                 <span className={loc.type.toLowerCase()}>{loc.type}</span>
               </div>
             </li>
@@ -120,7 +124,7 @@ export const Dashboard: React.FC<Props> = () => {
       <ul>
         {suggestions.map((loc, idx) => (
           <li key={idx} onClick={() => onLocationSelect(loc)}>
-            {loc.name}
+            {loc.location}
           </li>
         ))}
       </ul>
@@ -174,7 +178,7 @@ export const Dashboard: React.FC<Props> = () => {
               <div key={index} className={`toggle color-${index}`}>
                 <div className={`circle color-${index}`} />
                 <div>
-                  {geo.name} - {geo.type}
+                  {geo.location} - {geo.type}
                 </div>
                 <IconX
                   onClick={() => removeToggle(index)}
@@ -184,6 +188,9 @@ export const Dashboard: React.FC<Props> = () => {
             )
           })}
         </div>
+        <div className="donut-container">DONUT</div>
+        {geos.length && <HpiStock locations={geos} />}
+        {geos.length && <AhpaStock locations={geos} />}
       </div>
       <div className="main-panel">main</div>
     </div>

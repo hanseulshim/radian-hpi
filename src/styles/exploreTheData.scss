@@ -177,6 +177,46 @@ $color-5: #fa7268;
             }
           }
         }
+
+        .donut-container {
+          margin-top: 1em;
+        }
+
+        .hpi-stock-container {
+          margin-top: 1em;
+          .title {
+            font-weight: bold;
+          }
+          .bar-container {
+            display: flex;
+            align-items: center;
+            .bar {
+              height: 10px;
+              &.color-0 {
+                background: $color-0;
+              }
+              &.color-1 {
+                background: $color-1;
+              }
+              &.color-2 {
+                background: $color-2;
+              }
+              &.color-3 {
+                background: $color-3;
+              }
+              &.color-4 {
+                background: $color-4;
+              }
+              &.color-5 {
+                background: $color-5;
+              }
+            }
+          }
+          .value {
+            margin-left: 1em;
+            width: 45px;
+          }
+        }
       }
       .main-panel {
         flex: 3;

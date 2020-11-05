@@ -11,6 +11,11 @@ interface Form {
   usesIndexTool: boolean
 }
 
+interface Location {
+  location: string
+  type: string
+}
+
 export const acceptCookies = async () => {
   try {
     const result = await axios.post(`${URL}/wizard/cookie`, {
@@ -65,6 +70,28 @@ export const dashboardGeo = async (form: Form) => {
     const result = await axios.post(`${URL}/dashboard/geo`, {
       attribute: form.attribute,
       location: form.location
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardHpiStock = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/hpi-stock`, {
+      locations
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardAhpaStock = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/ahpa-stock`, {
+      locations
     })
     return result.data
   } catch (error) {
