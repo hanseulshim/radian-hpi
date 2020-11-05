@@ -13,10 +13,10 @@ interface Geo {
   type: string
 }
 interface Props {
-  locations: Geo[]
+  geos: Geo[]
 }
 
-export const Main: React.FC<Props> = ({ locations }) => {
+export const Main: React.FC<Props> = ({ geos }) => {
   const [yearRange, setYearRange] = useState('All')
   const [dates, setDates] = useState({
     startDate: moment(new Date(2011, 0o1, 0o1)).format('MM/DD/YYYY'),
@@ -52,14 +52,14 @@ export const Main: React.FC<Props> = ({ locations }) => {
           startDate={dates.startDate}
           endDate={dates.endDate}
           range={yearRange}
-          locations={locations}
+          geos={geos}
         />
         <DateIndicator range={yearRange} dates={dates} />
         <Ahpa
           startDate={dates.startDate}
           endDate={dates.endDate}
           range={yearRange}
-          locations={locations}
+          geos={geos}
         />
       </div>
     </div>

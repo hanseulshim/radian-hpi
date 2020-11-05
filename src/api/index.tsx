@@ -16,11 +16,16 @@ interface Location {
   type: string
 }
 
+interface Geo {
+  location: string
+  type: string
+}
+
 interface chartForm {
   startDate: string | null
   endDate: string | null
   range: string | null
-  locations: Location[]
+  locations: Geo[]
 }
 
 export const acceptCookies = async () => {

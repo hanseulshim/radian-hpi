@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useCookies } from 'react-cookie'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { dashboardAhpa } from 'api'
@@ -13,24 +12,19 @@ interface Props {
   startDate: string | null
   endDate: string | null
   range: string | null
-  locations: Geo[]
+  geos: Geo[]
 }
 
-export const Ahpa: React.FC<Props> = ({
-  startDate,
-  endDate,
-  range,
-  locations
-}) => {
+export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
   useEffect(() => {
     let chart = am4core.create('ahpa-chart', am4charts.XYChart)
     const buildChart = async () => {
-      if (locations.length) {
+      if (geos.length) {
         const data = await dashboardAhpa({
           startDate: !range ? startDate : null,
           endDate: !range ? endDate : null,
           range: range || null,
-          locations
+          locations: geos
         })
         chart.data = data
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
@@ -75,7 +69,7 @@ export const Ahpa: React.FC<Props> = ({
     return () => {
       chart.dispose()
     }
-  }, [endDate, locations, range, startDate])
+  }, [endDate, geos, range, startDate])
   return (
     <>
       <h5>Home Price Index (HPI)</h5>

@@ -194,7 +194,7 @@ export const Dashboard: React.FC<Props> = () => {
         {geos.length && <AhpaStock locations={geos} />}
       </div>
       <div className="main-panel">
-        <Main locations={locations} />
+        <Main geos={geos} />
       </div>
     </div>
   )

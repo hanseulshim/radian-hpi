@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react'
-import { useCookies } from 'react-cookie'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { dashboardHpi } from 'api'
@@ -13,28 +12,21 @@ interface Props {
   startDate: string | null
   endDate: string | null
   range: string | null
-  locations: Geo[]
+  geos: Geo[]
 }
 
-export const Hpi: React.FC<Props> = ({
-  startDate,
-  endDate,
-  range,
-  locations
-}) => {
-  const [cookies] = useCookies(['wizardSelections'])
-  const { wizardSelections } = cookies
+export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
   const [dataOption, setDataOption] = useState('hpi')
 
   useEffect(() => {
     let chart = am4core.create('hpi-chart', am4charts.XYChart)
     const buildChart = async () => {
-      if (locations.length) {
+      if (geos.length) {
         const data = await dashboardHpi({
           startDate: !range ? startDate : null,
           endDate: !range ? endDate : null,
           range: range || null,
-          locations
+          locations: geos
         })
         chart.data = data
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
@@ -76,7 +68,7 @@ export const Hpi: React.FC<Props> = ({
     return () => {
       chart.dispose()
     }
-  }, [endDate, locations, range, startDate, dataOption])
+  }, [endDate, geos, range, startDate, dataOption])
   return (
     <div className="hpi-chart-container" style={{ height: '400px' }}>
       <div className="title-and-controls">
