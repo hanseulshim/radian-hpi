@@ -4,6 +4,7 @@ import { YearRangeSelect } from './YearRangeSelect'
 import moment from 'moment'
 import { Hpi } from './Hpi'
 import { DateIndicator } from './DateIndicator'
+import { Ahpa } from './Ahpa'
 
 const { RangePicker } = DatePicker
 
@@ -54,7 +55,12 @@ export const Main: React.FC<Props> = ({ locations }) => {
           locations={locations}
         />
         <DateIndicator range={yearRange} dates={dates} />
-        <div style={{ flex: 1 }}>AHPA</div>
+        <Ahpa
+          startDate={dates.startDate}
+          endDate={dates.endDate}
+          range={yearRange}
+          locations={locations}
+        />
       </div>
     </div>
   )

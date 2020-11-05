@@ -16,7 +16,7 @@ interface Location {
   type: string
 }
 
-interface HpiBody {
+interface chartForm {
   startDate: string | null
   endDate: string | null
   range: string | null
@@ -99,16 +99,27 @@ export const dashboardAhpaStock = async (locations: Location[]) => {
   try {
     const result = await axios.post(`${URL}/dashboard/ahpa-stock`, {
       locations
-      })
+    })
     return result.data
   } catch (error) {
     console.log(error)
   }
 }
 
-export const dashboardHpi = async (payload: HpiBody) => {
+export const dashboardHpi = async (payload: chartForm) => {
   try {
     const result = await axios.post(`${URL}/dashboard/hpi`, {
+      ...payload
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardAhpa = async (payload: chartForm) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/ahpa`, {
       ...payload
     })
     return result.data
