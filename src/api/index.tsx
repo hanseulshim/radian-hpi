@@ -99,7 +99,18 @@ export const dashboardAhpaStock = async (locations: Location[]) => {
   try {
     const result = await axios.post(`${URL}/dashboard/ahpa-stock`, {
       locations
-      })
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardDonut = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/donut`, {
+      locations
+    })
     return result.data
   } catch (error) {
     console.log(error)

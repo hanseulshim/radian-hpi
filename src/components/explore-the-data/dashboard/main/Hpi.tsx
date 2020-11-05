@@ -2,7 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useCookies } from 'react-cookie'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
+
 import { dashboardHpi } from 'api'
+am4core.options.commercialLicense = true
 
 interface Geo {
   location: string

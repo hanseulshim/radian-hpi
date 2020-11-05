@@ -4,6 +4,7 @@ import { dashboardGeo, dashboardLocations } from 'api'
 import IconX from './IconX'
 import HpiStock from './HpiStock'
 import AhpaStock from './AhpaStock'
+import Donut from './Donut'
 import { Main } from './main'
 interface Props {}
 interface Geo {
@@ -189,7 +190,7 @@ export const Dashboard: React.FC<Props> = () => {
             )
           })}
         </div>
-        <div className="donut-container">DONUT</div>
+        {geos.length && <Donut locations={geos} />}
         {geos.length && <HpiStock locations={geos} />}
         {geos.length && <AhpaStock locations={geos} />}
       </div>
