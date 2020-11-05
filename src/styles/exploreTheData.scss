@@ -6,12 +6,12 @@ $color-4: #820933;
 $color-5: #fa7268;
 
 .explore-the-data-container {
-  padding: 5% 5%;
+  padding: 0 5% 5% 5%;
+  margin-bottom: 5%;
 
   .viz-container {
     box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
     position: relative;
-    height: 100vh;
     padding: 0;
     display: flex;
     flex-direction: column;
@@ -232,10 +232,6 @@ $color-5: #fa7268;
           }
         }
       }
-      .main-panel {
-        flex: 3;
-        padding: 0 1em 1em 1em;
-      }
     }
   }
 
@@ -438,10 +434,15 @@ $color-5: #fa7268;
 
 // Dashboard Styles
 
-.hpi-dashboard-main-container {
+.main-panel {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  flex: 3;
+  padding: 0 1em 2em 1em;
+
+  h5 {
+    color: var(--gray);
+  }
 
   .controls {
     display: flex;
@@ -469,13 +470,10 @@ $color-5: #fa7268;
     }
   }
 
-  .charts {
-    flex: 1;
-  }
   .hpi-chart-container {
     display: flex;
     flex-direction: column;
-    flex: 1;
+    flex: 2;
     .title-and-controls {
       display: flex;
       padding-top: 2em;
@@ -506,5 +504,19 @@ $color-5: #fa7268;
 
   .date-indicator-container {
     border: 1px solid var(--gray);
+    height: 50px;
+    padding: 0 2px;
+    margin-left: 2em;
+    .date-indicator-chart {
+      height: 100%;
+    }
+  }
+
+  .ahpa-chart-container {
+    flex: 1;
+    margin-top: 2em;
+    .ahpa-chart {
+      height: 100%;
+    }
   }
 }

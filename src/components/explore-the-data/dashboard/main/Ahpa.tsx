@@ -29,7 +29,9 @@ export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
         chart.data = data
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
         dateAxis.startLocation = 0.5
-        dateAxis.endLocation = 0.5
+        dateAxis.endLocation = 0
+        dateAxis.renderer.minGridDistance = 50
+        dateAxis.renderer.labels.template.location = 0.0001
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
         valueAxis.renderer.minGridDistance = 20
 
@@ -71,9 +73,9 @@ export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
     }
   }, [endDate, geos, range, startDate])
   return (
-    <>
-      <h5>Home Price Index (HPI)</h5>
+    <div className="ahpa-chart-container">
+      <h5>Annualized Home Price Appreciation</h5>
       <div className="ahpa-chart" />
-    </>
+    </div>
   )
 }

@@ -36,7 +36,7 @@ export const Main: React.FC<Props> = ({ geos }) => {
   }
 
   return (
-    <div className="hpi-dashboard-main-container">
+    <>
       <div className="controls">
         <RangePicker
           onChange={onRangePickerChange as any}
@@ -47,21 +47,19 @@ export const Main: React.FC<Props> = ({ geos }) => {
           onYearRangeSelect={onYearRangeSelect}
         />
       </div>
-      <div className="charts">
-        <Hpi
-          startDate={dates.startDate}
-          endDate={dates.endDate}
-          range={yearRange}
-          geos={geos}
-        />
-        <DateIndicator range={yearRange} dates={dates} />
-        <Ahpa
-          startDate={dates.startDate}
-          endDate={dates.endDate}
-          range={yearRange}
-          geos={geos}
-        />
-      </div>
-    </div>
+      <Hpi
+        startDate={dates.startDate}
+        endDate={dates.endDate}
+        range={yearRange}
+        geos={geos}
+      />
+      <DateIndicator range={yearRange} dates={dates} />
+      <Ahpa
+        startDate={dates.startDate}
+        endDate={dates.endDate}
+        range={yearRange}
+        geos={geos}
+      />
+    </>
   )
 }

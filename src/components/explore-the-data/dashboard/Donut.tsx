@@ -60,9 +60,7 @@ export const Donut: React.FC<Props> = ({ locations }) => {
     }
     getHpi()
   }, [locations])
-  console.log(title)
-  console.log(value)
-  console.log(donut)
+
   return (
     <div className="donut-container">
       <div className="title">{title}</div>

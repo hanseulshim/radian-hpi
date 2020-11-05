@@ -31,9 +31,13 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
           locations: geos
         })
         chart.data = data
+        chart.paddingLeft = 0
+
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
         dateAxis.startLocation = 0.5
-        dateAxis.endLocation = 0.5
+        dateAxis.endLocation = 0
+        dateAxis.renderer.minGridDistance = 50
+        dateAxis.renderer.labels.template.location = 0.0001
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
 
         const createSeries = (
@@ -72,7 +76,7 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
     }
   }, [endDate, geos, range, startDate, dataOption])
   return (
-    <div className="hpi-chart-container" style={{ height: '400px' }}>
+    <div className="hpi-chart-container">
       <div className="title-and-controls">
         <h5>Home Price Index (HPI)</h5>
         <div className="hpi-controls">

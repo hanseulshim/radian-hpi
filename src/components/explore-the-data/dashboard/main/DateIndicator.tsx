@@ -49,14 +49,14 @@ export const DateIndicator: React.FC<Props> = ({ range, dates }) => {
   }
 
   useEffect(() => {
-    const chart = am4core.create('date-indicator-container', am4charts.XYChart)
+    const chart = am4core.create('date-indicator-chart', am4charts.XYChart)
     chart.data = getData()
     chart.paddingTop = 0
     chart.paddingBottom = 0
     chart.marginTop = 0
     chart.marginBottom = 0
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.startLocation = 0.5
+    dateAxis.startLocation = 0
     dateAxis.endLocation = 0
     dateAxis.renderer.grid.template.disabled = true
     dateAxis.renderer.labels.template.location = 0.0001
@@ -67,6 +67,7 @@ export const DateIndicator: React.FC<Props> = ({ range, dates }) => {
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.max = 50
+    valueAxis.min = 0
     valueAxis.strictMinMax = true
     valueAxis.renderer.labels.template.disabled = true
     valueAxis.renderer.grid.template.disabled = true
@@ -87,6 +88,8 @@ export const DateIndicator: React.FC<Props> = ({ range, dates }) => {
   })
 
   return (
-    <div className="date-indicator-container" style={{ height: '100px' }}></div>
+    <div className="date-indicator-container">
+      <div className="date-indicator-chart"></div>
+    </div>
   )
 }
