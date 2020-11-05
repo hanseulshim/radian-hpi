@@ -42,18 +42,30 @@ export const Hpi: React.FC<Props> = ({
 
         const createSeries = (
           name: string,
-          data: Array<{ date: string; hpi: number; median: number }>
+          data: Array<{ date: string; hpi: number; median: number }>,
+          index: number
         ) => {
           let series = chart.series.push(new am4charts.LineSeries())
           series.dataFields.valueY = 'hpi'
           series.dataFields.dateX = 'date'
           series.name = name
           series.data = data
+          const colors = [
+            '#002b49',
+            '#00bab3',
+            '#ffc882',
+            '#9bb9b4',
+            '#820933',
+            '#fa7268z'
+          ]
+          series.stroke = am4core.color(colors[index])
 
           return series
         }
 
-        chart.data.forEach(cohort => createSeries(cohort.label, cohort.data))
+        chart.data.forEach((cohort, index) =>
+          createSeries(cohort.label, cohort.data, index)
+        )
       }
     }
     buildChart()
