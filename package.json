@@ -26,7 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "deploy:alpha": "react-scripts build && aws s3 rm s3://alpha.boostlabs/radian-hpi/index.html && aws s3 sync  ./build s3://alpha.boostlabs/radian-hpi/ --acl public-read --profile boost"
+    "deploy:alpha": "react-scripts build && aws s3 rm s3://alpha.boostlabs/radian-hpi/index.html && aws s3 sync  ./build s3://alpha.boostlabs/radian-hpi/ --profile boost"
   },
   "eslintConfig": {
     "extends": "react-app"

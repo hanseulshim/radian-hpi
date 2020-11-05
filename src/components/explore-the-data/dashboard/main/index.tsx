@@ -3,6 +3,8 @@ import { DatePicker } from 'antd'
 import { YearRangeSelect } from './YearRangeSelect'
 import moment from 'moment'
 import { Hpi } from './Hpi'
+import { DateIndicator } from './DateIndicator'
+import { Ahpa } from './Ahpa'
 
 const { RangePicker } = DatePicker
 
@@ -11,13 +13,13 @@ interface Geo {
   type: string
 }
 interface Props {
-  locations: Geo[]
+  geos: Geo[]
 }
 
-export const Main: React.FC<Props> = ({ locations }) => {
+export const Main: React.FC<Props> = ({ geos }) => {
   const [yearRange, setYearRange] = useState('All')
   const [dates, setDates] = useState({
-    startDate: moment(new Date()).format('MM/DD/YYYY'),
+    startDate: moment(new Date(2011, 0o1, 0o1)).format('MM/DD/YYYY'),
     endDate: moment(new Date()).format('MM/DD/YYYY')
   })
 
@@ -50,10 +52,15 @@ export const Main: React.FC<Props> = ({ locations }) => {
           startDate={dates.startDate}
           endDate={dates.endDate}
           range={yearRange}
-          locations={locations}
+          geos={geos}
         />
-        <div style={{ flex: 1 }}>Data Date Indicator</div>
-        <div style={{ flex: 1 }}>AHPA</div>
+        <DateIndicator range={yearRange} dates={dates} />
+        <Ahpa
+          startDate={dates.startDate}
+          endDate={dates.endDate}
+          range={yearRange}
+          geos={geos}
+        />
       </div>
     </div>
   )

@@ -16,11 +16,16 @@ interface Location {
   type: string
 }
 
-interface HpiBody {
+interface Geo {
+  location: string
+  type: string
+}
+
+interface chartForm {
   startDate: string | null
   endDate: string | null
   range: string | null
-  locations: Location[]
+  locations: Geo[]
 }
 
 export const acceptCookies = async () => {
@@ -117,9 +122,20 @@ export const dashboardDonut = async (locations: Location[]) => {
   }
 }
 
-export const dashboardHpi = async (payload: HpiBody) => {
+export const dashboardHpi = async (payload: chartForm) => {
   try {
     const result = await axios.post(`${URL}/dashboard/hpi`, {
+      ...payload
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardAhpa = async (payload: chartForm) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/ahpa`, {
       ...payload
     })
     return result.data

@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-
-import { dashboardHpi } from 'api'
-am4core.options.commercialLicense = true
+import { dashboardAhpa } from 'api'
 
 interface Geo {
   location: string
@@ -17,14 +15,12 @@ interface Props {
   geos: Geo[]
 }
 
-export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
-  const [dataOption, setDataOption] = useState('hpi')
-
+export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
   useEffect(() => {
-    let chart = am4core.create('hpi-chart', am4charts.XYChart)
+    let chart = am4core.create('ahpa-chart', am4charts.XYChart)
     const buildChart = async () => {
       if (geos.length) {
-        const data = await dashboardHpi({
+        const data = await dashboardAhpa({
           startDate: !range ? startDate : null,
           endDate: !range ? endDate : null,
           range: range || null,
@@ -35,6 +31,7 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
         dateAxis.startLocation = 0.5
         dateAxis.endLocation = 0.5
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+        valueAxis.renderer.minGridDistance = 20
 
         const createSeries = (
           name: string,
@@ -42,7 +39,7 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
           index: number
         ) => {
           let series = chart.series.push(new am4charts.LineSeries())
-          series.dataFields.valueY = dataOption
+          series.dataFields.valueY = 'value'
           series.dataFields.dateX = 'date'
           series.name = name
           series.data = data
@@ -57,6 +54,8 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
           series.stroke = am4core.color(colors[index])
           series.strokeWidth = 2.5
           series.tensionX = 0.9
+          series.fill = am4core.color(colors[index])
+          series.fillOpacity = 0.25
 
           return series
         }
@@ -70,29 +69,11 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
     return () => {
       chart.dispose()
     }
-  }, [endDate, geos, range, startDate, dataOption])
+  }, [endDate, geos, range, startDate])
   return (
-    <div className="hpi-chart-container" style={{ height: '400px' }}>
-      <div className="title-and-controls">
-        <h5>Home Price Index (HPI)</h5>
-        <div className="hpi-controls">
-          <div
-            className={`hpi-option ${dataOption === 'hpi' ? 'selected' : ''}`}
-            onClick={() => setDataOption('hpi')}
-          >
-            HPI
-          </div>
-          <div
-            className={`hpi-option ${
-              dataOption === 'median' ? 'selected' : ''
-            }`}
-            onClick={() => setDataOption('median')}
-          >
-            Median Value
-          </div>
-        </div>
-      </div>
-      <div className="hpi-chart" style={{ height: '100%' }} />
-    </div>
+    <>
+      <h5>Home Price Index (HPI)</h5>
+      <div className="ahpa-chart" />
+    </>
   )
 }
