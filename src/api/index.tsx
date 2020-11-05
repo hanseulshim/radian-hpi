@@ -84,6 +84,28 @@ export const dashboardGeo = async (form: Form) => {
   }
 }
 
+export const dashboardHpiStock = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/hpi-stock`, {
+      locations
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardAhpaStock = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/ahpa-stock`, {
+      locations
+      })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const dashboardHpi = async (payload: HpiBody) => {
   try {
     const result = await axios.post(`${URL}/dashboard/hpi`, {
