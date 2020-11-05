@@ -59,7 +59,7 @@ export const Hpi: React.FC<Props> = ({
     buildChart()
   }, [endDate, locations, range, startDate])
   return (
-    <div className="hpi-chart-container">
+    <div className="hpi-chart-container" style={{ height: '400px' }}>
       <div className="title-and-controls">
         <h5>Home Price Index (HPI)</h5>
         <div className="hpi-controls">
@@ -79,7 +79,7 @@ export const Hpi: React.FC<Props> = ({
           </div>
         </div>
       </div>
-      <div className="hpi-chart" />
+      <div className="hpi-chart" style={{ height: '100%' }} />
     </div>
   )
 }

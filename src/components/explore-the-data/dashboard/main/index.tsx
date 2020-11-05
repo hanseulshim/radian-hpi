@@ -52,6 +52,8 @@ export const Main: React.FC<Props> = ({ locations }) => {
           range={yearRange}
           locations={locations}
         />
+        <div style={{ flex: 1 }}>Data Date Indicator</div>
+        <div style={{ flex: 1 }}>AHPA</div>
       </div>
     </div>
   )
