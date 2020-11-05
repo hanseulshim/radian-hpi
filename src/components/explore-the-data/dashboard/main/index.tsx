@@ -17,7 +17,7 @@ interface Props {
 export const Main: React.FC<Props> = ({ locations }) => {
   const [yearRange, setYearRange] = useState('All')
   const [dates, setDates] = useState({
-    startDate: moment(new Date()).format('MM/DD/YYYY'),
+    startDate: moment(new Date(2011, 0o1, 0o1)).format('MM/DD/YYYY'),
     endDate: moment(new Date()).format('MM/DD/YYYY')
   })
 

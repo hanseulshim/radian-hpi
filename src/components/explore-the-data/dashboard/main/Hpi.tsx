@@ -24,20 +24,22 @@ export const Hpi: React.FC<Props> = ({
 }) => {
   const [cookies] = useCookies(['wizardSelections'])
   const { wizardSelections } = cookies
-  const [dataOption, setDataOption] = useState('HPI')
+  const [dataOption, setDataOption] = useState('hpi')
 
   useEffect(() => {
+    let chart = am4core.create('hpi-chart', am4charts.XYChart)
     const buildChart = async () => {
-      let chart = am4core.create('hpi-chart', am4charts.XYChart)
       if (locations.length) {
         const data = await dashboardHpi({
           startDate: !range ? startDate : null,
           endDate: !range ? endDate : null,
-          range,
+          range: range || null,
           locations
         })
         chart.data = data
         let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
+        dateAxis.startLocation = 0.5
+        dateAxis.endLocation = 0.5
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
 
         const createSeries = (
@@ -46,7 +48,7 @@ export const Hpi: React.FC<Props> = ({
           index: number
         ) => {
           let series = chart.series.push(new am4charts.LineSeries())
-          series.dataFields.valueY = 'hpi'
+          series.dataFields.valueY = dataOption
           series.dataFields.dateX = 'date'
           series.name = name
           series.data = data
@@ -59,6 +61,8 @@ export const Hpi: React.FC<Props> = ({
             '#fa7268z'
           ]
           series.stroke = am4core.color(colors[index])
+          series.strokeWidth = 2.5
+          series.tensionX = 0.9
 
           return series
         }
@@ -69,23 +73,26 @@ export const Hpi: React.FC<Props> = ({
       }
     }
     buildChart()
-  }, [endDate, locations, range, startDate])
+    return () => {
+      chart.dispose()
+    }
+  }, [endDate, locations, range, startDate, dataOption])
   return (
     <div className="hpi-chart-container" style={{ height: '400px' }}>
       <div className="title-and-controls">
         <h5>Home Price Index (HPI)</h5>
         <div className="hpi-controls">
           <div
-            className={`hpi-option ${dataOption === 'HPI' ? 'selected' : ''}`}
-            onClick={() => setDataOption('HPI')}
+            className={`hpi-option ${dataOption === 'hpi' ? 'selected' : ''}`}
+            onClick={() => setDataOption('hpi')}
           >
             HPI
           </div>
           <div
             className={`hpi-option ${
-              dataOption === 'Median Value' ? 'selected' : ''
+              dataOption === 'median' ? 'selected' : ''
             }`}
-            onClick={() => setDataOption('Median Value')}
+            onClick={() => setDataOption('median')}
           >
             Median Value
           </div>
