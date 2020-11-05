@@ -363,6 +363,8 @@ $color-5: #fa7268;
 .hpi-dashboard-main-container {
   display: flex;
   flex-direction: column;
+  height: 100%;
+
   .controls {
     display: flex;
     justify-content: flex-end;
@@ -385,6 +387,43 @@ $color-5: #fa7268;
           background-color: var(--teal);
           color: var(--white);
         }
+      }
+    }
+  }
+  .hpi-chart-container {
+    display: flex;
+    flex-direction: column;
+
+    .title-and-controls {
+      display: flex;
+      padding-top: 2em;
+      justify-content: space-between;
+      align-items: center;
+      .hpi-controls {
+        display: flex;
+        border-radius: 20px;
+        align-items: center;
+        background-color: var(--white);
+        border: 1px solid var(--teal);
+        padding: 2px;
+        div {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 5px 20px;
+          border-radius: 20px;
+          cursor: pointer;
+          &.selected {
+            background-color: var(--teal);
+            color: var(--white);
+          }
+        }
+      }
+      .charts {
+        height: 100%;
+      }
+      .hpi-chart {
+        height: 100%;
       }
     }
   }

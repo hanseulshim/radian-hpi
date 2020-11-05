@@ -1,17 +1,20 @@
 import React, { useContext, useState } from 'react'
-import { ContentContext } from 'components/App'
-import { useCookies } from 'react-cookie'
 import { DatePicker } from 'antd'
 import { YearRangeSelect } from './YearRangeSelect'
 import moment from 'moment'
+import { Hpi } from './Hpi'
 
 const { RangePicker } = DatePicker
 
-interface Props {}
+interface Geo {
+  location: string
+  type: string
+}
+interface Props {
+  locations: Geo[]
+}
 
-export const Main: React.FC<Props> = () => {
-  const [cookies] = useCookies(['wizardSelections'])
-  const { wizardSelections } = cookies
+export const Main: React.FC<Props> = ({ locations }) => {
   const [yearRange, setYearRange] = useState('All')
   const [dates, setDates] = useState({
     startDate: moment(new Date()).format('MM/DD/YYYY'),
@@ -40,6 +43,14 @@ export const Main: React.FC<Props> = () => {
         <YearRangeSelect
           yearRange={yearRange}
           onYearRangeSelect={onYearRangeSelect}
+        />
+      </div>
+      <div className="charts">
+        <Hpi
+          startDate={dates.startDate}
+          endDate={dates.endDate}
+          range={yearRange}
+          locations={locations}
         />
       </div>
     </div>

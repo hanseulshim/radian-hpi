@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useCookies } from 'react-cookie'
 import { dashboardGeo, dashboardLocations } from 'api'
 import IconX from './IconX'
-import { Main } from './main/main'
+import { Main } from './main'
 interface Props {}
 interface Geo {
-  name: string
+  location: string
   type: string
 }
 
@@ -35,7 +35,9 @@ export const Dashboard: React.FC<Props> = () => {
     console.log(value, locations)
 
     if (value.length > 0) {
-      arr = locations.filter((v: Geo) => v.name.toLowerCase().includes(value))
+      arr = locations.filter((v: Geo) =>
+        v.location.toLowerCase().includes(value)
+      )
     }
     setSuggestions(arr)
     setText(value)
@@ -51,8 +53,8 @@ export const Dashboard: React.FC<Props> = () => {
       return (
         <ul>
           {locations.map((loc, idx) => (
-            <li key={idx} onClick={() => onLocationSelect(loc.name)}>
-              {loc.name}
+            <li key={idx} onClick={() => onLocationSelect(loc.location)}>
+              {loc.location}
             </li>
           ))}
         </ul>
@@ -63,8 +65,8 @@ export const Dashboard: React.FC<Props> = () => {
     return (
       <ul>
         {suggestions.map((loc, idx) => (
-          <li key={idx} onClick={() => onLocationSelect(loc.name)}>
-            {loc.name}
+          <li key={idx} onClick={() => onLocationSelect(loc.location)}>
+            {loc.location}
           </li>
         ))}
       </ul>
@@ -103,7 +105,7 @@ export const Dashboard: React.FC<Props> = () => {
               <div key={index} className={`toggle color-${index}`}>
                 <div className={`circle color-${index}`} />
                 <div>
-                  {geo.name} - {geo.type}
+                  {geo.location} - {geo.type}
                 </div>
                 <IconX
                   onClick={() => removeToggle(index)}
@@ -115,7 +117,7 @@ export const Dashboard: React.FC<Props> = () => {
         </div>
       </div>
       <div className="main-panel">
-        <Main />
+        <Main locations={locations} />
       </div>
     </div>
   )

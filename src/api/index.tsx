@@ -11,6 +11,18 @@ interface Form {
   usesIndexTool: boolean
 }
 
+interface Location {
+  location: string
+  type: string
+}
+
+interface HpiBody {
+  startDate: string | null
+  endDate: string | null
+  range: string | null
+  locations: Location[]
+}
+
 export const acceptCookies = async () => {
   try {
     const result = await axios.post(`${URL}/wizard/cookie`, {
@@ -65,6 +77,17 @@ export const dashboardGeo = async (form: Form) => {
     const result = await axios.post(`${URL}/dashboard/geo`, {
       attribute: form.attribute,
       location: form.location
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardHpi = async (payload: HpiBody) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/hpi`, {
+      ...payload
     })
     return result.data
   } catch (error) {
