@@ -4,6 +4,7 @@ import { dashboardGeo, dashboardLocations } from 'api'
 import IconX from './IconX'
 import HpiStock from './HpiStock'
 import AhpaStock from './AhpaStock'
+import { Main } from './main'
 interface Props {}
 interface Geo {
   location: string
@@ -192,7 +193,9 @@ export const Dashboard: React.FC<Props> = () => {
         {geos.length && <HpiStock locations={geos} />}
         {geos.length && <AhpaStock locations={geos} />}
       </div>
-      <div className="main-panel">main</div>
+      <div className="main-panel">
+        <Main locations={locations} />
+      </div>
     </div>
   )
 }

@@ -16,6 +16,13 @@ interface Location {
   type: string
 }
 
+interface HpiBody {
+  startDate: string | null
+  endDate: string | null
+  range: string | null
+  locations: Location[]
+}
+
 export const acceptCookies = async () => {
   try {
     const result = await axios.post(`${URL}/wizard/cookie`, {
@@ -92,6 +99,17 @@ export const dashboardAhpaStock = async (locations: Location[]) => {
   try {
     const result = await axios.post(`${URL}/dashboard/ahpa-stock`, {
       locations
+      })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardHpi = async (payload: HpiBody) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/hpi`, {
+      ...payload
     })
     return result.data
   } catch (error) {
