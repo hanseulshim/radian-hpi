@@ -60,15 +60,16 @@ export const DateIndicator: React.FC<Props> = ({ range, dates }) => {
     dateAxis.endLocation = 0
     dateAxis.renderer.grid.template.disabled = true
     dateAxis.renderer.labels.template.location = 0.0001
+    dateAxis.renderer.labels.template.dy = 10
+    dateAxis.renderer.labels.template.fontSize = 10
     dateAxis.renderer.inside = true
-    dateAxis.renderer.minGridDistance = 20
+    dateAxis.renderer.minGridDistance = 5
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.max = 50
     valueAxis.strictMinMax = true
     valueAxis.renderer.labels.template.disabled = true
     valueAxis.renderer.grid.template.disabled = true
-    valueAxis.renderer.labels.template.fontSize = 14
 
     // Create series
     const series = chart.series.push(new am4charts.LineSeries())
@@ -80,9 +81,9 @@ export const DateIndicator: React.FC<Props> = ({ range, dates }) => {
     const range = dateAxis.createSeriesRange(series)
     range.date = new Date(getStartDate())
     range.endDate = new Date(getEndDate())
-    range.contents.stroke = am4core.color('#f0FFFE')
-    range.contents.fill = am4core.color('#f0FFFE')
-    range.contents.fillOpacity = 0.9
+    range.contents.stroke = am4core.color('#00BAB3')
+    range.contents.fill = am4core.color('#00BAB3')
+    range.contents.fillOpacity = 0.15
   })
 
   return (
