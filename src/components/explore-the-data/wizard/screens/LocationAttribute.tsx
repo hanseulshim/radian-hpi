@@ -130,7 +130,7 @@ export const LocationAttribute: React.FC<Props> = ({
   }
 
   return (
-    <div className="location-attribute-container">
+    <>
       <p>Pick a location and attribute</p>
       <div className="locations">
         <select
@@ -200,6 +200,6 @@ export const LocationAttribute: React.FC<Props> = ({
           onClick={() => changeScreen(currentScreen - 1)}
         />
       </div>
-    </div>
+    </>
   )
 }
