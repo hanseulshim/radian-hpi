@@ -57,9 +57,12 @@ export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
     axisTooltip.background.strokeWidth = 0
     axisTooltip.background.cornerRadius = 3
     axisTooltip.background.pointerLength = 0
-    valueAxis.adapter.add('getTooltipText', text => {
-      return 'Annual % Change:$ + text'
+    valueAxis.adapter.add('getTooltipText', (text: any) => {
+      return `Annual % Change: ` + text
     })
+    chart.cursor = new am4charts.XYCursor()
+    chart.cursor.behavior = 'panXY'
+    chart.cursor.xAxis = dateAxis
 
     const createSeries = (
       name: string,
