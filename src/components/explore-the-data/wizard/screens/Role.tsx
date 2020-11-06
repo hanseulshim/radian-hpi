@@ -7,7 +7,7 @@ interface Form {
   location: string
   attribute: string
   role: string
-  usesIndexTool: boolean
+  usesIndexTool: string
 }
 
 interface Props {
@@ -68,13 +68,13 @@ export const Role: React.FC<Props> = ({
         <p>Do you use a home price index today?</p>
         <button
           className="btn btn-outline-primary"
-          onClick={e => onFormChange({ ...form, usesIndexTool: true })}
+          onClick={e => onFormChange({ ...form, usesIndexTool: 'yes' })}
         >
           Yes
         </button>
         <button
           className="btn btn-outline-primary"
-          onClick={e => onFormChange({ ...form, usesIndexTool: false })}
+          onClick={e => onFormChange({ ...form, usesIndexTool: 'no' })}
         >
           No
         </button>
@@ -82,7 +82,7 @@ export const Role: React.FC<Props> = ({
       <div className="continue">
         <button
           className="btn btn-primary"
-          disabled={!form.role || form.usesIndexTool === undefined}
+          disabled={!form.role || !form.usesIndexTool}
           onClick={() => onGenerate()}
         >
           Generate!

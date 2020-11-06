@@ -7,7 +7,7 @@ interface Form {
   location: string
   attribute: string
   role: string
-  usesIndexTool: boolean
+  usesIndexTool: string
 }
 
 interface Props {
