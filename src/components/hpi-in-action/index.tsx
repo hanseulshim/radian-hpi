@@ -55,7 +55,10 @@ export const HpiInAction: React.FC<Props> = () => {
           {!selectedCard &&
             cards?.map((card, idx) => {
               return (
-                <div className="col-md-6 col-lg-3" key={'radian-feature' + idx}>
+                <div
+                  className="col-md-6 col-lg-3 d-flex justify-content-center"
+                  key={'radian-feature' + idx}
+                >
                   <div className="hpi-card" onClick={() => onCardClick(idx)}>
                     <img
                       src={`./assets/${card.cardImage}`}

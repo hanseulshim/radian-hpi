@@ -17,7 +17,7 @@ interface Form {
   location: string
   attribute: string
   role: string
-  usesIndexTool: boolean
+  usesIndexTool: string
 }
 
 export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
@@ -34,7 +34,7 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
     location: '',
     attribute: '',
     role: '',
-    usesIndexTool: false
+    usesIndexTool: ''
   })
 
   const [cookies, setCookie] = useCookies(['wizardSelections'])
