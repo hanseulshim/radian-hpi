@@ -11,8 +11,8 @@ interface Geo {
 }
 
 interface Props {
-  startDate: string | null
-  endDate: string | null
+  startDate: Date
+  endDate: Date
   range: string | null
   geos: Geo[]
 }

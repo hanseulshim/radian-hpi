@@ -4,20 +4,22 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 
 interface Props {
   range: string
-  dates: {
-    startDate: string
-    endDate: string
-  }
+  startDate: Date
+  endDate: Date
 }
 
-export const DateIndicator: React.FC<Props> = ({ range, dates }) => {
-  const endDate = new Date().getFullYear()
-  const startDate = endDate - 10
+export const DateIndicator: React.FC<Props> = ({
+  range,
+  startDate,
+  endDate
+}) => {
+  const endYear = new Date().getFullYear()
+  const startYear = endYear - 10
 
   const getData = () => {
     let i
     const data = []
-    for (i = startDate; i <= endDate; i++) {
+    for (i = startYear; i <= endYear; i++) {
       data.push({
         value: 50,
         date: new Date(i, 0o1, 0o1)
@@ -29,23 +31,23 @@ export const DateIndicator: React.FC<Props> = ({ range, dates }) => {
   const getStartDate = () => {
     if (range) {
       return range === 'All'
-        ? new Date(startDate, 0o1, 0o1)
+        ? new Date(startYear, 0o1, 0o1)
         : range === '10yr'
-        ? new Date(endDate - 10, 0o1, 0o1)
+        ? new Date(endYear - 10, 0o1, 0o1)
         : range === '5yr'
-        ? new Date(endDate - 5, 0o1, 0o1)
+        ? new Date(endYear - 5, 0o1, 0o1)
         : range === '1yr'
-        ? new Date(endDate - 1, 0o1, 0o1)
+        ? new Date(endYear - 1, 0o1, 0o1)
         : new Date()
     } else {
-      return new Date(dates.startDate)
+      return new Date(startDate)
     }
   }
 
   const getEndDate = () => {
     if (range) {
       return new Date()
-    } else return new Date(dates.endDate)
+    } else return new Date(endDate)
   }
 
   useEffect(() => {
