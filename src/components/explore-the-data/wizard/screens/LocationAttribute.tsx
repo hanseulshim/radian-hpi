@@ -138,7 +138,9 @@ export const LocationAttribute: React.FC<Props> = ({
           onChange={e => onLocationTypeChange(e)}
           value={form.locationType}
         >
-          <option value={''}>All...</option>
+          <option value={''} disabled>
+            All...
+          </option>
           {geos &&
             geos.map((geo, idx) => {
               return (
@@ -167,7 +169,9 @@ export const LocationAttribute: React.FC<Props> = ({
           disabled={!form.locationType || !form.location}
           value={form.attribute}
         >
-          <option value={''}>Compare attributes</option>
+          <option value={''} disabled>
+            Compare attributes
+          </option>
           {getAtrributes()}
         </select>
       </div>

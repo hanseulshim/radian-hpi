@@ -27,9 +27,14 @@ export const ExploreTheData: React.FC<Props> = () => {
       </div>
       <div className="row">
         <div className={`col col-sm-12 viz-container`}>
-          <h3 className="title-row">HPI Insights Dashboard</h3>
-          <Dashboard />
-          {showWizard && <Wizard setWizardScreen={setWizardScreen} />}
+          {showWizard ? (
+            <Wizard setWizardScreen={setWizardScreen} />
+          ) : (
+            <>
+              <h3 className="title-row">HPI Insights Dashboard</h3>
+              <Dashboard />
+            </>
+          )}
         </div>
       </div>
     </section>
