@@ -32,7 +32,7 @@ export const Industry: React.FC<Props> = ({
   }
 
   return (
-    <div className="industry-container">
+    <>
       <select
         className="custom-select"
         onChange={e => onFormChange({ ...form, industry: e.target.value })}
@@ -67,6 +67,6 @@ export const Industry: React.FC<Props> = ({
           ></div>
         </div>
       </div>
-    </div>
+    </>
   )
 }

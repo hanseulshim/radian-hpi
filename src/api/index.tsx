@@ -11,6 +11,23 @@ interface Form {
   usesIndexTool: boolean
 }
 
+interface Location {
+  location: string
+  type: string
+}
+
+interface Geo {
+  location: string
+  type: string
+}
+
+interface chartForm {
+  startDate: Date | null
+  endDate: Date | null
+  range: string | null
+  locations: Geo[]
+}
+
 export const acceptCookies = async () => {
   try {
     const result = await axios.post(`${URL}/wizard/cookie`, {
@@ -41,6 +58,96 @@ export const generateWizard = async (form: Form) => {
       attribute: form.attribute,
       role: form.role,
       hpi: form.usesIndexTool
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardLocations = async (form: Form) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/location`, {
+      attribute: form.attribute,
+      location: form.location
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardGeo = async (form: Form) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/geo`, {
+      attribute: form.attribute,
+      location: form.location
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardHpiStock = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/hpi-stock`, {
+      locations
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardAhpaStock = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/ahpa-stock`, {
+      locations
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardDonut = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/donut`, {
+      locations
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardIndicator = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/indicator`, {
+      locations
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardHpi = async (payload: chartForm) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/hpi`, {
+      ...payload
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const dashboardAhpa = async (payload: chartForm) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/ahpa`, {
+      ...payload
     })
     return result.data
   } catch (error) {

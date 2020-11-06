@@ -57,10 +57,12 @@ export const LocationAttribute: React.FC<Props> = ({
 
   const onLocationInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let arr: string[] = []
-    const value = e.target.value
+    const value = e.target.value.toLowerCase()
 
     if (value.length > 0) {
-      arr = locations.sort().filter((v: string) => v.includes(value))
+      arr = locations
+        .sort()
+        .filter((v: string) => v.toLowerCase().includes(value))
     }
     setSuggestions(arr)
     setText(value)
@@ -77,10 +79,7 @@ export const LocationAttribute: React.FC<Props> = ({
   }
 
   const renderSuggestions = () => {
-    if (text && suggestions.length === 0) {
-      return null
-    }
-    if (!text && suggestions.length === 0) {
+    if (!text && suggestions.length === 0 && locations.length > 0) {
       return (
         <ul>
           {locations.map((loc, idx) => (
@@ -90,6 +89,8 @@ export const LocationAttribute: React.FC<Props> = ({
           ))}
         </ul>
       )
+    } else if (suggestions.length === 0) {
+      return null
     }
     return (
       <ul>
@@ -129,7 +130,7 @@ export const LocationAttribute: React.FC<Props> = ({
   }
 
   return (
-    <div className="location-attribute-container">
+    <>
       <p>Pick a location and attribute</p>
       <div className="locations">
         <select
@@ -137,7 +138,9 @@ export const LocationAttribute: React.FC<Props> = ({
           onChange={e => onLocationTypeChange(e)}
           value={form.locationType}
         >
-          <option value={''}>All...</option>
+          <option value={''} disabled>
+            All...
+          </option>
           {geos &&
             geos.map((geo, idx) => {
               return (
@@ -166,7 +169,9 @@ export const LocationAttribute: React.FC<Props> = ({
           disabled={!form.locationType || !form.location}
           value={form.attribute}
         >
-          <option value={''}>Compare attributes</option>
+          <option value={''} disabled>
+            Compare attributes
+          </option>
           {getAtrributes()}
         </select>
       </div>
@@ -195,6 +200,6 @@ export const LocationAttribute: React.FC<Props> = ({
           onClick={() => changeScreen(currentScreen - 1)}
         />
       </div>
-    </div>
+    </>
   )
 }
