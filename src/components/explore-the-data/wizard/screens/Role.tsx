@@ -34,7 +34,7 @@ export const Role: React.FC<Props> = ({
   }
 
   return (
-    <div className="role-container">
+    <>
       <p className="subtitle">
         You're almost done! Just fill out the short form below and click
         'Generate'!
@@ -79,7 +79,7 @@ export const Role: React.FC<Props> = ({
           No
         </button>
       </div>
-      <div className="generate">
+      <div className="continue">
         <button
           className="btn btn-primary"
           disabled={!form.role || form.usesIndexTool === undefined}
@@ -104,6 +104,6 @@ export const Role: React.FC<Props> = ({
           onClick={() => changeScreen(currentScreen - 1)}
         />
       </div>
-    </div>
+    </>
   )
 }
