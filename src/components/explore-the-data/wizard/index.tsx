@@ -48,8 +48,11 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
     )
     try {
       const result = await generateWizard(payload as any)
-      if (result) {
+      if (result && cookies.acceptsCookies) {
         setCookie('wizardSelections', payload)
+        setWizardScreen(false)
+      } else {
+        setCookie('wizardSelections', payload, { maxAge: 600 })
         setWizardScreen(false)
       }
     } catch (error) {

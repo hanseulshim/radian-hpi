@@ -48,6 +48,27 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
     dateAxis.renderer.minGridDistance = 50
     dateAxis.renderer.labels.template.location = 0.0001
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+    if (dataOption === 'median') {
+      valueAxis.numberFormatter.numberFormat = 'a'
+      valueAxis.renderer.labels.template.adapter.add(
+        'text',
+        (text: any, label: any) => {
+          return '$' + label.dataItem.value
+        }
+      )
+    }
+    let axisTooltip = valueAxis.tooltip as any
+    axisTooltip.background.fill = am4core.color('#00bab3')
+    axisTooltip.background.strokeWidth = 0
+    axisTooltip.background.cornerRadius = 3
+    axisTooltip.background.pointerLength = 0
+    valueAxis.adapter.add('getTooltipText', text => {
+      return 'HPI: ' + text
+    })
+
+    chart.cursor = new am4charts.XYCursor()
+    chart.cursor.behavior = 'panXY'
+    chart.cursor.xAxis = dateAxis
 
     const createSeries = (
       name: string,
