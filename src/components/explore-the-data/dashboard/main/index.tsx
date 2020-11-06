@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { DatePicker } from 'antd'
+import 'antd/lib/date-picker/style/index.css'
 import { YearRangeSelect } from './YearRangeSelect'
 import moment from 'moment'
 import { Hpi } from './Hpi'
