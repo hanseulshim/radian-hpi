@@ -67,7 +67,12 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
 
   if (wizard) {
     return (
-      <div className="wizard-overlay">
+      <>
+        <img
+          src={'./assets/hpi_wizard_placeholder.svg'}
+          alt="hpi wizard placeholder"
+          className="hpi-dashboard-placeholder"
+        />
         <div className="wizard-container">
           <h2>{wizard.title}</h2>
           {screen === 0 && (
@@ -106,7 +111,7 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
             />
           )}
         </div>
-      </div>
+      </>
     )
   } else return null
 }

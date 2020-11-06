@@ -62,10 +62,12 @@ export const Dashboard: React.FC<Props> = () => {
 
   useEffect(() => {
     const getGeo = async () => {
-      const geos = await dashboardGeo(wizardSelections)
-      const locations = await dashboardLocations(wizardSelections)
-      setGeos(geos)
-      setLocations(locations)
+      if (cookies.wizardSelections) {
+        const geos = await dashboardGeo(wizardSelections)
+        const locations = await dashboardLocations(wizardSelections)
+        setGeos(geos)
+        setLocations(locations)
+      }
     }
     getGeo()
   }, [cookies, wizardSelections])
@@ -175,20 +177,21 @@ export const Dashboard: React.FC<Props> = () => {
           </select>
         </div>
         <div className="location-toggle">
-          {geos.map((geo, index) => {
-            return (
-              <div key={index} className={`toggle color-${index}`}>
-                <div className={`circle color-${index}`} />
-                <div>
-                  {geo.location} - {geo.type}
+          {geos &&
+            geos.map((geo, index) => {
+              return (
+                <div key={index} className={`toggle color-${index}`}>
+                  <div className={`circle color-${index}`} />
+                  <div>
+                    {geo.location} - {geo.type}
+                  </div>
+                  <IconX
+                    onClick={() => removeToggle(index)}
+                    className={`color-${index}`}
+                  />
                 </div>
-                <IconX
-                  onClick={() => removeToggle(index)}
-                  className={`color-${index}`}
-                />
-              </div>
-            )
-          })}
+              )
+            })}
         </div>
         {geos.length && <Donut locations={geos} />}
         {geos.length && <HpiStock locations={geos} />}
