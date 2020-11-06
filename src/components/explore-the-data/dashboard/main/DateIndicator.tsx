@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useCookies } from 'react-cookie'
+import { dashboardIndicator } from 'api'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 
@@ -13,8 +15,20 @@ export const DateIndicator: React.FC<Props> = ({
   startDate,
   endDate
 }) => {
+  const [cookies] = useCookies(['wizardSelections'])
+  const [firstDate, setFirstDate] = useState('')
   const endYear = new Date().getFullYear()
-  const startYear = endYear - 10
+  const startYear = new Date(firstDate).getFullYear()
+
+  useEffect(() => {
+    const getGeo = async () => {
+      if (cookies.wizardSelections) {
+        const indicator = await dashboardIndicator(cookies.wizardSelections)
+        setFirstDate(indicator.firstDate)
+      }
+    }
+    getGeo()
+  }, [cookies])
 
   const getData = () => {
     let i

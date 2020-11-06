@@ -122,6 +122,17 @@ export const dashboardDonut = async (locations: Location[]) => {
   }
 }
 
+export const dashboardIndicator = async (locations: Location[]) => {
+  try {
+    const result = await axios.post(`${URL}/dashboard/indicator`, {
+      locations
+    })
+    return result.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 export const dashboardHpi = async (payload: chartForm) => {
   try {
     const result = await axios.post(`${URL}/dashboard/hpi`, {
