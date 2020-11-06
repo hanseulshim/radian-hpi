@@ -1,14 +1,10 @@
 import React, { useState } from 'react'
-import { DatePicker } from 'antd'
-// import 'antd/lib/date-picker/style/index.css'
-// import 'antd/lib/date-picker/style/css.js'
+import DatePicker from 'react-datepicker'
+import 'react-datepicker/dist/react-datepicker.css'
 import { YearRangeSelect } from './YearRangeSelect'
-import moment from 'moment'
 import { Hpi } from './Hpi'
 import { DateIndicator } from './DateIndicator'
 import { Ahpa } from './Ahpa'
-
-const { RangePicker } = DatePicker
 
 interface Geo {
   location: string
@@ -20,29 +16,36 @@ interface Props {
 
 export const Main: React.FC<Props> = ({ geos }) => {
   const [yearRange, setYearRange] = useState('All')
-  const [dates, setDates] = useState({
-    startDate: moment(new Date(2011, 0o1, 0o1)).format('MM/DD/YYYY'),
-    endDate: moment(new Date()).format('MM/DD/YYYY')
-  })
+  const [startDate, setStartDate] = useState<Date>(new Date(2011, 0o1, 0o1))
+  const [endDate, setEndDate] = useState<Date>(new Date())
 
   const onYearRangeSelect = (range: string) => {
     setYearRange(range)
   }
 
-  const onRangePickerChange = (dates: any) => {
-    setDates({
-      startDate: moment(dates[0]).format('MM/DD/YYYY'),
-      endDate: moment(dates[1]).format('MM/DD/YYYY')
-    })
-    setYearRange('')
-  }
-
   return (
     <>
       <div className="controls">
-        <RangePicker
-          onChange={onRangePickerChange as any}
-          value={[moment(dates.startDate), moment(dates.endDate)]}
+        <DatePicker
+          selected={startDate}
+          onChange={date => {
+            setYearRange('')
+            setStartDate(date as Date)
+          }}
+          selectsStart
+          startDate={startDate}
+          endDate={endDate}
+        />
+        <DatePicker
+          selected={endDate}
+          onChange={date => {
+            setYearRange('')
+            setEndDate(date as Date)
+          }}
+          selectsEnd
+          startDate={startDate}
+          endDate={endDate}
+          minDate={startDate}
         />
         <YearRangeSelect
           yearRange={yearRange}
@@ -50,15 +53,19 @@ export const Main: React.FC<Props> = ({ geos }) => {
         />
       </div>
       <Hpi
-        startDate={dates.startDate}
-        endDate={dates.endDate}
+        startDate={startDate}
+        endDate={endDate}
         range={yearRange}
         geos={geos}
       />
-      <DateIndicator range={yearRange} dates={dates} />
+      <DateIndicator
+        range={yearRange}
+        startDate={startDate}
+        endDate={endDate}
+      />
       <Ahpa
-        startDate={dates.startDate}
-        endDate={dates.endDate}
+        startDate={startDate}
+        endDate={endDate}
         range={yearRange}
         geos={geos}
       />

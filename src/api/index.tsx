@@ -22,8 +22,8 @@ interface Geo {
 }
 
 interface chartForm {
-  startDate: string | null
-  endDate: string | null
+  startDate: Date | null
+  endDate: Date | null
   range: string | null
   locations: Geo[]
 }
