@@ -19,7 +19,12 @@ interface Props {
   geos: Geo[]
 }
 
-export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
+export const MedianValue: React.FC<Props> = ({
+  startDate,
+  endDate,
+  range,
+  geos
+}) => {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -47,13 +52,15 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
     dateAxis.renderer.minGridDistance = 50
     dateAxis.renderer.labels.template.location = 0.0001
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+    valueAxis.numberFormatter.numberFormat = '$#a'
+
     let axisTooltip = valueAxis.tooltip as any
     axisTooltip.background.fill = am4core.color('#00bab3')
     axisTooltip.background.strokeWidth = 0
     axisTooltip.background.cornerRadius = 3
     axisTooltip.background.pointerLength = 0
     valueAxis.adapter.add('getTooltipText', text => {
-      return 'HPI: ' + text
+      return 'Median Value: ' + text
     })
 
     chart.cursor = new am4charts.XYCursor()
@@ -66,7 +73,7 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
       index: number
     ) => {
       let series = chart.series.push(new am4charts.LineSeries())
-      series.dataFields.valueY = 'hpi'
+      series.dataFields.valueY = 'median'
       series.dataFields.dateX = 'date'
       series.name = name
       series.data = data
