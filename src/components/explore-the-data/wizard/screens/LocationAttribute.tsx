@@ -31,7 +31,7 @@ export const LocationAttribute: React.FC<Props> = ({
 
   const wizard = exploreTheData?.wizard
   const geos = wizard?.geos
-  const attributes = wizard?.attributes
+  const attributeGroups = wizard?.attributeGroups
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
   }
@@ -103,24 +103,32 @@ export const LocationAttribute: React.FC<Props> = ({
     )
   }
 
-  const getAtrributes = () => {
-    const nonNationalAttributes = [
-      'Beds 0',
-      'Beds 1',
-      'Beds 2',
-      'Beds 3',
-      'Beds 4',
-      'Beds 5',
-      'Beds 5+',
-      'SqFt 4,000+',
-      'SqFt 2,500 <= 4,000',
-      'SqFt 1,500 <= 2,500',
-      'SqFt <= 1,500'
-    ]
-    return (form.locationType !== 'National'
-      ? nonNationalAttributes
-      : attributes
-    )?.map((attr, idx) => {
+  const getAtrributeGroups = () => {
+    let options: Array<string> | undefined = []
+    if (form.locationType === 'National') {
+      options = attributeGroups?.filter(
+        attr =>
+          attr !== 'Compare within tiers' &&
+          attr !== 'Compare with national' &&
+          attr !== 'Compare across regions'
+      )
+    } else if (form.locationType === 'Region') {
+      options = attributeGroups?.filter(
+        attr =>
+          attr !== 'Compare within tiers' &&
+          attr !== 'Compare price categories' &&
+          attr !== 'Compare residential real estate types'
+      )
+    } else {
+      options = attributeGroups?.filter(
+        attr =>
+          attr !== 'Compare price categories' &&
+          attr !== 'Compare residential real estate types' &&
+          attr !== 'Compare across regions'
+      )
+    }
+
+    return options?.map((attr, idx) => {
       return (
         <option value={attr} key={attr}>
           {attr}
@@ -172,7 +180,7 @@ export const LocationAttribute: React.FC<Props> = ({
           <option value={''} disabled>
             Compare attributes
           </option>
-          {getAtrributes()}
+          {getAtrributeGroups()}
         </select>
       </div>
       <div className="continue">

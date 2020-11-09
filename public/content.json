@@ -280,6 +280,15 @@
         "Type Condo",
         "Type Single Family"
       ],
+      "attributeGroups": [
+        "Compare within tiers",
+        "Compare with national",
+        "Compare bedroom counts",
+        "Compare price categories",
+        "Compare square footage categories",
+        "Compare residential real estate types",
+        "Compare across regions"
+      ],
       "roles": [
         "Asset Management",
         "Broker",
