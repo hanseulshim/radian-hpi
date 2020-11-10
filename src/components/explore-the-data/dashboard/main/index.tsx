@@ -55,7 +55,11 @@ export const Main: React.FC<Props> = ({ geos }) => {
         />
       </div>
       <div className="title-and-data-type">
-        <h5>Home Price Index (HPI)</h5>
+        <h5>
+          {dataOption === 'hpi'
+            ? 'Home Price Index (HPI)'
+            : 'Median Value Index'}
+        </h5>
         <div className="hpi-controls">
           <div
             className={`hpi-option ${dataOption === 'hpi' ? 'selected' : ''}`}
