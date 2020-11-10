@@ -54,7 +54,7 @@ export const Main: React.FC<Props> = ({ geos }) => {
           onYearRangeSelect={onYearRangeSelect}
         />
       </div>
-      <div className="title-and-controls">
+      <div className="title-and-data-type">
         <h5>Home Price Index (HPI)</h5>
         <div className="hpi-controls">
           <div
