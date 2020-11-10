@@ -39,6 +39,7 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
 
     chart.data = data
     chart.paddingLeft = 0
+    chart.paddingRight = 20
 
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.startLocation = 0.5

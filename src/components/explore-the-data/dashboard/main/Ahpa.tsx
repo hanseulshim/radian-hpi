@@ -35,6 +35,8 @@ export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
 
   useEffect(() => {
     let chart = am4core.create('ahpa-chart', am4charts.XYChart)
+    chart.paddingLeft = 0
+    chart.paddingRight = 20
 
     chart.data = data
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
