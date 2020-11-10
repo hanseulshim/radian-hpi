@@ -108,14 +108,14 @@ export const LocationAttribute: React.FC<Props> = ({
     if (form.locationType === 'National') {
       options = attributeGroups?.filter(
         attr =>
-          attr !== 'Compare within tiers' &&
+          attr !== 'Compare geographic hierarchies' &&
           attr !== 'Compare with national' &&
           attr !== 'Compare across regions'
       )
     } else if (form.locationType === 'Region') {
       options = attributeGroups?.filter(
         attr =>
-          attr !== 'Compare within tiers' &&
+          attr !== 'Compare geographic hierarchies' &&
           attr !== 'Compare price categories' &&
           attr !== 'Compare residential real estate types'
       )
