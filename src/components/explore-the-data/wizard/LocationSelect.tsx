@@ -18,7 +18,9 @@ export const LocationSelect: React.FC<Props> = ({
   const [options, setOptions] = useState<string[]>([])
 
   const onSelection = (option: string[]) => {
-    onChange(option)
+    if (option) {
+      onChange(option)
+    }
   }
 
   const handleSearch = async (searchString: string) => {
@@ -32,6 +34,7 @@ export const LocationSelect: React.FC<Props> = ({
 
   return (
     <AsyncTypeahead
+      selected={selected}
       filterBy={filterBy}
       id="async-example"
       isLoading={isLoading}

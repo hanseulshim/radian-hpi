@@ -111,7 +111,7 @@ export const LocationAttribute: React.FC<Props> = ({
           <LocationSelect
             onChange={onLocationChange}
             geo={form.locationType}
-            selected={[form.location]}
+            selected={form.location ? [form.location] : []}
           />
         </div>
       </div>
