@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { ContentContext } from 'components/App'
-import { getWizardLocations } from 'api'
+import { LocationSelect } from '../LocationSelect'
 
 interface Form {
   industry: string
@@ -25,9 +25,6 @@ export const LocationAttribute: React.FC<Props> = ({
   form
 }) => {
   const { exploreTheData } = useContext(ContentContext)
-  const [locations, setLocations] = useState([])
-  const [text, setText] = useState('')
-  const [suggestions, setSuggestions] = useState<string[]>([])
 
   const wizard = exploreTheData?.wizard
   const geos = wizard?.geos
@@ -45,62 +42,14 @@ export const LocationAttribute: React.FC<Props> = ({
       location: '',
       attribute: ''
     })
-    setText('')
-    setSuggestions([])
-    try {
-      const result = await getWizardLocations(e.target.value.toLowerCase())
-      setLocations(result)
-    } catch (error) {
-      console.log(error)
-    }
   }
 
-  const onLocationInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let arr: string[] = []
-    const value = e.target.value.toLowerCase()
-
-    if (value.length > 0) {
-      arr = locations
-        .sort()
-        .filter((v: string) => v.toLowerCase().includes(value))
-    }
-    setSuggestions(arr)
-    setText(value)
-  }
-
-  const onLocationSelect = (value: string) => {
-    setText(value)
-    setSuggestions([])
+  const onLocationChange = async (location: string[]) => {
     onFormChange({
       ...form,
-      location: value,
+      location: location[0],
       attribute: ''
     })
-  }
-
-  const renderSuggestions = () => {
-    if (!text && suggestions.length === 0 && locations.length > 0) {
-      return (
-        <ul>
-          {locations.map((loc, idx) => (
-            <li key={loc} onClick={() => onLocationSelect(loc)}>
-              {loc}
-            </li>
-          ))}
-        </ul>
-      )
-    } else if (suggestions.length === 0) {
-      return null
-    }
-    return (
-      <ul>
-        {suggestions.map((loc, idx) => (
-          <li key={loc} onClick={() => onLocationSelect(loc)}>
-            {loc}
-          </li>
-        ))}
-      </ul>
-    )
   }
 
   const getAtrributeGroups = () => {
@@ -159,15 +108,11 @@ export const LocationAttribute: React.FC<Props> = ({
             })}
         </select>
         <div className="location-select">
-          <input
-            className="form-control location-select"
-            onChange={e => onLocationInputChange(e)}
-            value={text}
-            disabled={!form.locationType}
-            type="text"
-            id="hpi-location-select"
+          <LocationSelect
+            onChange={onLocationChange}
+            geo={form.locationType}
+            selected={[form.location]}
           />
-          {renderSuggestions()}
         </div>
       </div>
       <div className="attributes">

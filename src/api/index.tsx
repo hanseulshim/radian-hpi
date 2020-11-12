@@ -39,10 +39,14 @@ export const acceptCookies = async () => {
   }
 }
 
-export const getWizardLocations = async (location: string) => {
+export const getWizardLocations = async (payload: {
+  geo: string
+  searchString: string
+}) => {
   try {
     const result = await axios.post(`${URL}/wizard/location`, {
-      location: location
+      location: payload.geo.toLowerCase(),
+      searchString: payload.searchString
     })
     return result.data
   } catch (error) {
