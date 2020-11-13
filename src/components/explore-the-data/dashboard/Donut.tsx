@@ -48,6 +48,7 @@ export const Donut: React.FC<Props> = ({ locations }) => {
       // Add label
       chart.radius = am4core.percent(55)
       chart.innerRadius = 50
+
       // Add and configure Series
       const pieSeries = chart.series.push(new am4charts.PieSeries())
       pieSeries.slices.template.tooltipText = `{category}\n{value.percent.formatNumber('#.0')}% ({value.value})`
@@ -63,9 +64,12 @@ export const Donut: React.FC<Props> = ({ locations }) => {
 
   return (
     <div className="donut-container">
-      <div className="title">{title}</div>
-      <div className="value">{value?.toLocaleString()}</div>
+      <h4>Address Count</h4>
       <div id="chartdiv" />
+      <div className="total">
+        <div className="title">{title}</div>
+        <div className="value">{value?.toLocaleString()}</div>
+      </div>
     </div>
   )
 }

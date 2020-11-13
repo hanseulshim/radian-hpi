@@ -188,6 +188,12 @@ $color-5: #fa7268;
           flex-direction: column;
           align-items: center;
           margin-top: 1em;
+          h4 {
+            margin-bottom: 0;
+          }
+          .total {
+            display: flex;
+          }
           .title {
             font-weight: bold;
           }
