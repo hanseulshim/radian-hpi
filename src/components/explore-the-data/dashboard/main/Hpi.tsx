@@ -6,19 +6,19 @@ import { dashboardHpi } from 'api'
 
 am4core.options.commercialLicense = true
 
-interface Geo {
-  location: string
-  type: string
-}
-
 interface Props {
   startDate: Date
   endDate: Date
   range: string | null
-  geos: Geo[]
+  cohorts: string[]
 }
 
-export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
+export const Hpi: React.FC<Props> = ({
+  startDate,
+  endDate,
+  range,
+  cohorts
+}) => {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -27,12 +27,12 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
         startDate: !range ? startDate : null,
         endDate: !range ? endDate : null,
         range: range || null,
-        locations: geos
+        cohorts
       })
       setData(data)
     }
     getData()
-  }, [endDate, geos, range, startDate])
+  }, [endDate, cohorts, range, startDate])
 
   useEffect(() => {
     let chart = am4core.create('hpi-chart', am4charts.XYChart)
@@ -76,7 +76,7 @@ export const Hpi: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
         '#ffc882',
         '#9bb9b4',
         '#820933',
-        '#fa7268z'
+        '#fa7268'
       ]
       series.stroke = am4core.color(colors[index])
       series.strokeWidth = 2.5

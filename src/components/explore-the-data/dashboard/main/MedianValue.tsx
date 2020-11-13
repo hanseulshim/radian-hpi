@@ -5,23 +5,18 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import { dashboardHpi } from 'api'
 am4core.options.commercialLicense = true
 
-interface Geo {
-  location: string
-  type: string
-}
-
 interface Props {
   startDate: Date
   endDate: Date
   range: string | null
-  geos: Geo[]
+  cohorts: string[]
 }
 
 export const MedianValue: React.FC<Props> = ({
   startDate,
   endDate,
   range,
-  geos
+  cohorts
 }) => {
   const [data, setData] = useState([])
 
@@ -31,12 +26,12 @@ export const MedianValue: React.FC<Props> = ({
         startDate: !range ? startDate : null,
         endDate: !range ? endDate : null,
         range: range || null,
-        locations: geos
+        cohorts
       })
       setData(data)
     }
     getData()
-  }, [endDate, geos, range, startDate])
+  }, [endDate, cohorts, range, startDate])
 
   useEffect(() => {
     let chart = am4core.create('hpi-chart', am4charts.XYChart)

@@ -5,19 +5,19 @@ import am4themes_animated from '@amcharts/amcharts4/themes/animated'
 import { dashboardAhpa } from 'api'
 am4core.useTheme(am4themes_animated)
 
-interface Geo {
-  location: string
-  type: string
-}
-
 interface Props {
   startDate: Date
   endDate: Date
   range: string | null
-  geos: Geo[]
+  cohorts: string[]
 }
 
-export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
+export const Ahpa: React.FC<Props> = ({
+  startDate,
+  endDate,
+  range,
+  cohorts
+}) => {
   const [data, setData] = useState([])
 
   useEffect(() => {
@@ -26,12 +26,12 @@ export const Ahpa: React.FC<Props> = ({ startDate, endDate, range, geos }) => {
         startDate: !range ? startDate : null,
         endDate: !range ? endDate : null,
         range: range || null,
-        locations: geos
+        cohorts
       })
       setData(data)
     }
     getData()
-  }, [endDate, geos, range, startDate])
+  }, [endDate, cohorts, range, startDate])
 
   useEffect(() => {
     let chart = am4core.create('ahpa-chart', am4charts.XYChart)

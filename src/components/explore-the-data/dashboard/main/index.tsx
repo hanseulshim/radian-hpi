@@ -7,15 +7,11 @@ import { MedianValue } from './MedianValue'
 import { DateIndicator } from './DateIndicator'
 import { Ahpa } from './Ahpa'
 
-interface Geo {
-  location: string
-  type: string
-}
 interface Props {
-  geos: Geo[]
+  cohorts: string[]
 }
 
-export const Main: React.FC<Props> = ({ geos }) => {
+export const Main: React.FC<Props> = ({ cohorts }) => {
   const [yearRange, setYearRange] = useState('All')
   const [startDate, setStartDate] = useState<Date>(new Date(2011, 0o1, 0o1))
   const [endDate, setEndDate] = useState<Date>(new Date())
@@ -82,26 +78,27 @@ export const Main: React.FC<Props> = ({ geos }) => {
           startDate={startDate}
           endDate={endDate}
           range={yearRange}
-          geos={geos}
+          cohorts={cohorts}
         />
       ) : (
         <MedianValue
           startDate={startDate}
           endDate={endDate}
           range={yearRange}
-          geos={geos}
+          cohorts={cohorts}
         />
       )}
       <DateIndicator
         range={yearRange}
         startDate={startDate}
         endDate={endDate}
+        cohorts={cohorts}
       />
       <Ahpa
         startDate={startDate}
         endDate={endDate}
         range={yearRange}
-        geos={geos}
+        cohorts={cohorts}
       />
     </>
   )

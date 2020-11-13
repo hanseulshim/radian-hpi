@@ -3,13 +3,8 @@ import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { dashboardDonut } from 'api'
 
-interface Props {}
-interface Geo {
-  location: string
-  type: string
-}
 interface Props {
-  locations: Geo[]
+  cohorts: string[]
 }
 interface Donut {
   label: string
@@ -25,13 +20,13 @@ const colors = [
   '#fa7268'
 ]
 
-export const Donut: React.FC<Props> = ({ locations }) => {
+export const Donut: React.FC<Props> = ({ cohorts }) => {
   const [donut, setDonut] = useState<Donut[]>([])
   const [title, setTitle] = useState<string>('')
   const [value, setValue] = useState<number | null>(null)
   useEffect(() => {
     const getHpi = async () => {
-      const donutResult = await dashboardDonut(locations)
+      const donutResult = await dashboardDonut(cohorts)
 
       setTitle(donutResult.title)
       setValue(donutResult.value)
@@ -60,7 +55,7 @@ export const Donut: React.FC<Props> = ({ locations }) => {
       pieSeries.slices.template.strokeWidth = 2
     }
     getHpi()
-  }, [locations])
+  }, [cohorts])
 
   return (
     <div className="donut-container">
