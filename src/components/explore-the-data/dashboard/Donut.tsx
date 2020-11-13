@@ -21,7 +21,6 @@ const colors = [
 ]
 
 export const Donut: React.FC<Props> = ({ cohorts }) => {
-  const [donut, setDonut] = useState<Donut[]>([])
   const [title, setTitle] = useState<string>('')
   const [value, setValue] = useState<number | null>(null)
   useEffect(() => {
@@ -30,7 +29,6 @@ export const Donut: React.FC<Props> = ({ cohorts }) => {
 
       setTitle(donutResult.title)
       setValue(donutResult.value)
-      setDonut(donutResult.data)
 
       const chart = am4core.create('chartdiv', am4charts.PieChart)
 
