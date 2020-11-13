@@ -95,5 +95,6 @@ export interface DataInterface {
       attributeGroups: Array<string> | null
       roles: Array<string> | null
     } | null
+    disclaimer: string | null
   } | null
 }

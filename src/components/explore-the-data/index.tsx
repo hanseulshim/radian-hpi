@@ -38,20 +38,7 @@ export const ExploreTheData: React.FC<Props> = () => {
         </div>
       </div>
       <div className="row disclaimer">
-        <p>
-          The analyses, valuations, estimates and forecasts in this document are
-          not intended to constitute representations, or guaranties regarding
-          the information provided herein, and they do not constitute a
-          recommendation, forecast or an opinion as to whether or what price a
-          transaction should occur and/or loans or real estate or other assets
-          should be purchased, sold or held now or in the future. The
-          information in this document is provided on an “as is” basis, with no
-          warranties of any kind whatsoever. Radian Group Inc. and its
-          subsidiaries, including Red Bell Real Estate, LLC, shall have no
-          liability to any party for any claim related to any information
-          contained in this document. This document may not be reproduced,
-          distributed to unauthorized parties or used for commercial purposes.
-        </p>
+        <p>{exploreTheData?.disclaimer}</p>
       </div>
     </section>
   )
