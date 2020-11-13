@@ -46,103 +46,74 @@
     "instructions": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vitae gravida aliquam quisque enim convallis et pulvinar vitae. Nunc commodo lacus, orci arcu dictum dui.",
     "competitors": [
       {
-        "name": "House Canary",
+        "name": "Repeat Sales (arithmetic)",
         "indexType": "Repeat Sales (Arithmetic)",
-        "observations": "Sales Pairs",
-        "dataFrequency": "Aggregated (3 mos)",
+        "indexDescription": "Measure of price changes based on difference in sales price of the same home at two points",
+        "observations": "Sales Pairs prices",
         "monthlyObservations": "~ 400,000",
+        "dataFrequency": "Aggregated (3 mos)",
+        "indexDeliveryDelay": "+45-75 Days",
         "propertyTransactionExclusions": [
           "New Construction",
           "Condo (limited)",
           "Refinances"
         ],
-        "indexDeliveryDelay": "+45-75 Days",
-        "propertyCondition": "Assumes 'Constant' Condition",
-        "imposedModelAdjustments": "Various Model-based Weighting",
+        "propertyCondition": "Assumes 'no change' over time; uses earlier condition",
+        "imposedModelAdjustments": "Model-based weightings (various)",
         "propertyType": ["Single Family", "Townhome"],
-        "statesInNationalIndex": "37"
+        "mostGranularGeography": "CBSA"
       },
       {
-        "name": "Collateral Analytics",
-        "indexType": "Repeat Sales (Arithmetic)",
-        "observations": "Sales Pairs",
-        "dataFrequency": "Aggregated (3 mos)",
+        "name": "Repeat sales (geometric)",
+        "indexType": "Repeat sales (geometric)",
+        "indexDescription": "Measure of price changes based on difference in sales price of the same home at two points",
+        "observations": "Sales Pairs prices",
         "monthlyObservations": "~ 400,000",
+        "dataFrequency": "Aggregated (3 mos)",
+        "indexDeliveryDelay": "+45-90 Days",
         "propertyTransactionExclusions": [
           "New Construction",
           "Condo (limited)",
-          "Refinances"
+          "Refinances",
+          "No Mortgage",
+          "Properties whose liens not purchased by GSE",
+          "Non-conforming loans"
         ],
-        "indexDeliveryDelay": "+45-75 Days",
-        "propertyCondition": "Assumes 'Constant' Condition",
-        "imposedModelAdjustments": "Various Model-based Weighting",
-        "propertyType": ["Single Family", "Townhome"],
-        "statesInNationalIndex": "37"
+        "propertyCondition": "Assumes 'no change' over time; uses earlier condition",
+        "imposedModelAdjustments": "Model-based weightings (various)",
+        "propertyType": ["Single Family (detached)"],
+        "mostGranularGeography": "CBSA"
       },
       {
-        "name": "Zillow",
-        "indexType": "Repeat Sales (Arithmetic)",
-        "observations": "Sales Pairs",
-        "dataFrequency": "Aggregated (3 mos)",
-        "monthlyObservations": "~ 400,000",
+        "name": "Median Sale",
+        "indexType": "Median Sale Prices",
+        "indexDescription": "Measure of the median price of homes sold in current month",
+        "observations": "Sale Prices",
+        "monthlyObservations": "~ 500,000",
+        "dataFrequency": "Monthly",
+        "indexDeliveryDelay": "30 days",
         "propertyTransactionExclusions": [
-          "New Construction",
-          "Condo (limited)",
-          "Refinances"
+          "Excludes all listed off-market properties - only include property data from current month closed sales"
         ],
-        "indexDeliveryDelay": "+45-75 Days",
-        "propertyCondition": "Assumes 'Constant' Condition",
-        "imposedModelAdjustments": "Various Model-based Weighting",
-        "propertyType": ["Single Family", "Townhome"],
-        "statesInNationalIndex": "37"
-      },
-      {
-        "name": "Redfin",
-        "indexType": "Repeat Sales (Arithmetic)",
-        "observations": "Sales Pairs",
-        "dataFrequency": "Aggregated (3 mos)",
-        "monthlyObservations": "~ 400,000",
-        "propertyTransactionExclusions": [
-          "New Construction",
-          "Condo (limited)",
-          "Refinances"
-        ],
-        "indexDeliveryDelay": "+45-75 Days",
-        "propertyCondition": "Assumes 'Constant' Condition",
-        "imposedModelAdjustments": "Various Model-based Weighting",
-        "propertyType": ["Single Family", "Townhome"],
-        "statesInNationalIndex": "37"
-      },
-      {
-        "name": "Trulia",
-        "indexType": "Repeat Sales (Arithmetic)",
-        "observations": "Sales Pairs",
-        "dataFrequency": "Aggregated (3 mos)",
-        "monthlyObservations": "~ 400,000",
-        "propertyTransactionExclusions": [
-          "New Construction",
-          "Condo (limited)",
-          "Refinances"
-        ],
-        "indexDeliveryDelay": "+45-75 Days",
-        "propertyCondition": "Assumes 'Constant' Condition",
-        "imposedModelAdjustments": "Various Model-based Weighting",
-        "propertyType": ["Single Family", "Townhome"],
-        "statesInNationalIndex": "37"
+        "propertyCondition": "Uses 'current' condition",
+        "imposedModelAdjustments": "None used",
+        "propertyType": ["Single Family", "Condo", "Co-op"],
+        "mostGranularGeography": "Region"
       }
     ],
     "radianHpi": {
       "name": "Radian HPI",
-      "indexType": "Hedonic, All Property, based on Ensemble",
-      "observations": "Housing Stock AVMs",
-      "dataFrequency": "Monthly",
+      "indexType": "Hedonic",
+      "indexDescription": "Measure of price change based on monthly estimates of entire US housing stock home prices",
+      "observations": "Individual Home Price estimates",
       "monthlyObservations": "90,000,000",
-      "propertyTransactionExclusions": null,
+      "dataFrequency": "Monthly",
       "indexDeliveryDelay": "+15 days",
-      "propertyCondition": "Uses 'Current' Condition",
+      "propertyTransactionExclusions": null,
+      "propertyCondition": "Always uses 'current' condition of property",
       "imposedModelAdjustments": "None Needed",
       "propertyType": ["Single Family", "Condo", "Townhome"],
-      "statesInNationalIndex": "50"
+      "mostGranularGeography": "Zipcode"
     },
     "backgroundImage": "hpi_on_tablet.png",
     "hpiRateFinderImage": "hpi_rate_finder.png"

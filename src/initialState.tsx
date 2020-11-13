@@ -39,6 +39,7 @@ export interface DataInterface {
     competitors: Array<{
       name: string | null
       indexType: string | null
+      indexDescription: string | null
       observations: string | null
       dataFrequency: string | null
       monthlyObservations: string | null
@@ -47,11 +48,12 @@ export interface DataInterface {
       propertyCondition: string | null
       imposedModelAdjustments: string | null
       propertyType: Array<string> | null
-      statesInNationalIndex: string | null
+      mostGranularGeography: string | null
     }> | null
     radianHpi: {
       name: string | null
       indexType: string | null
+      indexDescription: string | null
       observations: string | null
       dataFrequency: string | null
       monthlyObservations: string | null
@@ -60,7 +62,7 @@ export interface DataInterface {
       propertyCondition: string | null
       imposedModelAdjustments: string | null
       propertyType: Array<string> | null
-      statesInNationalIndex: string | null
+      mostGranularGeography: string | null
     } | null
     backgroundImage: string | null
     hpiRateFinderImage: string | null
