@@ -383,6 +383,12 @@ $color-5: #fa7268;
       }
     }
   }
+
+  .disclaimer {
+    margin-top: 1em;
+    color: var(--gray);
+    border-bottom: 1px solid #ededed;
+  }
 }
 
 // Dashboard Styles
