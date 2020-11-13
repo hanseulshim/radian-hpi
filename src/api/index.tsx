@@ -21,7 +21,7 @@ interface Geo {
   type: string
 }
 
-interface chartForm {
+interface chartParams {
   startDate: Date | null
   endDate: Date | null
   range: string | null
@@ -44,9 +44,16 @@ export const getWizardLocations = async (payload: {
   searchString: string
 }) => {
   try {
-    const result = await axios.post(`${URL}/wizard/location`, {
-      location: payload.geo.toLowerCase(),
-      searchString: payload.searchString
+    let geoType
+    if (payload.geo === 'Region') {
+      geoType = 'Regions ' + payload.geo.toLowerCase()
+    } else {
+      geoType = payload.geo.toLowerCase()
+    }
+    const result = await axios.post(`${URL}/geo`, {
+      geoType,
+      geoSearch: payload.searchString,
+      filterType: 'startsWith'
     })
     return result.data
   } catch (error) {
@@ -56,10 +63,11 @@ export const getWizardLocations = async (payload: {
 
 export const generateWizard = async (form: Form) => {
   try {
-    const result = await axios.post(`${URL}/wizard/generate`, {
+    const result = await axios.post(`${URL}/generate`, {
       industry: form.industry,
-      location: form.location,
-      attribute: form.attribute,
+      geoType: form.locationType,
+      geo: form.location,
+      attributeGroup: form.attribute,
       role: form.role,
       hpi: form.usesIndexTool
     })
@@ -137,7 +145,7 @@ export const dashboardIndicator = async (locations: Location[]) => {
   }
 }
 
-export const dashboardHpi = async (payload: chartForm) => {
+export const dashboardHpi = async (payload: chartParams) => {
   try {
     const result = await axios.post(`${URL}/dashboard/hpi`, {
       ...payload
@@ -148,7 +156,7 @@ export const dashboardHpi = async (payload: chartForm) => {
   }
 }
 
-export const dashboardAhpa = async (payload: chartForm) => {
+export const dashboardAhpa = async (payload: chartParams) => {
   try {
     const result = await axios.post(`${URL}/dashboard/ahpa`, {
       ...payload

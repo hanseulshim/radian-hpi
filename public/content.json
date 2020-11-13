@@ -220,6 +220,7 @@
         "Government - Non-housing related"
       ],
       "geos": [
+        "All",
         "National",
         "Region",
         "State",

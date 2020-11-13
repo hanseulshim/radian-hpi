@@ -39,7 +39,7 @@ export const LocationAttribute: React.FC<Props> = ({
     onFormChange({
       ...form,
       locationType: e.target.value,
-      location: '',
+      location: e.target.value === 'National' ? 'National' : '',
       attribute: ''
     })
   }
@@ -96,7 +96,7 @@ export const LocationAttribute: React.FC<Props> = ({
           value={form.locationType}
         >
           <option value={''} disabled>
-            All...
+            Select location type....
           </option>
           {geos &&
             geos.map((geo, idx) => {
@@ -109,9 +109,10 @@ export const LocationAttribute: React.FC<Props> = ({
         </select>
         <div className="location-select">
           <LocationSelect
-            onChange={onLocationChange}
             geo={form.locationType}
+            onChange={onLocationChange}
             selected={form.location ? [form.location] : []}
+            locationType={form.locationType}
           />
         </div>
       </div>
