@@ -76,7 +76,7 @@ export const MedianValue: React.FC<Props> = ({
         '#ffc882',
         '#9bb9b4',
         '#820933',
-        '#fa7268z'
+        '#fa7268'
       ]
       series.stroke = am4core.color(colors[index])
       series.strokeWidth = 2.5

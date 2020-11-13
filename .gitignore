@@ -12,6 +12,7 @@
 /build
 
 deploy.sh
+build.zip
 
 # misc
 .DS_Store
