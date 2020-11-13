@@ -11,21 +11,11 @@ interface Form {
   usesIndexTool: boolean
 }
 
-interface Location {
-  location: string
-  type: string
-}
-
-interface Geo {
-  location: string
-  type: string
-}
-
-interface chartForm {
+interface chartParams {
   startDate: Date | null
   endDate: Date | null
   range: string | null
-  locations: Geo[]
+  cohorts: string[]
 }
 
 export const acceptCookies = async () => {
@@ -39,10 +29,21 @@ export const acceptCookies = async () => {
   }
 }
 
-export const getWizardLocations = async (location: string) => {
+export const getWizardLocations = async (payload: {
+  geo: string
+  searchString: string
+}) => {
   try {
-    const result = await axios.post(`${URL}/wizard/location`, {
-      location: location
+    let geoType
+    if (payload.geo === 'Region') {
+      geoType = 'Regions ' + payload.geo.toLowerCase()
+    } else {
+      geoType = payload.geo.toLowerCase()
+    }
+    const result = await axios.post(`${URL}/geo`, {
+      geoType,
+      geoSearch: payload.searchString,
+      filterType: 'startsWith'
     })
     return result.data
   } catch (error) {
@@ -52,10 +53,11 @@ export const getWizardLocations = async (location: string) => {
 
 export const generateWizard = async (form: Form) => {
   try {
-    const result = await axios.post(`${URL}/wizard/generate`, {
+    const result = await axios.post(`${URL}/generate`, {
       industry: form.industry,
-      location: form.location,
-      attribute: form.attribute,
+      geoType: form.locationType,
+      geo: form.location,
+      attributeGroup: form.attribute,
       role: form.role,
       hpi: form.usesIndexTool
     })
@@ -65,11 +67,11 @@ export const generateWizard = async (form: Form) => {
   }
 }
 
-export const dashboardLocations = async (form: Form) => {
+export const cohortSearch = async (geoSearch: string) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/location`, {
-      attribute: form.attribute,
-      location: form.location
+    const result = await axios.post(`${URL}/cohort-search`, {
+      geoSearch,
+      filterType: 'startsWith'
     })
     return result.data
   } catch (error) {
@@ -77,11 +79,11 @@ export const dashboardLocations = async (form: Form) => {
   }
 }
 
-export const dashboardGeo = async (form: Form) => {
+export const getCohorts = async (form: Form) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/geo`, {
-      attribute: form.attribute,
-      location: form.location
+    const result = await axios.post(`${URL}/cohorts`, {
+      geo: form.location,
+      attributeGroup: form.attribute
     })
     return result.data
   } catch (error) {
@@ -89,10 +91,10 @@ export const dashboardGeo = async (form: Form) => {
   }
 }
 
-export const dashboardHpiStock = async (locations: Location[]) => {
+export const dashboardHpiStock = async (cohorts: string[]) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/hpi-stock`, {
-      locations
+    const result = await axios.post(`${URL}/hpi-stock`, {
+      cohorts
     })
     return result.data
   } catch (error) {
@@ -100,10 +102,10 @@ export const dashboardHpiStock = async (locations: Location[]) => {
   }
 }
 
-export const dashboardAhpaStock = async (locations: Location[]) => {
+export const dashboardAhpaStock = async (cohorts: string[]) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/ahpa-stock`, {
-      locations
+    const result = await axios.post(`${URL}/ahpa-stock`, {
+      cohorts
     })
     return result.data
   } catch (error) {
@@ -111,10 +113,10 @@ export const dashboardAhpaStock = async (locations: Location[]) => {
   }
 }
 
-export const dashboardDonut = async (locations: Location[]) => {
+export const dashboardDonut = async (cohorts: string[]) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/donut`, {
-      locations
+    const result = await axios.post(`${URL}/donut`, {
+      cohorts
     })
     return result.data
   } catch (error) {
@@ -122,10 +124,10 @@ export const dashboardDonut = async (locations: Location[]) => {
   }
 }
 
-export const dashboardIndicator = async (locations: Location[]) => {
+export const dashboardIndicator = async (cohorts: string[]) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/indicator`, {
-      locations
+    const result = await axios.post(`${URL}/indicator`, {
+      cohorts
     })
     return result.data
   } catch (error) {
@@ -133,9 +135,9 @@ export const dashboardIndicator = async (locations: Location[]) => {
   }
 }
 
-export const dashboardHpi = async (payload: chartForm) => {
+export const dashboardHpi = async (payload: chartParams) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/hpi`, {
+    const result = await axios.post(`${URL}/hpi-chart`, {
       ...payload
     })
     return result.data
@@ -144,9 +146,9 @@ export const dashboardHpi = async (payload: chartForm) => {
   }
 }
 
-export const dashboardAhpa = async (payload: chartForm) => {
+export const dashboardAhpa = async (payload: chartParams) => {
   try {
-    const result = await axios.post(`${URL}/dashboard/ahpa`, {
+    const result = await axios.post(`${URL}/ahpa-chart`, {
       ...payload
     })
     return result.data

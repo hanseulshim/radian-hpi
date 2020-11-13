@@ -50,7 +50,9 @@ export const Role: React.FC<Props> = ({
           }
           value={form.role}
         >
-          <option value={''}>What is your role?</option>
+          <option value={''} disabled>
+            What is your role?
+          </option>
           {roles &&
             roles.map((role, idx) => {
               return (

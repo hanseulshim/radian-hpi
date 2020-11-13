@@ -1,28 +1,24 @@
 import React, { useEffect, useState } from 'react'
 import { dashboardAhpaStock } from 'api'
 
-interface Geo {
-  location: string
-  type: string
-}
 interface Props {
-  locations: Geo[]
+  cohorts: string[]
 }
 interface Stock {
   label: string
   value: string
 }
 
-export const AhpaStock: React.FC<Props> = ({ locations }) => {
+export const AhpaStock: React.FC<Props> = ({ cohorts }) => {
   const [stocks, setStocks] = useState<Stock[]>([])
   useEffect(() => {
     const getHpi = async () => {
-      const stocksResult = await dashboardAhpaStock(locations)
+      const stocksResult = await dashboardAhpaStock(cohorts)
 
       setStocks(stocksResult)
     }
     getHpi()
-  }, [locations])
+  }, [cohorts])
 
   const max = Math.max(...stocks.map(stock => +stock.value))
 

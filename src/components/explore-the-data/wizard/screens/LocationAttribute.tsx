@@ -1,6 +1,6 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
 import { ContentContext } from 'components/App'
-import { getWizardLocations } from 'api'
+import { LocationSelect } from '../LocationSelect'
 
 interface Form {
   industry: string
@@ -25,13 +25,10 @@ export const LocationAttribute: React.FC<Props> = ({
   form
 }) => {
   const { exploreTheData } = useContext(ContentContext)
-  const [locations, setLocations] = useState([])
-  const [text, setText] = useState('')
-  const [suggestions, setSuggestions] = useState<string[]>([])
 
   const wizard = exploreTheData?.wizard
   const geos = wizard?.geos
-  const attributes = wizard?.attributes
+  const attributeGroups = wizard?.attributeGroups
   const progress = {
     width: (currentScreen / 4) * 100 + '%'
   }
@@ -42,85 +39,45 @@ export const LocationAttribute: React.FC<Props> = ({
     onFormChange({
       ...form,
       locationType: e.target.value,
-      location: '',
+      location: e.target.value === 'National' ? 'National' : '',
       attribute: ''
     })
-    setText('')
-    setSuggestions([])
-    try {
-      const result = await getWizardLocations(e.target.value.toLowerCase())
-      setLocations(result)
-    } catch (error) {
-      console.log(error)
-    }
   }
 
-  const onLocationInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let arr: string[] = []
-    const value = e.target.value.toLowerCase()
-
-    if (value.length > 0) {
-      arr = locations
-        .sort()
-        .filter((v: string) => v.toLowerCase().includes(value))
-    }
-    setSuggestions(arr)
-    setText(value)
-  }
-
-  const onLocationSelect = (value: string) => {
-    setText(value)
-    setSuggestions([])
+  const onLocationChange = async (location: string[]) => {
     onFormChange({
       ...form,
-      location: value,
+      location: location[0],
       attribute: ''
     })
   }
 
-  const renderSuggestions = () => {
-    if (!text && suggestions.length === 0 && locations.length > 0) {
-      return (
-        <ul>
-          {locations.map((loc, idx) => (
-            <li key={loc} onClick={() => onLocationSelect(loc)}>
-              {loc}
-            </li>
-          ))}
-        </ul>
+  const getAtrributeGroups = () => {
+    let options: Array<string> | undefined = []
+    if (form.locationType === 'National') {
+      options = attributeGroups?.filter(
+        attr =>
+          attr !== 'Compare geographic hierarchies' &&
+          attr !== 'Compare with national' &&
+          attr !== 'Compare across regions'
       )
-    } else if (suggestions.length === 0) {
-      return null
+    } else if (form.locationType === 'Region') {
+      options = attributeGroups?.filter(
+        attr =>
+          attr !== 'Compare geographic hierarchies' &&
+          attr !== 'Compare price categories' &&
+          attr !== 'Compare residential real estate types'
+      )
+    } else {
+      options = attributeGroups?.filter(
+        attr =>
+          attr !== 'Compare price categories' &&
+          attr !== 'Compare residential real estate types' &&
+          attr !== 'Compare across regions'
+      )
     }
-    return (
-      <ul>
-        {suggestions.map((loc, idx) => (
-          <li key={loc} onClick={() => onLocationSelect(loc)}>
-            {loc}
-          </li>
-        ))}
-      </ul>
-    )
-  }
 
-  const getAtrributes = () => {
-    const nonNationalAttributes = [
-      'Beds 0',
-      'Beds 1',
-      'Beds 2',
-      'Beds 3',
-      'Beds 4',
-      'Beds 5',
-      'Beds 5+',
-      'SqFt 4,000+',
-      'SqFt 2,500 <= 4,000',
-      'SqFt 1,500 <= 2,500',
-      'SqFt <= 1,500'
-    ]
-    return (form.locationType !== 'National'
-      ? nonNationalAttributes
-      : attributes
-    )?.map((attr, idx) => {
+    return options?.map((attr, idx) => {
       return (
         <option value={attr} key={attr}>
           {attr}
@@ -139,7 +96,7 @@ export const LocationAttribute: React.FC<Props> = ({
           value={form.locationType}
         >
           <option value={''} disabled>
-            All...
+            Select location type....
           </option>
           {geos &&
             geos.map((geo, idx) => {
@@ -151,15 +108,12 @@ export const LocationAttribute: React.FC<Props> = ({
             })}
         </select>
         <div className="location-select">
-          <input
-            className="form-control location-select"
-            onChange={e => onLocationInputChange(e)}
-            value={text}
-            disabled={!form.locationType}
-            type="text"
-            id="hpi-location-select"
+          <LocationSelect
+            geo={form.locationType}
+            onChange={onLocationChange}
+            selected={form.location ? [form.location] : []}
+            locationType={form.locationType}
           />
-          {renderSuggestions()}
         </div>
       </div>
       <div className="attributes">
@@ -172,7 +126,7 @@ export const LocationAttribute: React.FC<Props> = ({
           <option value={''} disabled>
             Compare attributes
           </option>
-          {getAtrributes()}
+          {getAtrributeGroups()}
         </select>
       </div>
       <div className="continue">

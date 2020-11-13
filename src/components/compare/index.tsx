@@ -6,6 +6,7 @@ interface Props {}
 interface Competitor {
   name: string | null
   indexType: string | null
+  indexDescription: string | null
   observations: string | null
   dataFrequency: string | null
   monthlyObservations: string | null
@@ -14,7 +15,7 @@ interface Competitor {
   propertyCondition: string | null
   imposedModelAdjustments: string | null
   propertyType: Array<string> | null
-  statesInNationalIndex: string | null
+  mostGranularGeography: string | null
 }
 
 export const Compare: React.FC<Props> = () => {
@@ -41,7 +42,7 @@ export const Compare: React.FC<Props> = () => {
     return (
       <section className="container-fluid compare-container">
         <div className="row">
-          <div className="col-sm-12 col-lg-6">
+          <div className="col-sm-12 col-lg-7">
             <div className="compare-title d-flex align-items-center justify-content-center">
               <img
                 src={`static/images/indicators/${compare.titleIcon}`}
@@ -52,7 +53,7 @@ export const Compare: React.FC<Props> = () => {
           </div>
         </div>
         <div className="row compare-content">
-          <div className="col-md-12 compare-select">
+          <div className="col-md-12 col-lg-4 compare-select">
             {!competitor ? (
               <h4>{compare.subtitle}</h4>
             ) : (
@@ -63,7 +64,7 @@ export const Compare: React.FC<Props> = () => {
               <h5>Are you currently using an index tool?</h5>
               <p>If yes, choose a tool</p>
               <select className="custom-select" onChange={onChange}>
-                <option value={undefined}>Choose an app...</option>
+                <option value={undefined}>Choose an index type...</option>
                 {competitors?.map((competitor, idx) => {
                   return (
                     <option value={idx} key={'competitor' + idx}>
@@ -79,7 +80,7 @@ export const Compare: React.FC<Props> = () => {
               alt="hpi tablet view"
             />
           </div>
-          <div className="col compare-table">
+          <div className="col compare-table ">
             <table className="table table-borderless">
               <thead>
                 <tr>
@@ -102,9 +103,19 @@ export const Compare: React.FC<Props> = () => {
                   <td>{radianHpi?.indexType}</td>
                 </tr>
                 <tr>
-                  <th>Observations</th>
+                  <th>Index Description</th>
+                  {competitor && <td>{competitor.indexDescription}</td>}
+                  <td>{radianHpi?.indexDescription}</td>
+                </tr>
+                <tr>
+                  <th>Observations included</th>
                   {competitor && <td>{competitor.observations}</td>}
                   <td>{radianHpi?.observations}</td>
+                </tr>
+                <tr>
+                  <th>Monthly Observations</th>
+                  {competitor && <td>{competitor.monthlyObservations}</td>}
+                  <td>{radianHpi?.monthlyObservations}</td>
                 </tr>
                 <tr>
                   <th>Data Frequency</th>
@@ -112,9 +123,9 @@ export const Compare: React.FC<Props> = () => {
                   <td>{radianHpi?.dataFrequency}</td>
                 </tr>
                 <tr>
-                  <th>Monthly Observations</th>
-                  {competitor && <td>{competitor.monthlyObservations}</td>}
-                  <td>{radianHpi?.monthlyObservations}</td>
+                  <th>Index Delivery Delay</th>
+                  {competitor && <td>{competitor.indexDeliveryDelay}</td>}
+                  <td>{radianHpi?.indexDeliveryDelay}</td>
                 </tr>
                 <tr>
                   <th>Property and Transaction Exclusions</th>
@@ -138,11 +149,6 @@ export const Compare: React.FC<Props> = () => {
                         )
                       : 'None'}
                   </td>
-                </tr>
-                <tr>
-                  <th>Index Delivery Delay</th>
-                  {competitor && <td>{competitor.indexDeliveryDelay}</td>}
-                  <td>{radianHpi?.indexDeliveryDelay}</td>
                 </tr>
                 <tr>
                   <th>Property Condition</th>
@@ -174,9 +180,9 @@ export const Compare: React.FC<Props> = () => {
                   </td>
                 </tr>
                 <tr>
-                  <th>States in National Index</th>
-                  {competitor && <td>{competitor.statesInNationalIndex}</td>}
-                  <td>{radianHpi?.statesInNationalIndex}</td>
+                  <th>Most Granular Geography Released on Monthly Basis</th>
+                  {competitor && <td>{competitor.mostGranularGeography}</td>}
+                  <td>{radianHpi?.mostGranularGeography}</td>
                 </tr>
               </tbody>
             </table>

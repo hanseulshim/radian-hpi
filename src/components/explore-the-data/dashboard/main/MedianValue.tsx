@@ -3,7 +3,6 @@ import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 
 import { dashboardHpi } from 'api'
-
 am4core.options.commercialLicense = true
 
 interface Props {
@@ -13,7 +12,7 @@ interface Props {
   cohorts: string[]
 }
 
-export const Hpi: React.FC<Props> = ({
+export const MedianValue: React.FC<Props> = ({
   startDate,
   endDate,
   range,
@@ -39,7 +38,6 @@ export const Hpi: React.FC<Props> = ({
 
     chart.data = data
     chart.paddingLeft = 0
-    chart.paddingRight = 20
 
     let dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.startLocation = 0.5
@@ -47,13 +45,15 @@ export const Hpi: React.FC<Props> = ({
     dateAxis.renderer.minGridDistance = 50
     dateAxis.renderer.labels.template.location = 0.0001
     let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+    valueAxis.numberFormatter.numberFormat = '$#a'
+
     let axisTooltip = valueAxis.tooltip as any
     axisTooltip.background.fill = am4core.color('#00bab3')
     axisTooltip.background.strokeWidth = 0
     axisTooltip.background.cornerRadius = 3
     axisTooltip.background.pointerLength = 0
     valueAxis.adapter.add('getTooltipText', text => {
-      return 'HPI: ' + text
+      return 'Median Value: ' + text
     })
 
     chart.cursor = new am4charts.XYCursor()
@@ -66,7 +66,7 @@ export const Hpi: React.FC<Props> = ({
       index: number
     ) => {
       let series = chart.series.push(new am4charts.LineSeries())
-      series.dataFields.valueY = 'hpi'
+      series.dataFields.valueY = 'median'
       series.dataFields.dateX = 'date'
       series.name = name
       series.data = data
@@ -76,7 +76,7 @@ export const Hpi: React.FC<Props> = ({
         '#ffc882',
         '#9bb9b4',
         '#820933',
-        '#fa7268'
+        '#fa7268z'
       ]
       series.stroke = am4core.color(colors[index])
       series.strokeWidth = 2.5

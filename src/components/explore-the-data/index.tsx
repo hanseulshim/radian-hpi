@@ -37,6 +37,9 @@ export const ExploreTheData: React.FC<Props> = () => {
           )}
         </div>
       </div>
+      <div className="row disclaimer">
+        <p>{exploreTheData?.disclaimer}</p>
+      </div>
     </section>
   )
 }
