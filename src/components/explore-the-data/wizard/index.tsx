@@ -4,11 +4,9 @@ import { GetStarted } from './screens/GetStarted'
 import { Industry } from './screens/Industry'
 import { LocationAttribute } from './screens/LocationAttribute'
 import { Role } from './screens/Role'
-import { generateWizard } from 'api'
-import { useCookies } from 'react-cookie'
 
 interface Props {
-  setWizardScreen: (boolean: boolean) => void
+  onGenerate: (form: Form) => void
 }
 
 interface Form {
@@ -20,7 +18,7 @@ interface Form {
   usesIndexTool: string
 }
 
-export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
+export const Wizard: React.FC<Props> = ({ onGenerate }) => {
   const { exploreTheData } = useContext(ContentContext)
   const wizard = exploreTheData?.wizard
 
@@ -36,29 +34,6 @@ export const Wizard: React.FC<Props> = ({ setWizardScreen }) => {
     role: '',
     usesIndexTool: ''
   })
-
-  const [cookies, setCookie] = useCookies(['wizardSelections'])
-
-  const onGenerate = async () => {
-    const payload = Object.fromEntries(
-      Object.entries(form).map(([k, v]) => [
-        k,
-        typeof v === 'string' ? v.toLowerCase() : v
-      ])
-    )
-    try {
-      const result = await generateWizard(payload as any)
-      if (result && cookies.acceptsCookies) {
-        setCookie('wizardSelections', payload)
-        setWizardScreen(false)
-      } else {
-        setCookie('wizardSelections', payload, { maxAge: 600 })
-        setWizardScreen(false)
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  }
 
   const onFormChange = (form: Form) => {
     setForm({

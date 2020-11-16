@@ -79,18 +79,6 @@ export const cohortSearch = async (geoSearch: string) => {
   }
 }
 
-export const getCohorts = async (form: Form) => {
-  try {
-    const result = await axios.post(`${URL}/cohorts`, {
-      geo: form.location,
-      attributeGroup: form.attribute
-    })
-    return result.data
-  } catch (error) {
-    console.log(error)
-  }
-}
-
 export const dashboardHpiStock = async (cohorts: string[]) => {
   try {
     const result = await axios.post(`${URL}/hpi-stock`, {

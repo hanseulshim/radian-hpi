@@ -1,18 +1,58 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { ContentContext } from 'components/App'
 import { Wizard } from './wizard'
 import { Dashboard } from './dashboard'
 import { useCookies } from 'react-cookie'
+import { generateWizard } from 'api'
 
 interface Props {}
 
+interface Form {
+  industry: string
+  locationType: string
+  location: string
+  attribute: string
+  role: string
+  usesIndexTool: string
+}
+
 export const ExploreTheData: React.FC<Props> = () => {
   const { exploreTheData } = useContext(ContentContext)
-  const [cookies] = useCookies(['wizardSelections'])
+  const [cookies, setCookie] = useCookies(['wizardSelections'])
   const [showWizard, setWizard] = useState(!cookies.wizardSelections)
+  const [data, setData] = useState<string[]>([])
 
-  const setWizardScreen = (boolean: boolean) => {
-    setWizard(boolean)
+  const { wizardSelections } = cookies
+
+  useEffect(() => {
+    const getGeo = async () => {
+      if (wizardSelections) {
+        const cohorts = await generateWizard(wizardSelections)
+        setData(cohorts)
+      }
+    }
+    getGeo()
+  }, [cookies, wizardSelections])
+
+  const onGenerate = async (form: Form) => {
+    const payload = Object.fromEntries(
+      Object.entries(form).map(([k, v]) => [
+        k,
+        typeof v === 'string' ? v.toLowerCase() : v
+      ])
+    )
+    try {
+      const result = await generateWizard(payload as any)
+      if (result) {
+        setCookie('wizardSelections', payload, {
+          maxAge: cookies.acceptsCookies ? undefined : 600
+        })
+        setData(result)
+        setWizard(false)
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -28,11 +68,11 @@ export const ExploreTheData: React.FC<Props> = () => {
       <div className="row">
         <div className={`col col-sm-12 viz-container`}>
           {showWizard ? (
-            <Wizard setWizardScreen={setWizardScreen} />
+            <Wizard onGenerate={onGenerate} />
           ) : (
             <>
               <h3 className="title-row">HPI Insights Dashboard</h3>
-              <Dashboard />
+              <Dashboard data={data} />
             </>
           )}
         </div>

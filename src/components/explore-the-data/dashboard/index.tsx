@@ -1,33 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import { useCookies } from 'react-cookie'
 import { AsyncTypeahead } from 'react-bootstrap-typeahead'
 import 'react-bootstrap-typeahead/css/Typeahead.css'
-import { getCohorts, cohortSearch } from 'api'
+import { cohortSearch } from 'api'
 import IconX from './IconX'
 import HpiStock from './HpiStock'
 import AhpaStock from './AhpaStock'
 import Donut from './Donut'
 import { Main } from './main'
 
-interface Props {}
+interface Props {
+  data: string[]
+}
 
-export const Dashboard: React.FC<Props> = () => {
-  const [cookies] = useCookies(['wizardSelections'])
-  const [cohorts, setCohorts] = useState<string[]>([])
+export const Dashboard: React.FC<Props> = ({ data }) => {
+  const [cohorts, setCohorts] = useState<string[]>(data)
   const [isLoading, setIsLoading] = useState(false)
   const [options, setOptions] = useState<string[]>([])
 
-  const { wizardSelections } = cookies
-
   useEffect(() => {
-    const getGeo = async () => {
-      if (cookies.wizardSelections) {
-        const cohorts = await getCohorts(wizardSelections)
-        setCohorts(cohorts)
-      }
-    }
-    getGeo()
-  }, [cookies, wizardSelections])
+    setCohorts(data)
+  }, [data])
 
   const onSelection = (option: string[]) => {
     const arr = cohorts.slice()
@@ -35,7 +27,6 @@ export const Dashboard: React.FC<Props> = () => {
       arr.pop()
     }
     arr.push(option[0])
-    console.log(arr)
     setCohorts(arr)
   }
 
