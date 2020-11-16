@@ -1,6 +1,5 @@
 import React, { useContext } from 'react'
 import { ContentContext } from 'components/App'
-import { acceptCookies } from 'api'
 import { useCookies } from 'react-cookie'
 
 interface Props {
@@ -17,11 +16,8 @@ export const GetStarted: React.FC<Props> = ({
 
   const [cookies, setCookie] = useCookies(['acceptsCookies'])
 
-  const onAcceptCookie = async () => {
-    const result = await acceptCookies()
-    if (result) {
-      setCookie('acceptsCookies', true)
-    }
+  const onAcceptCookie = () => {
+    setCookie('acceptsCookies', true)
   }
 
   return (

@@ -15,7 +15,7 @@ interface Props {
   changeScreen: (screen: number) => void
   currentScreen: number
   form: Form
-  onGenerate: () => void
+  onGenerate: (form: Form) => void
 }
 
 export const Role: React.FC<Props> = ({
@@ -85,7 +85,7 @@ export const Role: React.FC<Props> = ({
         <button
           className="btn btn-primary"
           disabled={!form.role || !form.usesIndexTool}
-          onClick={() => onGenerate()}
+          onClick={() => onGenerate(form)}
         >
           Generate!
         </button>

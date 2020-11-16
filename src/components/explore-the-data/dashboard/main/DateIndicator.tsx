@@ -23,7 +23,6 @@ export const DateIndicator: React.FC<Props> = ({
   useEffect(() => {
     const getCohorts = async () => {
       const indicator = await dashboardIndicator(cohorts)
-      console.log(indicator)
       setFirstDate(indicator.firstDate)
     }
     getCohorts()
